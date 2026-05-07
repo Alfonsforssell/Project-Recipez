@@ -68,37 +68,3 @@ nav {
     transform: scale(1.1);
     border-bottom: 2px solid black;
 }
-
-main {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 0px 50px;
-}
-
-#image, #text {
-    height: calc(100vh - 100px);
-}
-
-#image {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#image img {
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    object-position: center;
-}
-
-#text {
-    width: 50%;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-}
