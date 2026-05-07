@@ -10,8 +10,7 @@ html {
 }
 
 :root {
-    --dominant:
-        --complementary: --margin-xxs: .25rem;
+    --margin-xxs: .25rem;
     --margin-xs: .5rem;
     --margin-s: .75rem;
     --margin-m: 1rem;
@@ -69,4 +68,10 @@ nav {
 .profilePic:hover {
     transform: scale(1.1);
     border-bottom: 2px solid black;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
