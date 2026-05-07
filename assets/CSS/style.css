@@ -129,7 +129,7 @@ form {
     transition: all 0.25s ease;
 }
 
-.card-img {
+.cardImg {
     width: 100%;
     height: 50%;
     object-fit: cover;
