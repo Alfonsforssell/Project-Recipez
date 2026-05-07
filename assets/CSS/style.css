@@ -72,7 +72,7 @@ nav {
 hero {
     width: 100%;
     height: calc(100vh - 100px);
-    background-image: url(assets/images/blur-background.jpg);
+    background-image: url(../images/blur-background.jpg);
     background-position: center;
     background-size: cover;
     display: flex;
