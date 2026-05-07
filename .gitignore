@@ -79,3 +79,7 @@ tmbootpicker.efi
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+#JSON
+.assets/JSON/users.json
+.assets/JSON/data.json

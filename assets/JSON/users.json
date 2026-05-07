@@ -1,0 +1,9 @@
+{
+    "users": [
+        {
+            "name": "admin",
+            "password": "1234",
+            "cookies": null
+        }
+    ]
+}
