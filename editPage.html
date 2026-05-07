@@ -7,6 +7,53 @@
     <link rel="stylesheet" href="/assets/CSS/editPage.css">
 </head>
 <body>
-    
+    <nav>
+        <div id="left"></div>
+        <div id="mid"><img class="logo" src="assets/images/Logo.png" alt="Logo"></div>
+        <div id="right">
+            <a href="#"><img class="profilePic" src="assets/icons/profile.png" alt="profile"></a>
+        </div>
+    </nav>
+    <main>
+        <form class="editDish"></form>
+        <form class="addDish">
+            <h1>Add Dish</h1>
+                <label>
+                    <p>Name:</p>
+                    <input type="text" name="name" required placeholder="Name of dish">
+                </label>
+
+                <label>
+                    Country:
+                    <select name="country">
+                        <option value="Select country">Select country</option>
+                    </select>
+                </label>
+
+                <label>
+                    Estimated Time:
+                    <select name="time">
+                        <option value="Select time">Select time</option>
+                    </select>
+                </label>
+
+                <label>
+                    <p>Image URL:</p>
+                    <input type="text" name="image" required placeholder="https://...">
+                </label>
+
+                <label>
+                    Description:
+                    <textarea name="description"></textarea>
+                </label>
+
+                <label>
+                    Instructions:
+                    <textarea name="instructions" placeholder="Be sue to use . between every step!"></textarea>
+                </label>
+
+                <button id="add" type="submit">Add product</button>
+        </form>
+    </main>
 </body>
 </html>

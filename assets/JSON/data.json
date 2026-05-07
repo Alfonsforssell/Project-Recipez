@@ -1,6 +1,7 @@
 {
     "dishes": [
         {
+            "id": 1,
             "name": "Korv Stroganoff",
             "description": "Korvstroganoff är en lättlagad och välsmakande korvgryta med bland annat falukorv, lök, grädde och tomatpuré som passar bra som vardagsmiddag. Servera korvstroganoffen med kokt ris.",
             "country": "Sverige",
@@ -21,16 +22,11 @@
                 "Salt",
                 "Peppar"
             ],
-            "instructions": [
-                "Koka riset enligt anvisningen på förpackningen.",
-                "Skär korven i stavar. Skala och hacka löken.",
-                "Stek korv och lök i oljan i en stekpanna ca 5 minuter. Tillsätt tomatpuré och fräs någon minut.",
-                "Rör ner grädde, mjölk, soja och dijonsenap. Låt sjuda ca 5 minuter.",
-                "Smaka av med peppar och ev salt."
-            ],
+            "instructions": "Koka riset enligt anvisningen på förpackningen. Skär korven i stavar. Skala och hacka löken.Stek korv och lök i oljan i en stekpanna ca 5 minuter. Tillsätt tomatpuré och fräs någon minut. Rör ner grädde, mjölk, soja och dijonsenap. Låt sjuda ca 5 minuter. Smaka av med peppar och ev salt.",
             "imageUrl": "../assets/images/stroganoff.jpg"
         },
         {
+            "id": 2,
             "name": "Spaghetti Bolognese",
             "description": "En klassisk italiensk pastarätt med köttfärssås smaksatt med tomat, vitlök och örter.",
             "country": "Italien",
@@ -48,16 +44,11 @@
                 "Peppar",
                 "Oregano"
             ],
-            "instructions": [
-                "Koka pastan enligt anvisning.",
-                "Stek lök och vitlök i olja.",
-                "Tillsätt köttfärs och bryn.",
-                "Rör ner tomater och kryddor, låt sjuda 20 min.",
-                "Servera med pasta."
-            ],
+            "instructions": "Koka pastan enligt anvisning. Stek lök och vitlök i olja. Tillsätt köttfärs och bryn. Rör ner tomater och kryddor, låt sjuda 20 min. Servera med pasta.",
             "imageUrl": "../assets/images/bolognese.jpg"
         },
         {
+            "id": 3,
             "name": "Vegetarisk Chili",
             "description": "En mustig vegetarisk gryta med bönor, tomat och kryddor.",
             "country": "Mexiko",
@@ -76,16 +67,12 @@
                 "Olja",
                 "Salt"
             ],
-            "instructions": [
-                "Hacka grönsaker.",
-                "Stek lök och vitlök.",
-                "Tillsätt övriga ingredienser.",
-                "Låt sjuda 20 minuter.",
-                "Smaka av."
-            ],
+            "instructions": 
+                "Hacka grönsaker. Stek lök och vitlök. Tillsätt övriga ingredienser. Låt sjuda 20 minuter. Smaka av.",
             "imageUrl": "../assets/images/chili.jpg"
         },
         {
+            "id": 4,
             "name": "Kyckling Curry",
             "description": "Krämig currygryta med kyckling och kokosmjölk.",
             "country": "Indien",
@@ -102,16 +89,11 @@
                 "Olja",
                 "Salt"
             ],
-            "instructions": [
-                "Stek kyckling.",
-                "Tillsätt lök och vitlök.",
-                "Häll i kokosmjölk och kryddor.",
-                "Låt sjuda 20 minuter.",
-                "Servera med ris."
-            ],
+            "instructions": "Stek kyckling. Tillsätt lök och vitlök. Häll i kokosmjölk och kryddor. Låt sjuda 20 minuter. Servera med ris.",
             "imageUrl": "../assets/images/curry.jpg"
         },
         {
+            "id": 5,
             "name": "Pad Thai",
             "description": "Thailändsk nudelrätt med ägg, grönsaker och jordnötter.",
             "country": "Thailand",
@@ -128,16 +110,11 @@
                 "Jordnötter",
                 "Olja"
             ],
-            "instructions": [
-                "Koka nudlar.",
-                "Stek grönsaker.",
-                "Tillsätt ägg och nudlar.",
-                "Smaksätt med soja.",
-                "Toppa med jordnötter."
-            ],
+            "instructions": "Koka nudlar. Stek grönsaker. Tillsätt ägg och nudlar. Smaksätt med soja. Toppa med jordnötter.",
             "imageUrl": "../assets/images/padthai.jpg"
         },
         {
+            "id": 6,
             "name": "Falafel med Hummus",
             "description": "Friterade kikärtsbollar serverade med hummus.",
             "country": "Mellanöstern",
@@ -154,15 +131,11 @@
                 "Tahini",
                 "Citron"
             ],
-            "instructions": [
-                "Mixa kikärtor.",
-                "Forma bollar.",
-                "Fritera.",
-                "Servera med hummus."
-            ],
+            "instructions": "Mixa kikärtor. Forma bollar. Fritera. Servera med hummus.",
             "imageUrl": "../assets/images/falafel.jpg"
         },
         {
+            "id": 7,
             "name": "Lax med Potatis",
             "description": "Ugnsbakad lax med kokt potatis och dill.",
             "country": "Sverige",
@@ -178,15 +151,11 @@
                 "Salt",
                 "Peppar"
             ],
-            "instructions": [
-                "Koka potatis.",
-                "Baka lax i ugn.",
-                "Krydda.",
-                "Servera tillsammans."
-            ],
+            "instructions": "Koka potatis. Baka lax i ugn. Krydda. Servera tillsammans.",
             "imageUrl": "../assets/images/lax.jpg"
         },
         {
+            "id": 8,
             "name": "Tacos",
             "description": "Mexikansk klassiker med köttfärs och tillbehör.",
             "country": "Mexiko",
@@ -200,15 +169,11 @@
                 "Ost",
                 "Tacokrydda"
             ],
-            "instructions": [
-                "Stek köttfärs.",
-                "Tillsätt krydda.",
-                "Hacka grönsaker.",
-                "Fyll tortillas."
-            ],
+            "instructions": "Stek köttfärs. Tillsätt krydda. Hacka grönsaker. Fyll tortillas.",
             "imageUrl": "../assets/images/tacos.jpg"
         },
         {
+            "id": 9,
             "name": "Caprese Sallad",
             "description": "Fräsch sallad med tomat, mozzarella och basilika.",
             "country": "Italien",
@@ -224,15 +189,11 @@
                 "Olivolja",
                 "Salt"
             ],
-            "instructions": [
-                "Skiva tomat och ost.",
-                "Varva på tallrik.",
-                "Ringla över olja.",
-                "Salta."
-            ],
+            "instructions": "Skiva tomat och ost. Varva på tallrik. Ringla över olja. Salta.",
             "imageUrl": "../assets/images/caprese.jpg"
         },
         {
+            "id": 10,
             "name": "Ramen",
             "description": "Japansk nudelsoppa med buljong och toppings.",
             "country": "Japan",
@@ -245,15 +206,11 @@
                 "Fläsk",
                 "Salladslök"
             ],
-            "instructions": [
-                "Koka buljong.",
-                "Koka nudlar.",
-                "Förbered toppings.",
-                "Servera i skål."
-            ],
+            "instructions": "Koka buljong. Koka nudlar. Förbered toppings. Servera i skål.",
             "imageUrl": "../assets/images/ramen.jpg"
         },
         {
+            "id": 11,
             "name": "Shakshuka",
             "description": "Ägg i kryddig tomatsås.",
             "country": "Nordafrika",
@@ -269,15 +226,11 @@
                 "Vitlök",
                 "Spiskummin"
             ],
-            "instructions": [
-                "Stek grönsaker.",
-                "Tillsätt tomat.",
-                "Knäck i ägg.",
-                "Låt stelna."
-            ],
+            "instructions": "Stek grönsaker. Tillsätt tomat. Knäck i ägg. Låt stelna.",
             "imageUrl": "../assets/images/shakshuka.jpg"
         },
         {
+            "id": 12,
             "name": "Pannkakor",
             "description": "Tunna pannkakor serverade med sylt.",
             "country": "Sverige",
@@ -290,14 +243,11 @@
                 "Salt",
                 "Smör"
             ],
-            "instructions": [
-                "Vispa smet.",
-                "Stek i panna.",
-                "Servera med sylt."
-            ],
+            "instructions": "Vispa smet. Stek i panna. Servera med sylt.",
             "imageUrl": "../assets/images/pannkakor.jpg"
         },
         {
+            "id": 13,
             "name": "Caesarsallad",
             "description": "Sallad med kyckling, parmesan och dressing.",
             "country": "USA",
@@ -310,15 +260,11 @@
                 "Krutonger",
                 "Dressing"
             ],
-            "instructions": [
-                "Stek kyckling.",
-                "Blanda sallad.",
-                "Tillsätt topping.",
-                "Ringla dressing."
-            ],
+            "instructions": "Stek kyckling. Blanda sallad. Tillsätt topping. Ringla dressing.",
             "imageUrl": "../assets/images/caesar.jpg"
         },
         {
+            "id": 14,
             "name": "Miso Soppa",
             "description": "Japansk soppa med miso och tofu.",
             "country": "Japan",
@@ -334,15 +280,11 @@
                 "Vatten",
                 "Salladslök"
             ],
-            "instructions": [
-                "Koka vatten.",
-                "Tillsätt miso.",
-                "Lägg i tofu.",
-                "Toppa med lök."
-            ],
+            "instructions": "Koka vatten. Tillsätt miso. Lägg i tofu. Toppa med lök.",
             "imageUrl": "../assets/images/miso.jpg"
         },
         {
+            "id": 15,
             "name": "Biff Tacos",
             "description": "Tacos med stekt biff och grönsaker.",
             "country": "Mexiko",
@@ -355,14 +297,11 @@
                 "Lök",
                 "Kryddor"
             ],
-            "instructions": [
-                "Stek biff.",
-                "Hacka grönsaker.",
-                "Fyll tortillas."
-            ],
+            "instructions": "Stek biff. Hacka grönsaker. Fyll tortillas.",
             "imageUrl": "../assets/images/bifftacos.jpg"
         },
         {
+            "id": 16,
             "name": "Vegetarisk Lasagne",
             "description": "Lasagne med grönsaker istället för kött.",
             "country": "Italien",
@@ -377,14 +316,11 @@
                 "Ost",
                 "Grädde"
             ],
-            "instructions": [
-                "Varva ingredienser.",
-                "Grädda i ugn 40 min.",
-                "Servera."
-            ],
+            "instructions": "Varva ingredienser. Grädda i ugn 40 min. Servera.",
             "imageUrl": "../assets/images/lasagne.jpg"
         },
         {
+            "id": 17,
             "name": "Grillad Kyckling",
             "description": "Saftig grillad kyckling med kryddor.",
             "country": "USA",
@@ -398,14 +334,11 @@
                 "Kryddor",
                 "Salt"
             ],
-            "instructions": [
-                "Krydda kyckling.",
-                "Grilla tills klar.",
-                "Servera."
-            ],
+            "instructions": "Krydda kyckling. Grilla tills klar. Servera.",
             "imageUrl": "../assets/images/grillkyckling.jpg"
         },
         {
+            "id": 18,
             "name": "Risotto",
             "description": "Krämig italiensk risrätt.",
             "country": "Italien",
@@ -420,15 +353,11 @@
                 "Smör",
                 "Lök"
             ],
-            "instructions": [
-                "Stek lök.",
-                "Tillsätt ris.",
-                "Häll i buljong gradvis.",
-                "Rör tills krämigt."
-            ],
+            "instructions": "Stek lök. Tillsätt ris. Häll i buljong gradvis. Rör tills krämigt.",
             "imageUrl": "../assets/images/risotto.jpg"
         },
         {
+            "id": 19,
             "name": "Poké Bowl",
             "description": "Hawaiiansk skål med ris och rå fisk.",
             "country": "Hawaii",
@@ -441,14 +370,11 @@
                 "Soja",
                 "Sesam"
             ],
-            "instructions": [
-                "Koka ris.",
-                "Skär ingredienser.",
-                "Montera skål."
-            ],
+            "instructions": "Koka ris. Skär ingredienser. Montera skål.",
             "imageUrl": "../assets/images/poke.jpg"
         },
         {
+            "id": 20,
             "name": "Tomatsoppa",
             "description": "Enkel och värmande soppa på tomat.",
             "country": "Sverige",
@@ -465,12 +391,7 @@
                 "Buljong",
                 "Olja"
             ],
-            "instructions": [
-                "Stek lök.",
-                "Tillsätt tomater.",
-                "Koka 15 min.",
-                "Mixa slät."
-            ],
+            "instructions": "Stek lök. Tillsätt tomater. Koka 15 min. Mixa slät.",
             "imageUrl": "../assets/images/tomatsoppa.jpg"
         }
     ],
