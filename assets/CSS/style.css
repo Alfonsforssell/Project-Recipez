@@ -22,6 +22,8 @@ html {
     --bg-light: hsl(0, 0%, 100%);
     --bg: hsl(0, 0%, 95%);
     --bg-dark: hsl(0, 0%, 90%);
+    --dominant-color: #ff7a00;  
+    --dominant-hover: #e66a00;
 
     --text-dark: hsl(0, 0%, 0%);
     --text: hsl(0, 0%, 5%);
