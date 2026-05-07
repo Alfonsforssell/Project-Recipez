@@ -17,8 +17,118 @@
         </div>
     </nav>
     <main>
-
+        <form id="addDish">
+            <h1>Add Dish</h1>
+            <label>
+                <h2>Name</h2>
+                <input id="name" type="text" placeholder="Name of dish...">
+            </label>
+            <label>
+                <h2>Description</h2>
+                <textarea name="description" placeholder="Describe the dish..."></textarea>
+            </label>
+            <label>
+                <h2>Country of origin</h2>
+                <select name="country" id="country">
+                    <option value="none">Select country</option>
+                </select>
+            </label>
+            <label>
+                <h2>Estimated time</h2>
+                <input id="time" type="text" placeholder="Estimated time...">
+            </label>
+            <h2>Dietary</h2>
+            <label class="diet">
+                Vegan
+                <input type="checkbox" class="dietary" name="vegan">
+                Meat-free
+                <input type="checkbox" class="dietary" name="meat">
+                Lactose-free
+                <input type="checkbox" class="dietary" name="lactose">
+                Gluten-free
+                <input type="checkbox" class="dietary" name="gluten">
+                Fish-free
+                <input type="checkbox" class="dietary" name="fish">
+                Halal
+                <input type="checkbox" class="dietary" name="halal">
+                Healty
+                <input type="checkbox" class="dietary" name="healthy">
+            </label>
+            <h2>Ingredients</h2>
+            <div class="ingredients-input">
+                <div id="tags"></div>
+                <input type="text" id="ingredientInput" placeholder="Add ingredient...">
+            </div>
+            <label>
+                <h2>Instructions</h2>
+                <textarea name="instructions" placeholder='Please use "." to differ every step'></textarea>
+            </label>
+            <label>
+                <h2>Image URL</h2>
+                <input id="image" type="text" placeholder="http://....">
+            </label>
+            <button class="btn">Add dish</button>
+        </form>
+        <form id="changeDish">
+            <h1>Change Dish</h1>
+            <label>
+                <h2>Name</h2>
+                <select name="name" id="name">
+                    <option value="none">Choose dish...</option>
+                </select>
+            </label>
+            <label>
+                <h2>Description</h2>
+                <textarea name="description" placeholder="Describe the dish..."></textarea>
+            </label>
+            <label>
+                <h2>Country of origin</h2>
+                <select name="country" id="country">
+                    <option value="none">Select country</option>
+                </select>
+            </label>
+            <label>
+                <h2>Estimated time</h2>
+                <input id="time" type="text" placeholder="Estimated time...">
+            </label>
+            <h2>Dietary</h2>
+            <label class="diet">
+                Vegan
+                <input type="checkbox" class="dietary" name="vegan">
+                Meat-free
+                <input type="checkbox" class="dietary" name="meat">
+                Lactose-free
+                <input type="checkbox" class="dietary" name="lactose">
+                Gluten-free
+                <input type="checkbox" class="dietary" name="gluten">
+                Fish-free
+                <input type="checkbox" class="dietary" name="fish">
+                Halal
+                <input type="checkbox" class="dietary" name="halal">
+                Healty
+                <input type="checkbox" class="dietary" name="healthy">
+            </label>
+            <h2>Ingredients</h2>
+            <div class="ingredients-input">
+                <div id="tags"></div>
+                <input type="text" id="ingredientInput" placeholder="Add ingredient...">
+            </div>
+            <label>
+                <h2>Instructions</h2>
+                <textarea name="instructions" placeholder='Please use "." to differ every step'></textarea>
+            </label>
+            <label>
+                <h2>Image URL</h2>
+                <input id="image" type="text" placeholder="http://....">
+            </label>
+            <div id="buttons">
+                <button class="changeBtn">Change dish</button>
+                <button class="deleteBtn">Delete dish</button>
+            </div>
+        </form>
     </main>
+    <script src="assets/JS/frontend.js"></script>
+    <script src="assets/JS/editPage.js"></script>
 </body>
 
 </html>
