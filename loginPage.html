@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
+    <link rel="stylesheet" href="assets/CSS/loginPage.css">
 </head>
 
 <body>
     <nav>
         <div id="left">
-            <a href="index.html"><img class="returnBtn" src="" alt=""></a>
+            <a href="index.html" class="returnBtn">↩</a>
         </div>
         <div id="mid"><img class="logo" src="assets/images/Logo.png" alt="Logo"></div>
         <div id="right">
@@ -18,15 +19,27 @@
     </nav>
     <main>
         <form id="loginForm">
+            <h1>Sign In</h1>
             <label>
-                Username:
-                <input id="userName" type="text" placeholder="username...">
+                <input class="userName" type="text" placeholder="username...">
             </label>
             <label>
-                Password:
-                <input id="password" type="text" placeholder="password...">
+                <input class="password" type="text" placeholder="password...">
             </label>
             <button id="loginBtn">Login</button>
+        </form>
+        <form id="signUpForm">
+            <h1>Sign Up</h1>
+            <label>
+                <input class="userName" type="text" placeholder="username...">
+            </label>
+            <label>
+                <input class="password" type="text" placeholder="password...">
+            </label>
+            <label>
+                <input id="repeatPassword" type="text" placeholder="Rewrite password...">
+            </label>
+            <button id="signUpBtn">Sign Up</button>
         </form>
     </main>
     <footer>
