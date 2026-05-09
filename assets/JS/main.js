@@ -8,7 +8,7 @@ const dishes = [
         dietary: [5],
         ingredients: ["Ris","Falukorv","Gul Lök","Olja","Tomatpuré","Matlagningsgrädde","Mjölk","Soja","Dijonsenap","Salt","Peppar"],
         instructions: "Koka riset enligt anvisningen på förpackningen. Skär korven i stavar. Skala och hacka löken. Stek korv och lök i oljan i en stekpanna ca 5 minuter. Tillsätt tomatpuré och fräs någon minut. Rör ner grädde, mjölk, soja och dijonsenap. Låt sjuda ca 5 minuter. Smaka av med peppar och ev salt.",
-        imageUrl: "../assets/images/stroganoff.jpg"
+        imageUrl: "assets/images/stroganoff.jpg"
     },
     {
         id: 2,
@@ -19,7 +19,7 @@ const dishes = [
         dietary: [],
         ingredients: ["Spaghetti","Nötfärs","Gul lök","Vitlök","Krossade tomater","Tomatpuré","Olja","Salt","Peppar","Oregano"],
         instructions: "Koka pastan enligt anvisning. Stek lök och vitlök i olja. Tillsätt köttfärs och bryn. Rör ner tomater och kryddor, låt sjuda 20 min. Servera med pasta.",
-        imageUrl: "../assets/images/bolognese.jpg"
+        imageUrl: "assets/images/bolognese.jpg"
     },
     {
         id: 3,
@@ -30,7 +30,7 @@ const dishes = [
         dietary: [2],
         ingredients: ["Kidneybönor","Krossade tomater","Paprika","Gul lök","Vitlök","Chili","Spiskummin","Olja","Salt"],
         instructions: "Hacka grönsaker. Stek lök och vitlök. Tillsätt övriga ingredienser. Låt sjuda 20 minuter. Smaka av.",
-        imageUrl: "../assets/images/chili.jpg"
+        imageUrl: "assets/images/chili.jpg"
     },
     {
         id: 4,
@@ -41,7 +41,7 @@ const dishes = [
         dietary: [6],
         ingredients: ["Kyckling","Kokosmjölk","Curry","Lök","Vitlök","Olja","Salt"],
         instructions: "Stek kyckling. Tillsätt lök och vitlök. Häll i kokosmjölk och kryddor. Låt sjuda 20 minuter. Servera med ris.",
-        imageUrl: "../assets/images/curry.jpg"
+        imageUrl: "assets/images/curry.jpg"
     },
     {
         id: 5,
@@ -52,7 +52,7 @@ const dishes = [
         dietary: [5],
         ingredients: ["Risnudlar","Ägg","Morot","Salladslök","Soja","Jordnötter","Olja"],
         instructions: "Koka nudlar. Stek grönsaker. Tillsätt ägg och nudlar. Smaksätt med soja. Toppa med jordnötter.",
-        imageUrl: "../assets/images/padthai.jpg"
+        imageUrl: "assets/images/padthai.jpg"
     },
     {
         id: 6,
@@ -63,7 +63,7 @@ const dishes = [
         dietary: [1],
         ingredients: ["Kikärtor","Vitlök","Persilja","Spiskummin","Olja","Tahini","Citron"],
         instructions: "Mixa kikärtor. Forma bollar. Fritera. Servera med hummus.",
-        imageUrl: "../assets/images/falafel.jpg"
+        imageUrl: "assets/images/falafel.jpg"
     },
     {
         id: 7,
@@ -74,7 +74,7 @@ const dishes = [
         dietary: [3],
         ingredients: ["Lax","Potatis","Dill","Smör","Salt","Peppar"],
         instructions: "Koka potatis. Baka lax i ugn. Krydda. Servera tillsammans.",
-        imageUrl: "../assets/images/lax.jpg"
+        imageUrl: "assets/images/lax.jpg"
     },
     {
         id: 8,
@@ -85,7 +85,7 @@ const dishes = [
         dietary: [],
         ingredients: ["Tortilla","Köttfärs","Sallad","Tomat","Ost","Tacokrydda"],
         instructions: "Stek köttfärs. Tillsätt krydda. Hacka grönsaker. Fyll tortillas.",
-        imageUrl: "../assets/images/tacos.jpg"
+        imageUrl: "assets/images/tacos.jpg"
     },
     {
         id: 9,
@@ -96,7 +96,7 @@ const dishes = [
         dietary: [2,3],
         ingredients: ["Tomat","Mozzarella","Basilika","Olivolja","Salt"],
         instructions: "Skiva tomat och ost. Varva på tallrik. Ringla över olja. Salta.",
-        imageUrl: "../assets/images/caprese.jpg"
+        imageUrl: "assets/images/caprese.jpg"
     },
     {
         id: 10,
@@ -107,7 +107,7 @@ const dishes = [
         dietary: [],
         ingredients: ["Nudlar","Buljong","Ägg","Fläsk","Salladslök"],
         instructions: "Koka buljong. Koka nudlar. Förbered toppings. Servera i skål.",
-        imageUrl: "../assets/images/ramen.jpg"
+        imageUrl: "assets/images/ramen.jpg"
     },
     {
         id: 11,
@@ -118,7 +118,7 @@ const dishes = [
         dietary: [2],
         ingredients: ["Ägg","Tomat","Paprika","Lök","Vitlök","Spiskummin"],
         instructions: "Stek grönsaker. Tillsätt tomat. Knäck i ägg. Låt stelna.",
-        imageUrl: "../assets/images/shakshuka.jpg"
+        imageUrl: "assets/images/shakshuka.jpg"
     },
     {
         id: 12,
@@ -129,7 +129,7 @@ const dishes = [
         dietary: [],
         ingredients: ["Mjöl","Mjölk","Ägg","Salt","Smör"],
         instructions: "Vispa smet. Stek i panna. Servera med sylt.",
-        imageUrl: "../assets/images/pannkakor.jpg"
+        imageUrl: "assets/images/pannkakor.jpg"
     },
     {
         id: 13,
@@ -140,7 +140,7 @@ const dishes = [
         dietary: [],
         ingredients: ["Kyckling","Romansallad","Parmesan","Krutonger","Dressing"],
         instructions: "Stek kyckling. Blanda sallad. Tillsätt topping. Ringla dressing.",
-        imageUrl: "../assets/images/caesar.jpg"
+        imageUrl: "assets/images/caesar.jpg"
     },
     {
         id: 14,
@@ -151,7 +151,7 @@ const dishes = [
         dietary: [1,3,4],
         ingredients: ["Miso","Tofu","Vatten","Salladslök"],
         instructions: "Koka vatten. Tillsätt miso. Lägg i tofu. Toppa med lök.",
-        imageUrl: "../assets/images/miso.jpg"
+        imageUrl: "assets/images/miso.jpg"
     },
     {
         id: 15,
@@ -162,7 +162,7 @@ const dishes = [
         dietary: [],
         ingredients: ["Biff","Tortilla","Paprika","Lök","Kryddor"],
         instructions: "Stek biff. Hacka grönsaker. Fyll tortillas.",
-        imageUrl: "../assets/images/bifftacos.jpg"
+        imageUrl: "assets/images/bifftacos.jpg"
     },
     {
         id: 16,
@@ -173,7 +173,7 @@ const dishes = [
         dietary: [2],
         ingredients: ["Lasagneplattor","Tomat","Zucchini","Ost","Grädde"],
         instructions: "Varva ingredienser. Grädda i ugn 40 min. Servera.",
-        imageUrl: "../assets/images/lasagne.jpg"
+        imageUrl: "assets/images/lasagne.jpg"
     },
     {
         id: 17,
@@ -184,7 +184,7 @@ const dishes = [
         dietary: [6],
         ingredients: ["Kyckling","Olja","Kryddor","Salt"],
         instructions: "Krydda kyckling. Grilla tills klar. Servera.",
-        imageUrl: "../assets/images/grillkyckling.jpg"
+        imageUrl: "assets/images/grillkyckling.jpg"
     },
     {
         id: 18,
@@ -195,7 +195,7 @@ const dishes = [
         dietary: [2],
         ingredients: ["Ris","Buljong","Parmesan","Smör","Lök"],
         instructions: "Stek lök. Tillsätt ris. Häll i buljong gradvis. Rör tills krämigt.",
-        imageUrl: "../assets/images/risotto.jpg"
+        imageUrl: "assets/images/risotto.jpg"
     },
     {
         id: 19,
@@ -206,7 +206,7 @@ const dishes = [
         dietary: [],
         ingredients: ["Ris","Lax","Avokado","Soja","Sesam"],
         instructions: "Koka ris. Skär ingredienser. Montera skål.",
-        imageUrl: "../assets/images/poke.jpg"
+        imageUrl: "assets/images/poke.jpg"
     },
     {
         id: 20,
@@ -217,7 +217,7 @@ const dishes = [
         dietary: [1,3,4],
         ingredients: ["Tomater","Lök","Vitlök","Buljong","Olja"],
         instructions: "Stek lök. Tillsätt tomater. Koka 15 min. Mixa slät.",
-        imageUrl: "../assets/images/tomatsoppa.jpg"
+        imageUrl: "assets/images/tomatsoppa.jpg"
     }
 ];
 
@@ -229,14 +229,14 @@ function createProducts() {
         div.innerHTML = `
         <img class="cardImg" src="${dish.imageUrl}" alt="">
                 <h1>${dish.name}</h1>
-                <p>${dish.description}}</p>
+                <p>${dish.description}</p>
                 <div class="info">
                     <h2>${dish.time} min</h2>
-                    <h2>${dish.country}}</h2>
+                    <h2>${dish.country}</h2>
                 </div>
         `;
         cards.appendChild(div);
-        cards.classList.add("card");
+        div.classList.add("card");
     }
 }
 

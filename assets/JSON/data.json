@@ -23,7 +23,7 @@
                 "Peppar"
             ],
             "instructions": "Koka riset enligt anvisningen på förpackningen. Skär korven i stavar. Skala och hacka löken.Stek korv och lök i oljan i en stekpanna ca 5 minuter. Tillsätt tomatpuré och fräs någon minut. Rör ner grädde, mjölk, soja och dijonsenap. Låt sjuda ca 5 minuter. Smaka av med peppar och ev salt.",
-            "imageUrl": "../assets/images/stroganoff.jpg"
+            "imageUrl": "../images/stroganoff.jpg"
         },
         {
             "id": 2,
@@ -45,7 +45,7 @@
                 "Oregano"
             ],
             "instructions": "Koka pastan enligt anvisning. Stek lök och vitlök i olja. Tillsätt köttfärs och bryn. Rör ner tomater och kryddor, låt sjuda 20 min. Servera med pasta.",
-            "imageUrl": "../assets/images/bolognese.jpg"
+            "imageUrl": ".. /images/bolognese.jpg"
         },
         {
             "id": 3,
@@ -69,7 +69,7 @@
             ],
             "instructions": 
                 "Hacka grönsaker. Stek lök och vitlök. Tillsätt övriga ingredienser. Låt sjuda 20 minuter. Smaka av.",
-            "imageUrl": "../assets/images/chili.jpg"
+            "imageUrl": "../images/chili.jpg"
         },
         {
             "id": 4,
@@ -90,7 +90,7 @@
                 "Salt"
             ],
             "instructions": "Stek kyckling. Tillsätt lök och vitlök. Häll i kokosmjölk och kryddor. Låt sjuda 20 minuter. Servera med ris.",
-            "imageUrl": "../assets/images/curry.jpg"
+            "imageUrl": "../images/curry.jpg"
         },
         {
             "id": 5,
@@ -111,7 +111,7 @@
                 "Olja"
             ],
             "instructions": "Koka nudlar. Stek grönsaker. Tillsätt ägg och nudlar. Smaksätt med soja. Toppa med jordnötter.",
-            "imageUrl": "../assets/images/padthai.jpg"
+            "imageUrl": "../images/padthai.jpg"
         },
         {
             "id": 6,
@@ -132,7 +132,7 @@
                 "Citron"
             ],
             "instructions": "Mixa kikärtor. Forma bollar. Fritera. Servera med hummus.",
-            "imageUrl": "../assets/images/falafel.jpg"
+            "imageUrl": "../images/falafel.jpg"
         },
         {
             "id": 7,
@@ -152,7 +152,7 @@
                 "Peppar"
             ],
             "instructions": "Koka potatis. Baka lax i ugn. Krydda. Servera tillsammans.",
-            "imageUrl": "../assets/images/lax.jpg"
+            "imageUrl": "../images/lax.jpg"
         },
         {
             "id": 8,
@@ -170,7 +170,7 @@
                 "Tacokrydda"
             ],
             "instructions": "Stek köttfärs. Tillsätt krydda. Hacka grönsaker. Fyll tortillas.",
-            "imageUrl": "../assets/images/tacos.jpg"
+            "imageUrl": "../images/tacos.jpg"
         },
         {
             "id": 9,
@@ -190,7 +190,7 @@
                 "Salt"
             ],
             "instructions": "Skiva tomat och ost. Varva på tallrik. Ringla över olja. Salta.",
-            "imageUrl": "../assets/images/caprese.jpg"
+            "imageUrl": "../images/caprese.jpg"
         },
         {
             "id": 10,
@@ -207,7 +207,7 @@
                 "Salladslök"
             ],
             "instructions": "Koka buljong. Koka nudlar. Förbered toppings. Servera i skål.",
-            "imageUrl": "../assets/images/ramen.jpg"
+            "imageUrl": "../images/ramen.jpg"
         },
         {
             "id": 11,
@@ -227,7 +227,7 @@
                 "Spiskummin"
             ],
             "instructions": "Stek grönsaker. Tillsätt tomat. Knäck i ägg. Låt stelna.",
-            "imageUrl": "../assets/images/shakshuka.jpg"
+            "imageUrl": "../images/shakshuka.jpg"
         },
         {
             "id": 12,
@@ -244,7 +244,7 @@
                 "Smör"
             ],
             "instructions": "Vispa smet. Stek i panna. Servera med sylt.",
-            "imageUrl": "../assets/images/pannkakor.jpg"
+            "imageUrl": "../images/pannkakor.jpg"
         },
         {
             "id": 13,
@@ -261,7 +261,7 @@
                 "Dressing"
             ],
             "instructions": "Stek kyckling. Blanda sallad. Tillsätt topping. Ringla dressing.",
-            "imageUrl": "../assets/images/caesar.jpg"
+            "imageUrl": "../images/caesar.jpg"
         },
         {
             "id": 14,
@@ -281,7 +281,7 @@
                 "Salladslök"
             ],
             "instructions": "Koka vatten. Tillsätt miso. Lägg i tofu. Toppa med lök.",
-            "imageUrl": "../assets/images/miso.jpg"
+            "imageUrl": "../images/miso.jpg"
         },
         {
             "id": 15,
@@ -298,7 +298,7 @@
                 "Kryddor"
             ],
             "instructions": "Stek biff. Hacka grönsaker. Fyll tortillas.",
-            "imageUrl": "../assets/images/bifftacos.jpg"
+            "imageUrl": "../images/bifftacos.jpg"
         },
         {
             "id": 16,
@@ -317,7 +317,7 @@
                 "Grädde"
             ],
             "instructions": "Varva ingredienser. Grädda i ugn 40 min. Servera.",
-            "imageUrl": "../assets/images/lasagne.jpg"
+            "imageUrl": "../images/lasagne.jpg"
         },
         {
             "id": 17,
@@ -335,7 +335,7 @@
                 "Salt"
             ],
             "instructions": "Krydda kyckling. Grilla tills klar. Servera.",
-            "imageUrl": "../assets/images/grillkyckling.jpg"
+            "imageUrl": "../images/grillkyckling.jpg"
         },
         {
             "id": 18,
@@ -354,7 +354,7 @@
                 "Lök"
             ],
             "instructions": "Stek lök. Tillsätt ris. Häll i buljong gradvis. Rör tills krämigt.",
-            "imageUrl": "../assets/images/risotto.jpg"
+            "imageUrl": "../images/risotto.jpg"
         },
         {
             "id": 19,
@@ -371,7 +371,7 @@
                 "Sesam"
             ],
             "instructions": "Koka ris. Skär ingredienser. Montera skål.",
-            "imageUrl": "../assets/images/poke.jpg"
+            "imageUrl": "../images/poke.jpg"
         },
         {
             "id": 20,
@@ -392,7 +392,7 @@
                 "Olja"
             ],
             "instructions": "Stek lök. Tillsätt tomater. Koka 15 min. Mixa slät.",
-            "imageUrl": "../assets/images/tomatsoppa.jpg"
+            "imageUrl": "../images/tomatsoppa.jpg"
         }
     ],
     "dietary": [
@@ -400,43 +400,43 @@
             "name": "Vegansk",
             "id": 1,
             "description": "Vegansk mat är helt växtbaserad och utesluter alla ingredienser från djurriket, inklusive kött, fisk, skaldjur, mejeriprodukter, ägg och honung. Kosten baseras på grönsaker, baljväxter, frukt, bär, nötter, frön och spannmål. Det är en livsstil som ofta väljs av etiska, miljömässiga eller hälsomässiga skäl.",
-            "imageUrl": "../assets/icons/vegan.jpg"
+            "imageUrl": "../icons/vegan.jpg"
         },
         {
             "name": "Köttfri",
             "id": 2,
             "description": "Köttfri mat utesluter kött från landlevande djur, såsom nötkött, fläskkött och kyckling. Kosten kan fortfarande innehålla andra animaliska produkter som mejeriprodukter, ägg eller fisk. Fokus ligger ofta på vegetariska råvaror som grönsaker, baljväxter, spannmål och växtbaserade alternativ.",
-            "imageUrl": "../assets/icons/meat.jpg"
+            "imageUrl": "../icons/meat.jpg"
         },
         {
             "name": "Laktosfri",
             "id": 3,
             "description": "Laktosfri mat innehåller inga eller mycket låga nivåer av laktos, vilket är mjölksocker som finns i mejeriprodukter. Produkter kan vara naturligt fria från laktos eller behandlade för att bryta ner laktosen. Detta passar personer med laktosintolerans.", 
-            "imageUrl": "../assets/icons/lactose.jpg"
+            "imageUrl": "../icons/lactose.jpg"
         },
         {
             "name": "Glutenfri",
             "id": 4,
             "description": "Glutenfri mat utesluter gluten, ett protein som finns i vete, råg och korn. Kosten baseras istället på naturligt glutenfria ingredienser som ris, majs, potatis och glutenfria spannmål. Detta är viktigt för personer med celiaki eller glutenintolerans.",
-            "imageUrl": "../assets/icons/gluten.jpg"
+            "imageUrl": "../icons/gluten.jpg"
         },
         {
             "name": "Fiskfri",
             "id": 5,
             "description": "Fiskfri mat utesluter fisk och skaldjur helt. Kosten kan fortfarande inkludera andra animaliska produkter som kött, mejeriprodukter och ägg, eller vara helt växtbaserad beroende på preferens.",
-            "imageUrl": "../assets/icons/fish.jpg"
+            "imageUrl": "../icons/fish.jpg"
         },
         {
             "name": "Halal",
             "id": 6,
             "description": "Halal mat följer islamska kostregler. Det innebär att maten är tillåten enligt religiösa riktlinjer, där exempelvis fläskkött och alkohol är förbjudet, och kött måste komma från djur som slaktats på ett specifikt sätt.",
-            "imageUrl": "../assets/icons/halal.jpg"
+            "imageUrl": ".. /icons/halal.jpg"
         },
         {
             "name": "Hälsokost",
             "id": 7,
             "description": "Hälsokost fokuserar på näringsrik och balanserad mat som främjar välmående. Det inkluderar ofta fullkorn, grönsaker, frukt, nyttiga fetter och proteinrika livsmedel, samtidigt som man undviker starkt processad mat och tillsatser.",
-            "imageUrl": "../assets/icons/healt.jpg"
+            "imageUrl": "../icons/healt.jpg"
         }
     ]
 }
