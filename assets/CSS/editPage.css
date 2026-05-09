@@ -42,6 +42,11 @@ nav {
     border-bottom: 2px solid var(--text-light);
 }
 
+#left {
+    display: flex;
+    align-items: center;
+}
+
 #mid {
     display: flex;
     justify-content: center;
@@ -70,12 +75,30 @@ nav {
     border-bottom: 2px solid black;
 }
 
+.returnBtn {
+    text-decoration: none;
+    color: black;
+    font-size: 40px;
+    padding-top: 15px;
+    transition: all 0.5s ease;
+}
+
+.returnBtn:hover {
+    padding-top: 15px;
+    transform: scale(1.05);
+    text-shadow: 0px 0px 5px var(--dominant-hover);
+}
+
 main {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: start;
-    gap: 20px;
+    gap: 200px;
     padding: 50px 0px;
+    background-image: url(../images/blur-background.jpg);
+    background-position: center;
+    background-size: contain;
 }
 
 #addDish,
@@ -154,10 +177,14 @@ main {
 
 .diet {
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr 3fr 1fr 3fr 1fr 3fr;
     grid-template-rows: auto;
     justify-content: center;
     align-items: center;
+}
+
+.dietary:checked {
+    accent-color: var(--dominant-color);
 }
 
 label, input, select, textarea {
