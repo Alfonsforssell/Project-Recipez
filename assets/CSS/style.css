@@ -183,7 +183,31 @@ select {
     transition: all 0.25s ease;
 }
 
+input {
+    width: 120px;
+    border: 1px solid var(--text-dark);
+    padding: 5px;
+    border-radius: 20px 0px 0px 20px;
+    background-color: var(--bg-light);
+}
+
+#searchbutton {
+    width: 40px;
+    border: 1px solid var(--text-dark);
+    padding: 5px;
+    border-radius: 0px 20px 20px 0px;
+    background-color: var(--bg-light);
+    position: relative;
+    top: 14.5px;
+    left: -36px;
+    transition: all 0.25s ease;
+}
+
 select:hover {
+    box-shadow: 0px 0px 10px var(--dominant-color);
+}
+
+#searchbutton:hover {
     box-shadow: 0px 0px 10px var(--dominant-color);
 }
 

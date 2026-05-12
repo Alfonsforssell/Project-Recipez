@@ -23,12 +23,6 @@
     <main>
         <form>
             <label>
-                Categories
-                <select name="category" id="category">
-                    <option value="All categories">All categories</option>
-                </select>
-            </label>
-            <label>
                 Countries
                 <select name="country" id="country">
                     <option value="All countries">All countries</option>
@@ -46,6 +40,11 @@
                     <option value="Choose what to avoid">No preferences</option>
                 </select>
             </label>
+            <label>
+                Search
+                <input type="text" placeholder="Search dish...">
+            </label>
+            <button id="searchbutton">↩</button>
         </form>
         <div id="cards">
             <a class="card" href="#">
