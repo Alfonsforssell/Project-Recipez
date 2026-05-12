@@ -140,7 +140,7 @@ const dishes = [
         dietary: [],
         ingredients: ["Kyckling","Romansallad","Parmesan","Krutonger","Dressing"],
         instructions: "Stek kyckling. Blanda sallad. Tillsätt topping. Ringla dressing.",
-        imageUrl: "assets/images/caesar.jpg"
+        imageUrl: "assets/images/ceasar.jpg"
     },
     {
         id: 14,
@@ -221,6 +221,59 @@ const dishes = [
     }
 ];
 
+const dietary = [
+        {
+            name: "Vegansk",
+            id: 1,
+            description: "Vegansk mat är helt växtbaserad och utesluter alla ingredienser från djurriket, inklusive kött, fisk, skaldjur, mejeriprodukter, ägg och honung. Kosten baseras på grönsaker, baljväxter, frukt, bär, nötter, frön och spannmål. Det är en livsstil som ofta väljs av etiska, miljömässiga eller hälsomässiga skäl.",
+            imageUrl: "assets/icons/vegan.jpg"
+        },
+        {
+            name: "Köttfri",
+            id: 2,
+            description: "Köttfri mat utesluter kött från landlevande djur, såsom nötkött, fläskkött och kyckling. Kosten kan fortfarande innehålla andra animaliska produkter som mejeriprodukter, ägg eller fisk. Fokus ligger ofta på vegetariska råvaror som grönsaker, baljväxter, spannmål och växtbaserade alternativ.",
+            imageUrl: "assets/icons/meat.jpg"
+        },
+        {
+            name: "Laktosfri",
+            id: 3,
+            description: "Laktosfri mat innehåller inga eller mycket låga nivåer av laktos, vilket är mjölksocker som finns i mejeriprodukter. Produkter kan vara naturligt fria från laktos eller behandlade för att bryta ner laktosen. Detta passar personer med laktosintolerans.", 
+            imageUrl: "assets/icons/lactose.jpg"
+        },
+        {
+            name: "Glutenfri",
+            id: 4,
+            description: "Glutenfri mat utesluter gluten, ett protein som finns i vete, råg och korn. Kosten baseras istället på naturligt glutenfria ingredienser som ris, majs, potatis och glutenfria spannmål. Detta är viktigt för personer med celiaki eller glutenintolerans.",
+            imageUrl: "assets/icons/gluten.jpg"
+        },
+        {
+            name: "Fiskfri",
+            id: 5,
+            description: "Fiskfri mat utesluter fisk och skaldjur helt. Kosten kan fortfarande inkludera andra animaliska produkter som kött, mejeriprodukter och ägg, eller vara helt växtbaserad beroende på preferens.",
+            imageUrl: "assets/icons/fish.jpg"
+        },
+        {
+            name: "Halal",
+            id: 6,
+            description: "Halal mat följer islamska kostregler. Det innebär att maten är tillåten enligt religiösa riktlinjer, där exempelvis fläskkött och alkohol är förbjudet, och kött måste komma från djur som slaktats på ett specifikt sätt.",
+            imageUrl: "assets/icons/halal.jpg"
+        },
+        {
+            name: "Hälsokost",
+            id: 7,
+            description: "Hälsokost fokuserar på näringsrik och balanserad mat som främjar välmående. Det inkluderar ofta fullkorn, grönsaker, frukt, nyttiga fetter och proteinrika livsmedel, samtidigt som man undviker starkt processad mat och tillsatser.",
+            imageUrl: "assets/icons/healt.jpg"
+        }
+    ];
+
+function getDietaryImgById(id) {
+    for (let diet of dietary) {
+        if (diet.id === id) {
+            return diet.imageUrl;
+        }
+    }
+}
+
 function createProducts() {
     let cards = document.getElementById("cards");
 
@@ -235,9 +288,21 @@ function createProducts() {
                     <h2>${dish.country}</h2>
                 </div>
         `;
+
+        for (let i = 1; i < 8; i++) {
+            if (dish.dietary.includes(i)) {
+                let info = div.querySelector(".info");
+                let img = document.createElement("img");
+                img.src = getDietaryImgById(i);
+                img.classList.add("icon");
+                info.appendChild(img);
+            }
+        }
         cards.appendChild(div);
         div.classList.add("card");
     }
 }
+
+
 
 createProducts();
