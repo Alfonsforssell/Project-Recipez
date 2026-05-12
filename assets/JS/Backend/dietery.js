@@ -41,7 +41,7 @@ export function getDietById(id) {
         }
     });
 }
-
+/*
 export function SearchDiet(request) {
     const text = Deno.readTextFileSync("data.json");
     const data = JSON.parse(text);
@@ -83,6 +83,7 @@ export function findDishByDietId (id, request) {
     const data = JSON.parse(text);
     let diets = data.dietary;
     let url = new URL(request.url);
-
+    
     
 }
+*/
