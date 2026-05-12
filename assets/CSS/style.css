@@ -22,7 +22,7 @@ html {
     --bg-light: hsl(0, 0%, 100%);
     --bg: hsl(0, 0%, 95%);
     --bg-dark: hsl(0, 0%, 90%);
-    --dominant-color: #ff7a00;  
+    --dominant-color: #ff7a00;
     --dominant-hover: #e66a00;
 
     --text-dark: hsl(0, 0%, 0%);
@@ -217,4 +217,22 @@ select:hover {
 
 .card:hover {
     transform: scale(1.04);
+}
+
+@media (max-width: 1500px) {
+    #cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1000px) {
+    #cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    #cards {
+        grid-template-columns: 1fr;
+    }
 }

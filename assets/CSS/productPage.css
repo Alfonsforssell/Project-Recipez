@@ -103,7 +103,7 @@ main {
 
 #container {
     display: flex;
-    background-color: var(--bg);
+    background-color: var(--bg-light);
     border-radius: 30px;
     width: 90%;
     height: 800px;
@@ -175,6 +175,8 @@ p {
 .instructions {
     height: 100%;
     flex: 1;
+    border-left: 1px solid var(--text-dark);
+    padding-left: 20px;
 }
 
 .ingridients h1, .instructions h1 {
