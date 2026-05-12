@@ -1,20 +1,20 @@
-function getAllDiets () {
+export function getAllDiets () {
 
 }
 
-function getDietById (id) {
+export function getDietById (id) {
 
 }
 
-function SearchDiet(request) {
+export function SearchDiet(request) {
 
 }
-function createDiet (request) {
+export function createDiet (request) {
 
 }
-function patchDiet (reqest, id) {
+export function patchDiet (reqest, id) {
 
 } 
-function deleteDiet (id) {
+export function deleteDiet (id) {
 
 }
