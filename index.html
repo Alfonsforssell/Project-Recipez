@@ -23,24 +23,29 @@
     <main>
         <form>
             <label>
-                Countries
+                Länder
                 <select name="country" id="country">
-                    <option value="All countries">All countries</option>
+                    <option value="All countries">Alla länder</option>
                 </select>
             </label>
             <label>
-                Estimated Time
+                Estimerad tid
                 <select name="time" id="time">
-                    <option value="All">All</option>
+                    <option value="All">Alla tider</option>
                 </select>
             </label>
             <label>
-                Dietary preferences
+                Diet preferenser
                 <select name="preference" id="preference">
-                    <option value="Choose what to avoid">No preferences</option>
+                    <option value="Choose what to avoid">Ingen preferens</option>
                 </select>
             </label>
             <label>
+                Filtrera
+                <button id="filterbutton">≔</button>
+            </label>
+
+            <label id="searchField">
                 Search
                 <input type="text" placeholder="Search dish...">
             </label>

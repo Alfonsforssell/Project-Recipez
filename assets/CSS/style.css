@@ -104,9 +104,13 @@ main {
 }
 
 form {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     justify-content: center;
     align-items: center;
+    justify-items: center;
+    align-content: center;
     gap: 20px;
     margin-bottom: 50px;
 }
@@ -176,6 +180,7 @@ label {
 
 select {
     width: 120px;
+    height: 30px;
     border: 1px solid var(--text-dark);
     padding: 5px;
     border-radius: 20px;
@@ -184,30 +189,42 @@ select {
 }
 
 input {
-    width: 120px;
+    width: 140px;
+    height: 30px;
     border: 1px solid var(--text-dark);
     padding: 5px;
     border-radius: 20px 0px 0px 20px;
     background-color: var(--bg-light);
 }
 
+#filterbutton {
+    width: 60px;
+    height: 30px;
+    border: 1px solid var(--text-dark);
+    padding: 5px;
+    border-radius: 20px;
+    background-color: var(--bg-light);
+    transition: all 0.25s ease;
+}
+
+#searchField {
+    grid-column: 2/4;
+}
+
 #searchbutton {
     width: 40px;
+    height: 30px;
     border: 1px solid var(--text-dark);
     padding: 5px;
     border-radius: 0px 20px 20px 0px;
     background-color: var(--bg-light);
     position: relative;
     top: 14.5px;
-    left: -36px;
+    left: -165.5px;
     transition: all 0.25s ease;
 }
 
-select:hover {
-    box-shadow: 0px 0px 10px var(--dominant-color);
-}
-
-#searchbutton:hover {
+input:hover, select:hover, #searchbutton:hover, #filterbutton:hover  {
     box-shadow: 0px 0px 10px var(--dominant-color);
 }
 
