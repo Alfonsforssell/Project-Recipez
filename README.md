@@ -4,11 +4,11 @@ A fullstack website for recipes
 Workdivisions
 
 Frontend
-HTML/CSS - Alfons
-JS create cards - Rickard
-JS API - Everyone
+HTML/CSS - Alfons / Eddie
+JS functions - Rickard
+API - Alfons
 
 Backend
-JSON - Everyone
+JSON - Alfons / Eddie
 Server - Eddie
-Login - Eddie
+Login/Cookies - Eddie
