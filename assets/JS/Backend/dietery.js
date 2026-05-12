@@ -30,12 +30,20 @@ export function getDietById(id) {
                     "Access-Control-Allow-Headers": "Content-Type, Authorization"
                 }
             });
-
         }
     }
+    return new Response("Not Found", {
+        status: 404,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization"
+        }
+    });
 }
 
 export function SearchDiet(request) {
+
 
 }
 export function createDiet(request) {
