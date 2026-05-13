@@ -1,6 +1,24 @@
 import * as diets from "./dietrys.js";
 import * as users from "./users.js";
 import * as dishes from "./dishes.js";
+import { serveDir } from "jsr:@std/http/file-server"; 
+
+function validateJsonContent(request) {
+    let content = request.headers.get("Content-Type");
+    return content && content.includes("application/json");
+}
+
+function validateJsonAccept(request) {
+    let accept = request.headers.get("Accept");
+    return accept && accept.includes("application/json");
+}
+
+const HEADERS = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization"
+};
 
 async function handler (request) {
     let url = new URL(request.url);
@@ -26,3 +44,5 @@ async function handler (request) {
 
     }
 }
+
+Deno.serve(handler);
