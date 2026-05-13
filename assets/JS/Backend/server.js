@@ -1,7 +1,7 @@
-import * as diets from "./dietrys.js";
+import * as diets from "./dietery.js";
 import * as users from "./users.js";
 import * as dishes from "./dishes.js";
-import { serveDir } from "jsr:@std/http/file-server"; 
+import { serveDir } from "jsr:@std/http/file-server";
 
 function validateJsonContent(request) {
     let content = request.headers.get("Content-Type");
@@ -20,51 +20,53 @@ const HEADERS = {
     "Access-Control-Allow-Headers": "Content-Type, Authorization"
 };
 
-async function handler (request) {
+async function handler(request) {
     let url = new URL(request.url);
-    let dishIdRoute = new URLPattern({ pathname: "dishes/:id" }); 
-    let dietaryIdRoute = new URLPattern({ pathname: "dietary/:id" }); 
+    let dishIdRoute = new URLPattern({ pathname: "dishes/:id" });
+    let dietaryIdRoute = new URLPattern({ pathname: "dietary/:id" });
     let dietaryDishesRoute = new URLPattern({ pathname: "dietary/:id/dishes" });
     let userIdRoute = new URLPattern({ pathname: "users/:id" });
     let userFavoritesRoute = new URLPattern({ pathname: "users/:id/favorites" });
 
-    if (request.method === "GET") {
-        fkdijlgrjfgw
-        wrglerigjfse
-        ergesgerwge
-        eragaergaerg
-        ergaergvaerg
-        ergaergvaergergergv
-        ergaergvaerggvaer
-        gvaergv
-        addEventListeneraergvaer
-        gvaergvgvaer
-        gvaergvgvaerrgv
-        argumentsvrea
-        VarDatev
-        earbv
-        argumentsbvaer
-        BeforeUnloadEventrb
-        earbvaer
-        vbad
-        ResizeObserverer
-        e
-        ResizeObserverea
-        ResizeObservereaev
-        addEventListenerfr
-        BlobEvent
-    }
+    if (url.pathname.startsWith("/api/")) {
+        if (request.method === "GET") {
+            if (url.pathname === "/api/dishes") {
+                let filteredProducts = dishes.getAllDishes();
+                let country = url.searchParams.get("country");
+                let time = url.searchParams.get("time");
+                let dietary = url.searchParams.get("dietary");
+                if (country != null) {
+                    filteredProducts = dishes.getDishesByCountry(filteredProducts, country);
+                }
+                if (time != null) {
+                    filteredProducts = dishes.getDishesByTime(filteredProducts, time);
+                }
+                if (dietary != null) {
+                    filteredProducts = dishes.getDishesByDietsId(filteredProducts, dietary);
+                }
 
-    if (request.method === "POST") {
+                return new Response(JSON.stringify(filteredProducts), {
+                    status: 200,
+                    headers: HEADERS,
+                });
+            }
+            return new Response(JSON.stringify({ error: "Not found" }), {
+                status: 404,
+                headers: HEADERS,
+            });
+        }
 
-    }
+        if (request.method === "POST") {
 
-    if (request.method === "DELETE") {
+        }
 
-    }
+        if (request.method === "DELETE") {
 
-    if (request.method === "PATCH") {
+        }
 
+        if (request.method === "PATCH") {
+
+        }
     }
 }
 
