@@ -1,6 +1,7 @@
 export function getAllDishes() {
-    let data = Deno.readTextFileSync("data.json");
-    return JSON.parse(data.dishes);
+    const text = Deno.readTextFileSync("../../JSON/data.json");
+    const data = JSON.parse(text);
+    return data.dishes;
 }
 
 export function getAllCountries() {
@@ -24,8 +25,8 @@ export function getDishById(id) {
     return matchedDish;
 }
 
-export function getDishesByCountry(country) {
-    let allDishes = getAllDishes(); 
+export function getDishesByCountry(dishes, country) {
+    let allDishes = dishes; 
     let matchedDishes = []; 
     for (let dish of allDishes) {
         if (dish.country === country) {
@@ -35,8 +36,8 @@ export function getDishesByCountry(country) {
     return matchedDishes; 
 }
 
-export function getDishesByTime(time) {
-    let allDishes = getAllDishes(); 
+export function getDishesByTime(dishes, time) {
+    let allDishes = dishes; 
     let matchedDishes = []; 
     for (let dish of allDishes) {
         if (dish.time <= time) {
@@ -46,8 +47,8 @@ export function getDishesByTime(time) {
     return matchedDishes; 
 }
 
-export function getDishesByDietsId(dietsId) {
-    let allDishes = getAllDishes(); 
+export function getDishesByDietsId(dishes, dietsId) {
+    let allDishes = dishes; 
     let matchedDishes = []; 
     
     for (let dietId of dietsId) {
