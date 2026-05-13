@@ -33,7 +33,20 @@ async function handler (request) {
     }
 
     if (request.method === "POST") {
-
+        HTMLObjectElem
+        HTMLObjectElementheks
+        DataTransferdad
+        addEventListener
+        MediaStreamAudioDestinationNodesd
+        addEventListeneras
+        DataTransferd
+        addEventListenerasd
+        addEventListeners
+        addEventListenersa
+        DataTransferdasd
+        as
+        dietaryDishesRouteas
+        d
     }
 
     if (request.method === "DELETE") {
