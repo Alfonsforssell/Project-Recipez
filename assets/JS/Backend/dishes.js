@@ -6,64 +6,64 @@ export function getAllDishes() {
 
 export function getAllCountries() {
     let allDishes = getAllDishes();
-    let allCountries = []; 
+    let allCountries = [];
     for (let dish of allDishes) {
-        if (allCountries.includes(dish.country)) continue; 
-        allCountries.push(dish.county); 
+        if (allCountries.includes(dish.country)) continue;
+        allCountries.push(dish.county);
     }
-    return allCountries; 
+    return allCountries;
 }
 
 export function getDishById(id) {
     let allDishes = getAllDishes();
-    let matchedDish; 
+    let matchedDish;
     for (let dish of allDishes) {
         if (dish.id === id) {
-            matchedDish = dish; 
+            matchedDish = dish;
         }
     }
     return matchedDish;
 }
 
 export function getDishesByCountry(dishes, country) {
-    let allDishes = dishes; 
-    let matchedDishes = []; 
+    let allDishes = dishes;
+    let matchedDishes = [];
     for (let dish of allDishes) {
         if (dish.country === country) {
-            matchedDishes.push(dish); 
+            matchedDishes.push(dish);
         }
     }
-    return matchedDishes; 
+    return matchedDishes;
 }
 
 export function getDishesByTime(dishes, time) {
-    let allDishes = dishes; 
-    let matchedDishes = []; 
+    let allDishes = dishes;
+    let matchedDishes = [];
     for (let dish of allDishes) {
         if (dish.time <= time) {
-            matchedDishes.push(dish); 
+            matchedDishes.push(dish);
         }
     }
-    return matchedDishes; 
+    return matchedDishes;
 }
 
 export function getDishesByDietsId(dishes, dietsId) {
-    let allDishes = dishes; 
-    let matchedDishes = []; 
-    
+    let allDishes = dishes;
+    let matchedDishes = [];
+
     for (let dietId of dietsId) {
         for (let dish of allDishes) {
             if (dish.includes(dietId)) {
-                matchedDishes.push(dish); 
+                matchedDishes.push(dish);
             }
         }
     }
-    
-    return matchedDishes; 
+
+    return matchedDishes;
 }
 
 export function getDishesBySearch(searchWord) {
-    let allDishes = getAllDishes(); 
+    let allDishes = getAllDishes();
     let matchedDishes = [];
     for (let dish of dishes) {
         if (dish.name.toLowerCase().includes(searchWord.toLowerCase())
@@ -76,23 +76,25 @@ export function getDishesBySearch(searchWord) {
 }
 
 export function createDish(newDish) {
-    let data = JSON.parse(Deno.readTextFileSync("data.json"));
+    const text = Deno.readTextFileSync("../../JSON/data.json");
+    const data = JSON.parse(text);
     let dishes = data.dishes;
 
-    newDish.id = dishes.length + 1; 
+    newDish.id = dishes.length + 1;
 
     data.dishes.push(newDish);
 
     Deno.writeTextFileSync(
-        "data.json", 
+        "data.json",
         JSON.stringify(data, null, 2)
     );
 
-    return newDish; 
+    return newDish;
 }
 
 export function updateDish(id, newValues) {
-    let data = JSON.parse(Deno.readTextFileSync("data.json"));
+    const text = Deno.readTextFileSync("../../JSON/data.json");
+    const data = JSON.parse(text);
     let dishes = data.dishes;
 
     let matchedDish;
@@ -110,7 +112,7 @@ export function updateDish(id, newValues) {
     }
 
     Deno.writeTextFileSync(
-        "data.json", 
+        "../../JSON/data.json",
         JSON.stringify(data)
     );
 
@@ -118,7 +120,8 @@ export function updateDish(id, newValues) {
 }
 
 export function deleteDish(id) {
-    let data = JSON.parse(Deno.readTextFileSync("data.json"));
+    const text = Deno.readTextFileSync("../../JSON/data.json");
+    const data = JSON.parse(text);
     let dishes = data.dishes;
     let remainingDishes = [];
 
@@ -132,10 +135,10 @@ export function deleteDish(id) {
         }
     }
 
-    data.dishes = remainingDishes; 
+    data.dishes = remainingDishes;
 
     Deno.writeTextFileSync(
-        "data.json", 
+        "../../JSON/data.json",
         JSON.stringify(data, null, 2)
     );
 
