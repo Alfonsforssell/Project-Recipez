@@ -27,7 +27,7 @@ async function handler(request) {
     let dietaryDishesRoute = new URLPattern({ pathname: "api/dietary/:id/dishes" });
     let userIdRoute = new URLPattern({ pathname: "api/users/:id" });
     let userFavoritesRoute = new URLPattern({ pathname: "api/users/:id/favorites" });
-    let dishIdMatch = dishIdRoute.exec(url);
+    
 
     if (url.pathname.startsWith("/api/")) {
         if (request.method === "GET") {
