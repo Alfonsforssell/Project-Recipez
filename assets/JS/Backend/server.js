@@ -34,7 +34,90 @@ async function handler(request) {
     }
 
     if (request.method === "POST") {
+        
+        if (url.pathname === "/dish") {
+            if (!validateJsonContent(request)) {
+                return new Response(JSON.stringify({ Error: "Not Acceptable" }, {
+                    headers: HEADERS,
+                    status: 404
+                }))
+            }
 
+            let newDish; 
+            try {
+                newDish = await request.json();
+            } catch {
+                return new Response(JSON.stringify({ Error: "Bad Request" }, {
+                    headers: HEADERS,
+                    status: 400
+                })); 
+            }
+
+            if (!newDish.name || !newDish.description || !newDish.country || 
+                !newDish.time || !newDish.dietary || !newDish.ingredients || 
+                !newDish.instructions || !newDish.imageUrl) {
+                return new Response(JSON.stringify({ Error: "Bad Request" }, {
+                    headers: HEADERS,
+                    status: 400
+                })); 
+            } else {
+                dishes.createDish(newDish); 
+                return new Response(JSON.stringify({}, {
+                    headers: HEADERS,
+                    status: 201
+                }));
+            }
+        }
+
+        if (url.pathname === "/user") {
+            if (!validateJsonContent(request)) {
+                return new Response(JSON.stringify({ Error: "Not Acceptable" }, {
+                    headers: HEADERS,
+                    status: 404
+                }))
+            }
+
+            let newUser; 
+            try {
+                newUser = await request.json();
+            } catch {
+                 return new Response(JSON.stringify({ Error: "Bad Request" }, {
+                    headers: HEADERS,
+                    status: 400
+                })); 
+            }
+
+            if (!newUser.name || !newUser.password) {
+                return new Response(JSON.stringify({ Error: "Bad Request" }, {
+                    headers: HEADERS,
+                    status: 400
+                })); 
+            }
+
+            let allUsers = users.getAllUsers(); 
+            for (let user of allUsers) {
+                if (newUser.name === user.name) {
+                    return new Response(JSON.stringify({ Error: "Username already exists" }, {
+                        headers: HEADERS,
+                        status: 409
+                    })); 
+                }
+            }
+            
+            if (newUser.password !== newUser.repeatPassword) {
+                return new Response(JSON.stringify({ Error: "Password and repeat password not the same" }, {
+                    headers: HEADERS,
+                    status: 409
+                }));
+            } else {
+                users.signUp(newUser); 
+                return new Response(JSON.stringify({}, {
+                    headers: HEADERS,
+                    status: 201
+                }));
+            }
+
+        }
     }
 
 
