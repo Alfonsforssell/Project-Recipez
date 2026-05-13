@@ -139,7 +139,7 @@ async function handler(request) {
                         status: 409
                     });
                 } else {
-                    users.signUp(newUser);
+                    delete newUser.repeatPassword;
                     return new Response(JSON.stringify({}), {
                         headers: HEADERS,
                         status: 201
