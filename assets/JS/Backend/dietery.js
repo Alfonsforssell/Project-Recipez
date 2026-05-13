@@ -14,8 +14,17 @@ export function getDietById(id) {
 
     for (let diet of diets) {
         if (diet.id == id) {
-           matchedDiet = diet; 
+            matchedDiet = diet;
         }
     }
-   return matchedDiet;
+    return matchedDiet;
 }
+
+/*
+export function getDishesByDietId(id, request) {
+    const text = Deno.readTextFileSync("data.json");
+    const data = JSON.parse(text);
+    let diets = data.dietary;
+    let dishes = data.dishes
+}
+*/
