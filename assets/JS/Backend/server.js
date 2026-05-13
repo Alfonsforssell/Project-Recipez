@@ -27,7 +27,7 @@ async function handler(request) {
     let dietaryDishesRoute = new URLPattern({ pathname: "dietary/:id/dishes" });
     let userIdRoute = new URLPattern({ pathname: "users/:id" });
     let userFavoritesRoute = new URLPattern({ pathname: "users/:id/favorites" });
-    let dishIdMatch = dishIdRoute.exec(url);
+
 
     if (url.pathname.startsWith("/api/")) {
         if (request.method === "GET") {
@@ -144,7 +144,8 @@ async function handler(request) {
         }
 
         if (request.method === "DELETE") {
-            if (dishIdMatch) {
+            if (dishIdRoute.test(url)) {
+                let dishIdMatch = dishIdRoute.exec(url);
                 let id = dishIdMatch.pathname.groups.id;
                 let deletedDish = dishes.deleteDish(id);
 
@@ -162,30 +163,38 @@ async function handler(request) {
         }
 
         if (request.method === "PATCH") {
-            if (dishIdMatch) {
+            if (dishIdRoute.test(url)) {
                 if (!validateJsonContent(request)) {
                     return new Response(JSON.stringify("Not acceptable"), {
                         status: 406,
                         headers: HEADERS
                     });
                 }
-
+                let dishIdMatch = dishIdRoute.exec(url);
                 let id = dishIdMatch.pathname.groups.id;
-                let newValues = await request.json()
-                let updatedDish = dishes.updateDish(id, newValues);
+                try {
+                    let newValues = await request.json();
+                    let updatedDish = dishes.updateDish(id, newValues);
 
-                if (!updatedDish) {
-                    return new Response(JSON.stringify("Not found"), {
-                        status: 404,
+                    if (!updatedDish) {
+                        return new Response(JSON.stringify("Not found"), {
+                            status: 404,
+                            headers: HEADERS
+                        });
+                    }
+
+                    return new Response(JSON.stringify(updatedDish), {
+                        status: 200,
+                        headers: HEADERS
+                    });
+                } catch (error) {
+                    return new Response(JSON.stringify("Not acceptable"), {
+                        status: 406,
                         headers: HEADERS
                     });
                 }
-
-                return new Response(JSON.stringify(updatedDish), {
-                    status: 200,
-                    headers: HEADERS
-                });
             }
+
         }
     }
 }
