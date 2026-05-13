@@ -44,7 +44,7 @@ async function handler(request) {
             let deletedDish = dishes.deleteDish(id);
 
             if (!deletedDish) {
-                return new Response(JSON.stringify({ error: "Dish not found" }), {
+                return new Response(JSON.stringify("Dish not found"), {
                     status: 404,
                     headers: HEADERS
                 });
@@ -58,7 +58,31 @@ async function handler(request) {
 
     if (request.method === "PATCH") {
 
-        
+        if (dishIdMatch) {
+            if (!validateJsonContent(request)) {
+                return new Response(JSON.stringify("Not acceptable"), {
+                    status: 406,
+                    headers: HEADERS
+                });
+            }
+
+            let id = dishIdMatch.pathname.groups.id;
+            let newValues = await request.json()
+            let updatedDish = dishes.updateDish(id, newValues);
+
+            if (!updatedDish) {
+                return new Response(JSON.stringify("Not found"), {
+                    status: 404,
+                    headers: HEADERS
+                });
+            }
+
+            return new Response(JSON.stringify(updatedDish), {
+                status: 200,
+                headers: HEADERS
+            });
+        }
+
     }
 }
 
