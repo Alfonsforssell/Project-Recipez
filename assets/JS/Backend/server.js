@@ -161,8 +161,8 @@ async function handler(request) {
                         headers: HEADERS
                     });
                 }
-                return new Response(JSON.stringify(deletedDish), {
-                    status: 200,
+                return new Response(null, {
+                    status: 204,
                     headers: HEADERS
                 });
             }
