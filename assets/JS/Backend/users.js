@@ -3,6 +3,24 @@ export function getAllUsers() {
     return JSON.parse(users);
 }
 
+export function getUserById(id) {
+    let users = getAllUsers();
+    for (let user of users) {
+        if (user.id == id) {
+            return user;
+        }
+    }
+}
+
+export function getFavouritesByUserId(id) {
+    let users = getAllUsers();
+    for (let user of users) {
+        if (user.id == id) {
+            return user.favourites;
+        }
+    }
+}
+
 function getHighestId() {
     let users = getAllUsers();
     let max = 1;
@@ -24,14 +42,6 @@ export function signIn(object) {
     Deno.writeTextFileSync("data.json", stringifiedData);
 }
 
-export function getFavouritesByUserId(id) {
-    let users = getAllUsers();
-    for (let user of users) {
-        if (user.id == id) {
-            return user.favourites;
-        }
-    }
-}
 
 export function logIn(username, password) {
     let users = getAllUsers();
