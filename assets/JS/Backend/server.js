@@ -58,7 +58,7 @@ async function handler(request) {
         }
 
         if (request.method === "POST") {
-            if (url.pathname === "/dish") {
+            if (url.pathname === "/api/dish") {
                 if (!validateJsonContent(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }, {
                         headers: HEADERS,
@@ -92,7 +92,7 @@ async function handler(request) {
                 }
             }
 
-            if (url.pathname === "/user") {
+            if (url.pathname === "/api/user") {
                 if (!validateJsonContent(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }, {
                         headers: HEADERS,
