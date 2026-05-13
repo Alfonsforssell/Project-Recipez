@@ -22,11 +22,11 @@ const HEADERS = {
 
 async function handler(request) {
     let url = new URL(request.url);
-    let dishIdRoute = new URLPattern({ pathname: "dishes/:id" });
-    let dietaryIdRoute = new URLPattern({ pathname: "dietary/:id" });
-    let dietaryDishesRoute = new URLPattern({ pathname: "dietary/:id/dishes" });
-    let userIdRoute = new URLPattern({ pathname: "users/:id" });
-    let userFavoritesRoute = new URLPattern({ pathname: "users/:id/favorites" });
+    let dishIdRoute = new URLPattern({ pathname: "api/dishes/:id" });
+    let dietaryIdRoute = new URLPattern({ pathname: "api/dietary/:id" });
+    let dietaryDishesRoute = new URLPattern({ pathname: "api/dietary/:id/dishes" });
+    let userIdRoute = new URLPattern({ pathname: "api/users/:id" });
+    let userFavoritesRoute = new URLPattern({ pathname: "api/users/:id/favorites" });
     let dishIdMatch = dishIdRoute.exec(url);
 
     if (url.pathname.startsWith("/api/")) {
