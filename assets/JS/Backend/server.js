@@ -32,6 +32,12 @@ async function handler(request) {
     if (url.pathname.startsWith("/api/")) {
         if (request.method === "GET") {
             if (url.pathname === "/api/dishes") {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
                 let filteredProducts = dishes.getAllDishes();
                 let country = url.searchParams.get("country");
                 let time = url.searchParams.get("time");
@@ -58,86 +64,86 @@ async function handler(request) {
         }
 
         if (request.method === "POST") {
-            if (url.pathname === "/dish") {
+            if (url.pathname === "/api/dish") {
                 if (!validateJsonContent(request)) {
-                    return new Response(JSON.stringify({ Error: "Not Acceptable" }, {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
                         status: 404
-                    }))
+                    })
                 }
 
                 let newDish;
                 try {
                     newDish = await request.json();
                 } catch {
-                    return new Response(JSON.stringify({ Error: "Bad Request" }, {
+                    return new Response(JSON.stringify({ Error: "Bad Request" }), {
                         headers: HEADERS,
                         status: 400
-                    }));
+                    });
                 }
 
                 if (!newDish.name || !newDish.description || !newDish.country ||
                     !newDish.time || !newDish.dietary || !newDish.ingredients ||
                     !newDish.instructions || !newDish.imageUrl) {
-                    return new Response(JSON.stringify({ Error: "Bad Request" }, {
+                    return new Response(JSON.stringify({ Error: "Bad Request" }), {
                         headers: HEADERS,
                         status: 400
-                    }));
+                    });
                 } else {
                     dishes.createDish(newDish);
-                    return new Response(JSON.stringify({}, {
+                    return new Response(JSON.stringify({}), {
                         headers: HEADERS,
                         status: 201
-                    }));
+                    });
                 }
             }
 
-            if (url.pathname === "/user") {
+            if (url.pathname === "/api/user") {
                 if (!validateJsonContent(request)) {
-                    return new Response(JSON.stringify({ Error: "Not Acceptable" }, {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
                         status: 404
-                    }))
+                    });
                 }
 
                 let newUser;
                 try {
                     newUser = await request.json();
                 } catch {
-                    return new Response(JSON.stringify({ Error: "Bad Request" }, {
+                    return new Response(JSON.stringify({ Error: "Bad Request" }), {
                         headers: HEADERS,
                         status: 400
-                    }));
+                    });
                 }
 
                 if (!newUser.name || !newUser.password) {
-                    return new Response(JSON.stringify({ Error: "Bad Request" }, {
+                    return new Response(JSON.stringify({ Error: "Bad Request" }), {
                         headers: HEADERS,
                         status: 400
-                    }));
+                    });
                 }
 
                 let allUsers = users.getAllUsers();
                 for (let user of allUsers) {
                     if (newUser.name === user.name) {
-                        return new Response(JSON.stringify({ Error: "Username already exists" }, {
+                        return new Response(JSON.stringify({ Error: "Username already exists" }), {
                             headers: HEADERS,
                             status: 409
-                        }));
+                        });
                     }
                 }
 
                 if (newUser.password !== newUser.repeatPassword) {
-                    return new Response(JSON.stringify({ Error: "Password and repeat password not the same" }, {
+                    return new Response(JSON.stringify({ Error: "Password and repeat password not the same" }), {
                         headers: HEADERS,
                         status: 409
-                    }));
+                    });
                 } else {
                     users.signUp(newUser);
-                    return new Response(JSON.stringify({}, {
+                    return new Response(JSON.stringify({}), {
                         headers: HEADERS,
                         status: 201
-                    }));
+                    });
                 }
 
             }
