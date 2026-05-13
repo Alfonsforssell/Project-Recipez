@@ -29,54 +29,14 @@ async function handler (request) {
     let userFavoritesRoute = new URLPattern({ pathname: "users/:id/favorites" });
 
     if (request.method === "GET") {
-        fkdijlgrjfgw
-        wrglerigjfse
-        ergesgerwge
-        eragaergaerg
-        ergaergvaerg
-        ergaergvaergergergv
-        ergaergvaerggvaer
-        gvaergv
-        addEventListeneraergvaer
-        gvaergvgvaer
-        gvaergvgvaerrgv
-        argumentsvrea
-        VarDatev
-        earbv
-        argumentsbvaer
-        BeforeUnloadEventrb
-        earbvaer
-        vbad
-        ResizeObserverer
-        e
-        ResizeObserverea
-        ResizeObservereaev
-        addEventListenerfr
-        BlobEvent
+        
     }
 
     if (request.method === "POST") {
-        HTMLObjectElem
-        HTMLObjectElementheks
-        DataTransferdad
-        addEventListener
-        MediaStreamAudioDestinationNodesd
-        addEventListeneras
-        DataTransferd
-        addEventListenerasd
-        addEventListeners
-        addEventListenersa
-        DataTransferdasd
-        as
-        dietaryDishesRouteas
-        d
+
     }
 
     if (request.method === "DELETE") {
-        /* tjo deleta mig 
-        snälla 
-        ha ha ha
-        */
 
     }
 
