@@ -32,7 +32,7 @@ function getHighestId() {
     return max;
 }
 
-export function signIn(object) {
+export function signUp(object) {
     let data = Deno.readTextFileSync("users.json");
     let parsedData = JSON.parse(data);
     let highestId = getHighestId();
