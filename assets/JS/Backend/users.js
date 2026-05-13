@@ -14,7 +14,7 @@ function getHighestId() {
     return max;
 }
 
-export function addUser(object) {
+export function signIn(object) {
     let data = Deno.readTextFileSync("users.json");
     let parsedData = JSON.parse(data);
     let highestId = getHighestId();
@@ -25,6 +25,22 @@ export function addUser(object) {
 }
 
 export function getFavouritesByUserId(id) {
-
+    let users = getAllUsers();
+    for (let user of users) {
+        if (user.id == id) {
+            return user.favourites;
+        }
+    }
 }
 
+export function logIn(username, password) {
+    let users = getAllUsers();
+    for (let user of users) {
+        if (username == user.name && password == user.password) {
+            return user;
+        }
+    }
+    let loginForm = document.querySelector("#loginForm");
+    let div = document.createElement("div");
+    div.innerHTML = `<p class="invalid">Ogiltigt användarnamn eller lösenord</p>`
+}
