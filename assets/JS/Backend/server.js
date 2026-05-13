@@ -1,7 +1,7 @@
 import * as diets from "./dietrys.js";
 import * as users from "./users.js";
 import * as dishes from "./dishes.js";
-import { serveDir } from "jsr:@std/http/file-server"; 
+import { serveDir } from "jsr:@std/http/file-server";
 
 function validateJsonContent(request) {
     let content = request.headers.get("Content-Type");
@@ -20,27 +20,68 @@ const HEADERS = {
     "Access-Control-Allow-Headers": "Content-Type, Authorization"
 };
 
-async function handler (request) {
+async function handler(request) {
     let url = new URL(request.url);
-    let dishIdRoute = new URLPattern({ pathname: "dishes/:id" }); 
-    let dietaryIdRoute = new URLPattern({ pathname: "dietary/:id" }); 
+    let dishIdRoute = new URLPattern({ pathname: "dishes/:id" });
+    let dietaryIdRoute = new URLPattern({ pathname: "dietary/:id" });
     let dietaryDishesRoute = new URLPattern({ pathname: "dietary/:id/dishes" });
     let userIdRoute = new URLPattern({ pathname: "users/:id" });
     let userFavoritesRoute = new URLPattern({ pathname: "users/:id/favorites" });
+    let dishIdMatch = dishIdRoute.exec(url);
 
     if (request.method === "GET") {
-        
+
     }
 
     if (request.method === "POST") {
 
     }
 
-    if (request.method === "DELETE") {
 
+    if (request.method === "DELETE") {
+        if (dishIdMatch) {
+            let id = dishIdMatch.pathname.groups.id;
+            let deletedDish = dishes.deleteDish(id);
+
+            if (!deletedDish) {
+                return new Response(JSON.stringify("Dish not found"), {
+                    status: 404,
+                    headers: HEADERS
+                });
+            }
+            return new Response(JSON.stringify(deletedDish), {
+                status: 200,
+                headers: HEADERS
+            });
+        }
     }
 
     if (request.method === "PATCH") {
+
+        if (dishIdMatch) {
+            if (!validateJsonContent(request)) {
+                return new Response(JSON.stringify("Not acceptable"), {
+                    status: 406,
+                    headers: HEADERS
+                });
+            }
+
+            let id = dishIdMatch.pathname.groups.id;
+            let newValues = await request.json()
+            let updatedDish = dishes.updateDish(id, newValues);
+
+            if (!updatedDish) {
+                return new Response(JSON.stringify("Not found"), {
+                    status: 404,
+                    headers: HEADERS
+                });
+            }
+
+            return new Response(JSON.stringify(updatedDish), {
+                status: 200,
+                headers: HEADERS
+            });
+        }
 
     }
 }
