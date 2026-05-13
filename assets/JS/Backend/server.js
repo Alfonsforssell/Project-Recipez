@@ -73,6 +73,10 @@ async function handler (request) {
     }
 
     if (request.method === "DELETE") {
+        /* tjo deleta mig 
+        snälla 
+        ha ha ha
+        */
 
     }
 
