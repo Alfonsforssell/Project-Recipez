@@ -29,7 +29,30 @@ async function handler (request) {
     let userFavoritesRoute = new URLPattern({ pathname: "users/:id/favorites" });
 
     if (request.method === "GET") {
-        
+        fkdijlgrjfgw
+        wrglerigjfse
+        ergesgerwge
+        eragaergaerg
+        ergaergvaerg
+        ergaergvaergergergv
+        ergaergvaerggvaer
+        gvaergv
+        addEventListeneraergvaer
+        gvaergvgvaer
+        gvaergvgvaerrgv
+        argumentsvrea
+        VarDatev
+        earbv
+        argumentsbvaer
+        BeforeUnloadEventrb
+        earbvaer
+        vbad
+        ResizeObserverer
+        e
+        ResizeObserverea
+        ResizeObservereaev
+        addEventListenerfr
+        BlobEvent
     }
 
     if (request.method === "POST") {
