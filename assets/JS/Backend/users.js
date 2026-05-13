@@ -1,7 +1,7 @@
 export function getAllUsers() {
     const text = Deno.readTextFileSync("../../JSON/users.json");
     const data = JSON.parse(text);
-    return data;
+    return data.users;
 }
 
 export function getUserById(id) {
