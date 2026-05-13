@@ -3,6 +3,16 @@ export function getAllDishes() {
     return JSON.parse(data.dishes);
 }
 
+export function getAllCountries() {
+    let allDishes = getAllDishes();
+    let allCountries = []; 
+    for (let dish of allDishes) {
+        if (allCountries.includes(dish.country)) continue; 
+        allCountries.push(dish.county); 
+    }
+    return allCountries; 
+}
+
 export function getDishById(id) {
     let allDishes = getAllDishes();
     let matchedDish; 
@@ -36,14 +46,18 @@ export function getDishesByTime(time) {
     return matchedDishes; 
 }
 
-export function getDishesByDiets(diets) {
+export function getDishesByDietsId(dietsId) {
     let allDishes = getAllDishes(); 
     let matchedDishes = []; 
-    for (let dish of allDishes) {
-        if (dish.diets === diets) {
-            matchedDishes.push(dish); 
+    
+    for (let dietId of dietsId) {
+        for (let dish of allDishes) {
+            if (dish.includes(dietId)) {
+                matchedDishes.push(dish); 
+            }
         }
     }
+    
     return matchedDishes; 
 }
 
