@@ -42,14 +42,14 @@ async function handler(request) {
                 let filteredProducts = dishes.getAllDishes();
                 let country = url.searchParams.get("country");
                 let time = url.searchParams.get("time");
-                let dietary = url.searchParams.get("dietary"); //Måste kolla på denna då dietary blir en sträng
+                let dietary = url.searchParams.getAll("dietary"); 
                 if (country != null) {
                     filteredProducts = dishes.getDishesByCountry(filteredProducts, country);
                 }
                 if (time != null) {
                     filteredProducts = dishes.getDishesByTime(filteredProducts, time);
                 }
-                if (dietary != null) {
+                if (dietary.length > 0) {
                     filteredProducts = dishes.getDishesByDietsId(filteredProducts, dietary);
                 }
 

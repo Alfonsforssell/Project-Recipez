@@ -25,10 +25,9 @@ export function getDishById(id) {
     return matchedDish;
 }
 
-export function getDishesByCountry(country) {
-    let allDishes = getAllDishes();
+export function getDishesByCountry(dishes, country) {
     let matchedDishes = [];
-    for (let dish of allDishes) {
+    for (let dish of dishes) {
         if (dish.country === country) {
             matchedDishes.push(dish);
         }
@@ -36,10 +35,9 @@ export function getDishesByCountry(country) {
     return matchedDishes;
 }
 
-export function getDishesByTime(time) {
-    let allDishes = getAllDishes();
+export function getDishesByTime(dishes, time) {
     let matchedDishes = [];
-    for (let dish of allDishes) {
+    for (let dish of dishes) {
         if (dish.time <= time) {
             matchedDishes.push(dish);
         }
@@ -47,13 +45,12 @@ export function getDishesByTime(time) {
     return matchedDishes;
 }
 
-export function getDishesByDietsId(dietsId) {
-    let allDishes = getAllDishes();
+export function getDishesByDietsId(dishes, dietsId) {
     let matchedDishes = [];
 
     for (let dietId of dietsId) {
-        for (let dish of allDishes) {
-            if (dish.dietary.includes(dietId)) {
+        for (let dish of dishes) {
+            if (dish.dietary.includes(parseInt(dietId))) {
                 matchedDishes.push(dish);
             }
         }
