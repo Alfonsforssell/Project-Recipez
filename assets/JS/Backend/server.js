@@ -27,10 +27,11 @@ async function handler(request) {
     let dietaryDishesRoute = new URLPattern({ pathname: "api/dietary/:id/dishes" });
     let userIdRoute = new URLPattern({ pathname: "api/users/:id" });
     let userFavoritesRoute = new URLPattern({ pathname: "api/users/:id/favorites" });
-    
+
 
     if (url.pathname.startsWith("/api/")) {
         if (request.method === "GET") {
+
             if (url.pathname === "/api/dishes") {
                 if (!validateJsonAccept(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
@@ -41,7 +42,7 @@ async function handler(request) {
                 let filteredProducts = dishes.getAllDishes();
                 let country = url.searchParams.get("country");
                 let time = url.searchParams.get("time");
-                let dietary = url.searchParams.get("dietary");
+                let dietary = url.searchParams.get("dietary"); //Måste kolla på denna då dietary blir en sträng
                 if (country != null) {
                     filteredProducts = dishes.getDishesByCountry(filteredProducts, country);
                 }
@@ -57,14 +58,76 @@ async function handler(request) {
                     headers: HEADERS,
                 });
             }
-            return new Response(JSON.stringify({ error: "Not found" }), {
-                status: 404,
-                headers: HEADERS,
-            });
+
+            if (url.pathname === "/api/dishes/search") {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
+
+                let query = url.searchParams.get("q");
+
+                if (!query) {
+                    return new Response(JSON.stringify({ Error: "Bad Request" }), {
+                        headers: HEADERS,
+                        status: 400
+                    });
+                }
+
+                let matchedDishes = dishes.getDishesBySearch(query);
+
+                return new Response(JSON.stringify(matchedDishes), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
+
+            if (url.pathname === "/api/dishes/countries") {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
+
+                let countries = dishes.getAllCountries(); 
+
+                return new Response(JSON.stringify(countries), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
+
+            if (dishIdRoute.test(url)) {
+                let match = dishIdRoute.exec(url);
+                let id = parseInt(match.pathname.groups.id);
+
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
+
+                let dish = dishes.getDishById(id);
+                if (!dish) {
+                    return new Response(JSON.stringify({ Error: "Not Found" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+
+                return new Response(JSON.stringify(dish), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
         }
 
         if (request.method === "POST") {
-            if (url.pathname === "/api/dish") {
+            if (url.pathname === "/api/dishes") {
                 if (!validateJsonContent(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
@@ -98,7 +161,7 @@ async function handler(request) {
                 }
             }
 
-            if (url.pathname === "/api/user") {
+            if (url.pathname === "/api/users") {
                 if (!validateJsonContent(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
@@ -140,6 +203,7 @@ async function handler(request) {
                     });
                 } else {
                     delete newUser.repeatPassword;
+                    users.signUp(newUser);
                     return new Response(JSON.stringify({}), {
                         headers: HEADERS,
                         status: 201
@@ -152,11 +216,11 @@ async function handler(request) {
         if (request.method === "DELETE") {
             if (dishIdRoute.test(url)) {
                 let dishIdMatch = dishIdRoute.exec(url);
-                let id = dishIdMatch.pathname.groups.id;
+                let id = parseInt(dishIdMatch.pathname.groups.id);
                 let deletedDish = dishes.deleteDish(id);
 
                 if (!deletedDish) {
-                    return new Response(JSON.stringify("Dish not found"), {
+                    return new Response(JSON.stringify({ Error: "Dish not found" }), {
                         status: 404,
                         headers: HEADERS
                     });
@@ -171,13 +235,13 @@ async function handler(request) {
         if (request.method === "PATCH") {
             if (dishIdRoute.test(url)) {
                 if (!validateJsonContent(request)) {
-                    return new Response(JSON.stringify("Not acceptable"), {
+                    return new Response(JSON.stringify({ Error: "Not acceptable" }), {
                         status: 406,
                         headers: HEADERS
                     });
                 }
                 let dishIdMatch = dishIdRoute.exec(url);
-                let id = dishIdMatch.pathname.groups.id;
+                let id = parseInt(dishIdMatch.pathname.groups.id);
                 try {
                     let newValues = await request.json();
                     let updatedDish = dishes.updateDish(id, newValues);
@@ -194,16 +258,18 @@ async function handler(request) {
                         headers: HEADERS
                     });
                 } catch (error) {
-                    return new Response(JSON.stringify("Not acceptable"), {
+                    return new Response(JSON.stringify({ Error: "Not acceptable"}), {
                         status: 406,
                         headers: HEADERS
                     });
                 }
             }
-
         }
+        return new Response(JSON.stringify({ Error: "Not found" }), {
+            status: 404,
+            headers: HEADERS,
+        });
     }
 }
-
 
 Deno.serve(handler);

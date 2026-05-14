@@ -9,7 +9,7 @@ export function getAllCountries() {
     let allCountries = [];
     for (let dish of allDishes) {
         if (allCountries.includes(dish.country)) continue;
-        allCountries.push(dish.county);
+        allCountries.push(dish.country);
     }
     return allCountries;
 }
@@ -25,8 +25,8 @@ export function getDishById(id) {
     return matchedDish;
 }
 
-export function getDishesByCountry(dishes, country) {
-    let allDishes = dishes;
+export function getDishesByCountry(country) {
+    let allDishes = getAllDishes();
     let matchedDishes = [];
     for (let dish of allDishes) {
         if (dish.country === country) {
@@ -36,8 +36,8 @@ export function getDishesByCountry(dishes, country) {
     return matchedDishes;
 }
 
-export function getDishesByTime(dishes, time) {
-    let allDishes = dishes;
+export function getDishesByTime(time) {
+    let allDishes = getAllDishes();
     let matchedDishes = [];
     for (let dish of allDishes) {
         if (dish.time <= time) {
@@ -47,13 +47,13 @@ export function getDishesByTime(dishes, time) {
     return matchedDishes;
 }
 
-export function getDishesByDietsId(dishes, dietsId) {
-    let allDishes = dishes;
+export function getDishesByDietsId(dietsId) {
+    let allDishes = getAllDishes();
     let matchedDishes = [];
 
     for (let dietId of dietsId) {
         for (let dish of allDishes) {
-            if (dish.includes(dietId)) {
+            if (dish.dietary.includes(dietId)) {
                 matchedDishes.push(dish);
             }
         }
@@ -65,7 +65,7 @@ export function getDishesByDietsId(dishes, dietsId) {
 export function getDishesBySearch(searchWord) {
     let allDishes = getAllDishes();
     let matchedDishes = [];
-    for (let dish of dishes) {
+    for (let dish of allDishes) {
         if (dish.name.toLowerCase().includes(searchWord.toLowerCase())
             || dish.country.toLowerCase().includes(searchWord.toLowerCase())
             || dish.description.toLowerCase().includes(searchWord.toLowerCase())) {
@@ -85,7 +85,7 @@ export function createDish(newDish) {
     data.dishes.push(newDish);
 
     Deno.writeTextFileSync(
-        "data.json",
+        "../../JSON/data.json",
         JSON.stringify(data, null, 2)
     );
 
