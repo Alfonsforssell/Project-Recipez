@@ -31,7 +31,7 @@ async function handler(request) {
     if (url.pathname.startsWith("/api/")) {
         if (request.method === "GET") {
 
-            if (url.pathname === "/api/dishes") {
+            if (url.pathname === "/api/dishes") {       //Fungerar
                 if (!validateJsonAccept(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
@@ -39,9 +39,9 @@ async function handler(request) {
                     });
                 }
                 let filteredProducts = dishes.getAllDishes();
-                let country = url.searchParams.get("country");
-                let time = url.searchParams.get("time");
-                let dietary = url.searchParams.getAll("dietary"); 
+                let country = url.searchParams.get("country");      //Fungerar
+                let time = url.searchParams.get("time");      //Fungerar
+                let dietary = url.searchParams.getAll("dietary");       //Fungerar
                 if (country != null) {
                     filteredProducts = dishes.getDishesByCountry(filteredProducts, country);
                 }
@@ -58,7 +58,7 @@ async function handler(request) {
                 });
             }
 
-            if (url.pathname === "/api/dishes/search") {
+            if (url.pathname === "/api/dishes/search") {      //Fungerar
                 if (!validateJsonAccept(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
@@ -83,7 +83,7 @@ async function handler(request) {
                 })
             }
 
-            if (url.pathname === "/api/dishes/countries") {
+            if (url.pathname === "/api/dishes/countries") {      //Fungerar
                 if (!validateJsonAccept(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
@@ -99,7 +99,7 @@ async function handler(request) {
                 })
             }
 
-            if (dishIdRoute.test(url)) {
+            if (dishIdRoute.test(url)) {      //Fungerar
                 let match = dishIdRoute.exec(url);
                 let id = parseInt(match.pathname.groups.id);
 
