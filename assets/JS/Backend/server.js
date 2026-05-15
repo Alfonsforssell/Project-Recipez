@@ -166,6 +166,32 @@ async function handler(request) {
                 });
             }
 
+            if (dietaryIdRoute.test(url)) {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406
+                    });
+                }
+
+                let match = dietaryIdRoute.exec(url);
+                let id = parseInt(match.pathname.groups.id);
+
+                let diet = diets.getDietById(id);
+
+                if (!diet) {
+                    return new Response(JSON.stringify({ Error: "Not Found" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+
+                return new Response(JSON.stringify(diet), {
+                    headers: HEADERS,
+                    status: 200
+                });
+            }
+
 
         }
 
