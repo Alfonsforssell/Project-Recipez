@@ -138,7 +138,35 @@ async function handler(request) {
                     status: 200
                 });
             }
-            
+            if (dietaryDishesRoute.test(url)) {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406
+                    });
+                }
+
+                let match = dietaryDishesRoute.exec(url);
+                let id = parseInt(match.pathname.groups.id);
+
+                let diet = diets.getDietById(id);
+
+                if (!diet) {
+                    return new Response(JSON.stringify({ Error: "Not Found" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+
+                let matchedDishes = diets.getDishesByDietId(id);
+
+                return new Response(JSON.stringify(matchedDishes), {
+                    headers: HEADERS,
+                    status: 200
+                });
+            }
+
+
         }
 
         if (request.method === "POST") {
