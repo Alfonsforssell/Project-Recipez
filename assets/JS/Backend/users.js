@@ -1,7 +1,7 @@
 export function getAllUsers() {
     const text = Deno.readTextFileSync("../../JSON/users.json");
     const data = JSON.parse(text);
-    return data.users;
+    return data;
 }
 
 export function getUserById(id) {
@@ -36,7 +36,7 @@ function getHighestId() {
 export function signUp(object) {
     const text = Deno.readTextFileSync("../../JSON/users.json");
     const data = JSON.parse(text);
-    let users = data.users;
+    let users = data;
     let highestId = getHighestId();
     object.id = parseInt(highestId + 1);
     users.push(object);

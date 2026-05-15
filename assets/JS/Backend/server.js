@@ -1,7 +1,7 @@
 import * as diets from "./dietery.js";
 import * as users from "./users.js";
 import * as dishes from "./dishes.js";
-import { serveDir } from "jsr:@std/http/file-server";
+//import { serveDir } from "jsr:@std/http/file-server";
 
 function validateJsonContent(request) {
     let content = request.headers.get("Content-Type");
@@ -124,7 +124,7 @@ async function handler(request) {
                 })
             }
 
-            if (url.pathname === "/api/dietary") {
+            if (url.pathname === "/api/dietary") {      //Fungerar
                 if (!validateJsonAccept(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
@@ -138,7 +138,7 @@ async function handler(request) {
                     status: 200
                 });
             }
-            if (dietaryDishesRoute.test(url)) {
+            if (dietaryDishesRoute.test(url)) {     //Fungerar
                 if (!validateJsonAccept(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
@@ -166,7 +166,7 @@ async function handler(request) {
                 });
             }
 
-            if (dietaryIdRoute.test(url)) {
+            if (dietaryIdRoute.test(url)) {     //Fungerar
                 if (!validateJsonAccept(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
@@ -192,11 +192,73 @@ async function handler(request) {
                 });
             }
 
+            if (url.pathname === "/api/users") {     //Fungerar
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
+                let usrs = users.getAllUsers();
+                return new Response(JSON.stringify(usrs), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
 
+            if (userIdRoute.test(url)) {     //Fungerar
+                let match = userIdRoute.exec(url);
+                let id = parseInt(match.pathname.groups.id);
+
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
+
+                let usr = users.getUserById(id);
+                if (!usr) {
+                    return new Response(JSON.stringify({ Error: "Not Found" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+
+                return new Response(JSON.stringify(usr), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
+
+            if (userFavoritesRoute.test(url)) {     //Fungerar
+                let match = userFavoritesRoute.exec(url);
+                let id = parseInt(match.pathname.groups.id);
+
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
+
+                let usrFavourites = users.getFavouritesByUserId(id);
+                if (!usrFavourites) {
+                    return new Response(JSON.stringify({ Error: "Not Found" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+
+                return new Response(JSON.stringify(usrFavourites), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
         }
 
         if (request.method === "POST") {
-            if (url.pathname === "/api/dishes") {
+            if (url.pathname === "/api/dishes") {       //Fungerar
                 if (!validateJsonContent(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
@@ -230,7 +292,7 @@ async function handler(request) {
                 }
             }
 
-            if (url.pathname === "/api/users") {
+            if (url.pathname === "/api/users") {        //Fungerar
                 if (!validateJsonContent(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
                         headers: HEADERS,
@@ -282,7 +344,7 @@ async function handler(request) {
             }
         }
 
-        if (request.method === "DELETE") {
+        if (request.method === "DELETE") {      //Fungerar
             if (dishIdRoute.test(url)) {
                 let dishIdMatch = dishIdRoute.exec(url);
                 let id = parseInt(dishIdMatch.pathname.groups.id);

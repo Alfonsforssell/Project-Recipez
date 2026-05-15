@@ -67,8 +67,7 @@
                 "Olja",
                 "Salt"
             ],
-            "instructions": 
-                "Hacka grönsaker. Stek lök och vitlök. Tillsätt övriga ingredienser. Låt sjuda 20 minuter. Smaka av.",
+            "instructions": "Hacka grönsaker. Stek lök och vitlök. Tillsätt övriga ingredienser. Låt sjuda 20 minuter. Smaka av.",
             "imageUrl": "../images/chili.jpg"
         },
         {
@@ -411,7 +410,7 @@
         {
             "name": "Laktosfri",
             "id": 3,
-            "description": "Laktosfri mat innehåller inga eller mycket låga nivåer av laktos, vilket är mjölksocker som finns i mejeriprodukter. Produkter kan vara naturligt fria från laktos eller behandlade för att bryta ner laktosen. Detta passar personer med laktosintolerans.", 
+            "description": "Laktosfri mat innehåller inga eller mycket låga nivåer av laktos, vilket är mjölksocker som finns i mejeriprodukter. Produkter kan vara naturligt fria från laktos eller behandlade för att bryta ner laktosen. Detta passar personer med laktosintolerans.",
             "imageUrl": "../icons/lactose.jpg"
         },
         {
