@@ -91,7 +91,7 @@ async function handler(request) {
                     });
                 }
 
-                let countries = dishes.getAllCountries(); 
+                let countries = dishes.getAllCountries();
 
                 return new Response(JSON.stringify(countries), {
                     headers: HEADERS,
@@ -123,6 +123,22 @@ async function handler(request) {
                     status: 200
                 })
             }
+
+            if (url.pathname === "/api/dietary") {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406
+                    });
+                }
+                let allDiets = diets.getAllDiets();
+
+                return new Response(JSON.stringify(allDiets), {
+                    headers: HEADERS,
+                    status: 200
+                });
+            }
+            
         }
 
         if (request.method === "POST") {
@@ -257,7 +273,7 @@ async function handler(request) {
                         headers: HEADERS
                     });
                 } catch (error) {
-                    return new Response(JSON.stringify({ Error: "Not acceptable"}), {
+                    return new Response(JSON.stringify({ Error: "Not acceptable" }), {
                         status: 406,
                         headers: HEADERS
                     });
