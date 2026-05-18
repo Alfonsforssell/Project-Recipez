@@ -3,6 +3,7 @@ async function init() {
     createProducts();
     createForm();
     search();
+    submitFilter();
 }
 
 init();
