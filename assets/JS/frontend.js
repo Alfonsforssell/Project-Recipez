@@ -156,7 +156,8 @@ function login() {
         }
 
         try {
-            await postRequest("http://localhost:8000/api/login", body); 
+            await postRequest("http://localhost:8000/api/login", body);
+            window.location.href = "profilePage.html";
         } catch (err) {
             console.log(err.message);
         }
