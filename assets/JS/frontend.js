@@ -53,6 +53,7 @@ function createProducts() {
 
     for (let dish of dishes) {
         let div = document.createElement("a");
+        div.href = "productPage.html?id=" + dish.id;
         div.innerHTML = `
         <img class="cardImg" src="${dish.imageUrl}" alt="">
                 <h1>${dish.name}</h1>
@@ -141,7 +142,7 @@ async function createProductPage() {
 
     container.innerHTML = `
     <div class="image">
-     <img src="${chosenDish.imageUrl}" alt="${chosenDish.name}">
+    <img src="${chosenDish.imageUrl}" alt="${chosenDish.name}">
     </div>
     <div class="text">
         <div class="info">
@@ -152,7 +153,7 @@ async function createProductPage() {
                 ${dietHtml}
         </div>
 
-         <p>${chosenDish.description}</p>
+        <p>${chosenDish.description}</p>
     </div>
 
     <div class="cook">
@@ -185,7 +186,7 @@ function createProfilePage(user) {
         cards.innerHTML = "";
         return;
     }
-    
+
 }
 
 function signUp() {
@@ -194,9 +195,9 @@ function signUp() {
         e.preventDefault();
         let userData = saveData();
 
-        let username = signUpForm.elements.username.value; 
-        let password = signUpForm.elements.password.value; 
-        let repeatPassword = signUpForm.elements.repeatPassword.value; 
+        let username = signUpForm.elements.username.value;
+        let password = signUpForm.elements.password.value;
+        let repeatPassword = signUpForm.elements.repeatPassword.value;
 
         if (password != repeatPassword) {
             console.log("Lösenorden matchar inte!");
@@ -211,18 +212,18 @@ function signUp() {
 
         try {
             await postRequest("http://localhost:8000/api/users", body);
-            console.log("Konto skapat!"); 
+            console.log("Konto skapat!");
         }
-        catch(err) {
+        catch (err) {
             console.log(err.message);
         }
     })
 }
 
 function login() {
-    let loginForm = document.getElementById("loginForm"); 
+    let loginForm = document.getElementById("loginForm");
     loginForm.addEventListener("submit", async function (e) {
-        e.preventDefault(); 
+        e.preventDefault();
 
         let body = {
             name: loginForm.elements.username.value,
