@@ -81,9 +81,6 @@ function createForm(){
     let country = form.elements.country;
     let time = form.elements.time;
     let dietary = form.elements.preference;
-function createForm() {
-
-    
 }
 
 function submitFilter() {
@@ -120,4 +117,3 @@ let users = [];
 let dishes = [];
 let dietary = [];
 
-}
