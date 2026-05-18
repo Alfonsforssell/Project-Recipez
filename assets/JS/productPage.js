@@ -1,4 +1,4 @@
-function init() {
+async function init() {
     await saveData();
     createProductPage();
 }
