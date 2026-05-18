@@ -1,6 +1,6 @@
 async function saveData() {
-    let dishes = await getRequest("http://localhost:8000/api/dishes");
-    let dietary = await getRequest("http://localhost:8000/api/dietary");
+     dishes = await getRequest("http://localhost:8000/api/dishes");
+     dietary = await getRequest("http://localhost:8000/api/dietary");
 }
 
 function tagInput() {
