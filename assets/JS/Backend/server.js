@@ -39,7 +39,7 @@ async function handler(request) {
                     });
                 }
                 let filteredProducts = dishes.getAllDishes();
-                let country = url.searchParams.get("country");
+                let country = url.searchParams.getAll("country");
                 let time = url.searchParams.get("time");
                 let dietary = url.searchParams.getAll("dietary");
                 if (country != null) {
