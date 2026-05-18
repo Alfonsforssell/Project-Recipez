@@ -48,10 +48,11 @@ function getDietaryImgById(id) {
     }
 }
 
-function createProducts() {
+function createProducts(filteredDishes = dishes) {
     let cards = document.getElementById("cards");
+    cards.innerHTML = "";
 
-    for (let dish of dishes) {
+    for (let dish of filteredDishes) {
         let div = document.createElement("a");
         div.href = "productPage.html?id=" + dish.id;
         div.innerHTML = `
