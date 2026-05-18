@@ -123,6 +123,138 @@ async function handler(request) {
                     status: 200
                 })
             }
+
+            if (url.pathname === "/api/dietary") {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406
+                    });
+                }
+                let allDiets = diets.getAllDiets();
+
+                return new Response(JSON.stringify(allDiets), {
+                    headers: HEADERS,
+                    status: 200
+                });
+            }
+            if (dietaryDishesRoute.test(url)) {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406
+                    });
+                }
+
+                let match = dietaryDishesRoute.exec(url);
+                let id = parseInt(match.pathname.groups.id);
+
+                let diet = diets.getDietById(id);
+
+                if (!diet) {
+                    return new Response(JSON.stringify({ Error: "Not Found" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+
+                let matchedDishes = diets.getDishesByDietId(id);
+
+                return new Response(JSON.stringify(matchedDishes), {
+                    headers: HEADERS,
+                    status: 200
+                });
+            }
+
+            if (dietaryIdRoute.test(url)) {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406
+                    });
+                }
+
+                let match = dietaryIdRoute.exec(url);
+                let id = parseInt(match.pathname.groups.id);
+
+                let diet = diets.getDietById(id);
+
+                if (!diet) {
+                    return new Response(JSON.stringify({ Error: "Not Found" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+
+                return new Response(JSON.stringify(diet), {
+                    headers: HEADERS,
+                    status: 200
+                });
+            }
+
+            if (url.pathname === "/api/users") {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
+                let usrs = users.getAllUsers();
+                return new Response(JSON.stringify(usrs), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
+
+            if (userIdRoute.test(url)) {
+                let match = userIdRoute.exec(url);
+                let id = parseInt(match.pathname.groups.id);
+
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
+
+                let usr = users.getUserById(id);
+                if (!usr) {
+                    return new Response(JSON.stringify({ Error: "Not Found" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+
+                return new Response(JSON.stringify(usr), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
+
+            if (userFavoritesRoute.test(url)) {
+                let match = userFavoritesRoute.exec(url);
+                let id = parseInt(match.pathname.groups.id);
+
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
+
+                let usrFavourites = users.getFavouritesByUserId(id);
+                if (!usrFavourites) {
+                    return new Response(JSON.stringify({ Error: "Not Found" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+
+                return new Response(JSON.stringify(usrFavourites), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
         }
 
         if (request.method === "POST") {
@@ -188,7 +320,7 @@ async function handler(request) {
                         matchedUser = user;
                     }
                 }
-                
+
                 if (!matchedUser) {
                     return new Response(JSON.stringify({ Error: "Wrong username or password" }), {
                         headers: HEADERS,
