@@ -133,7 +133,7 @@ main {
 
 h1 {
     color: var(--text-dark);
-    font-size: 60px;
+    font-size: 40px;
 }
 h2 {
     color: var(--dominant-color);
