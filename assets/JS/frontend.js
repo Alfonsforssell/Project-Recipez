@@ -1,6 +1,7 @@
 async function saveData() {
-     dishes = await getRequest("http://localhost:8000/api/dishes");
-     dietary = await getRequest("http://localhost:8000/api/dietary");
+    dishes = await getRequest("http://localhost:8000/api/dishes");
+    dietaries = await getRequest("http://localhost:8000/api/dietary");
+    countries = await getRequest("http://localhost:8000/api/dishes/countries");
 }
 
 function tagInput() {
@@ -78,9 +79,16 @@ function createProducts() {
 
 function createForm(){
     let form = document.querySelector("form");
-    let country = form.elements.country;
-    let time = form.elements.time;
-    let dietary = form.elements.preference;
+    let selectCountry = form.elements.country;
+    let selectTime = form.elements.time;
+    let selectDietary = form.elements.preference;
+
+    for (let country of countries) {
+        let option = document.createElement("option");
+        option.value = country;
+        option.textContent = country;
+        selectCountry.appendChild(country);
+    }
 }
 
 function submitFilter() {
@@ -114,6 +122,6 @@ function login() {
     
 }
 
-let users = [];
+let countries = [];
 let dishes = [];
 let dietary = [];
