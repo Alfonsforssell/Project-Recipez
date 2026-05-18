@@ -106,7 +106,7 @@ main {
     background-color: var(--bg-light);
     border-radius: 30px;
     width: 90%;
-    height: 800px;
+    height: 80vh;
 }
 
 .image {
