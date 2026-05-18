@@ -75,7 +75,6 @@ function createProducts() {
         cards.appendChild(div);
         div.classList.add("card");
     }
-    console.log("dietary:", dietaries);
 }
 
 function createForm(){
@@ -88,7 +87,14 @@ function createForm(){
         let option = document.createElement("option");
         option.value = country;
         option.textContent = country;
-        selectCountry.appendChild(country);
+        selectCountry.appendChild(option);
+    }
+
+    for (let diet of dietaries) {
+        let option = document.createElement("option");
+        option.value = diet.name;
+        option.textContent = diet.name;
+        selectDietary.appendChild(option);
     }
 }
 
