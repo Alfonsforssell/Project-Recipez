@@ -70,3 +70,27 @@ function createProducts() {
         div.classList.add("card");
     }
 }
+
+function createForm(){
+
+}
+
+function submitFilter(){
+
+}
+
+function createProductPage(){
+
+}
+
+function createProfilePage(user){
+
+}
+
+function singUp() {
+
+}
+
+function login() {
+    
+}
