@@ -166,7 +166,19 @@ async function createProductPage() {
 }
 
 function createProfilePage(user) {
+    let profileCard = document.querySelector(".profileCard");
+    let cards = document.getElementById("cards");
 
+    if (!user) {
+        profileCard.innerHTML = `
+            <h2>Du är inte inloggad</h2>
+            <a href="login.html" class="editPageBtn">Logga in</a>
+        `;
+
+        cards.innerHTML = "";
+        return;
+    }
+    
 }
 
 function singUp() {
