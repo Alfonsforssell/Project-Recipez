@@ -145,7 +145,7 @@ function createProductPage() {
     <img src="${chosenDish.imageUrl}" alt="${chosenDish.name}">
     </div>
     <div class="text">
-        <div class="info">
+        <div id="info">
             <h1>${chosenDish.name}</h1>
             <div class="stats">
                 <h2>${chosenDish.country}</h2>
@@ -156,7 +156,7 @@ function createProductPage() {
         <p>${chosenDish.description}</p>
     </div>
 
-    <div class="cook">
+    <div id="cook">
         <div class="ingredients">
             <h1>Ingredients</h1>
             <ul>
