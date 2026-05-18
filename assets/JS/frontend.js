@@ -1,6 +1,7 @@
 async function saveData() {
-    let dishes = await getRequest("http://localhost:8000/api/dishes");
-    let dietary = await getRequest("http://localhost:8000/api/dietary");
+    dishes = await getRequest("http://localhost:8000/api/dishes");
+    dietaries = await getRequest("http://localhost:8000/api/dietary");
+    countries = await getRequest("http://localhost:8000/api/dishes/countries");
 }
 
 function tagInput() {
@@ -9,7 +10,7 @@ function tagInput() {
 
     let ingredients = [];
 
-    input.addEventListener("keydown", function(e) {
+    input.addEventListener("keydown", function (e) {
         if (e.key === "Enter" && input.value.trim() !== "") {
             e.preventDefault();
 
@@ -78,22 +79,37 @@ function createProducts() {
 
 function createForm(){
     let form = document.querySelector("form");
-    let country = form.elements.country;
-    let time = form.elements.time;
-    let dietary = form.elements.preference;
+    let selectCountry = form.elements.country;
+    let selectTime = form.elements.time;
+    let selectDietary = form.elements.preference;
 
-    
+    for (let country of countries) {
+        let option = document.createElement("option");
+        option.value = country;
+        option.textContent = country;
+        selectCountry.appendChild(country);
+    }
 }
 
-function submitFilter(){
+function submitFilter() {
 
 }
 
-function createProductPage(){
+async function createProductPage() {
+    const params = new URLSearchParams(window.location.search);
+    let id = params.get("id");
+    let dish = await getRequest("http://localhost:8000/api/dishes/" + id);
+    let container = document.getElementById("container")
 
+    if (!dish) {
+        container.innerHTML = `
+        <a href="products.html">← Back to products</a>
+            <h1>Product not found</h1>`;
+        return;
+    }
 }
 
-function createProfilePage(user){
+function createProfilePage(user) {
 
 }
 
@@ -105,6 +121,7 @@ function login() {
     
 }
 
-let users = [];
+let countries = [];
 let dishes = [];
 let dietary = [];
+
