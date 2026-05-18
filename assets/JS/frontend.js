@@ -146,7 +146,21 @@ function signUp() {
 }
 
 function login() {
-    
+    let loginForm = document.getElementById("loginForm"); 
+    loginForm.addEventListener("submit", async function (e) {
+        e.preventDefault(); 
+
+        let body = {
+            name: loginForm.elements.username.value,
+            password: loginForm.elements.password.value
+        }
+
+        try {
+            await postRequest("http://localhost:8000/api/login", body); 
+        } catch (err) {
+            console.log(err.message);
+        }
+    })
 }
 
 let countries = [];
