@@ -41,7 +41,7 @@ function tagInput() {
 }
 
 function getDietaryImgById(id) {
-    for (let diet of dietary) {
+    for (let diet of dietaries) {
         if (diet.id === id) {
             return diet.imageUrl;
         }
@@ -75,6 +75,7 @@ function createProducts() {
         cards.appendChild(div);
         div.classList.add("card");
     }
+    console.log("dietary:", dietaries);
 }
 
 function createForm(){
@@ -124,4 +125,4 @@ function login() {
 
 let countries = [];
 let dishes = [];
-let dietary = [];
+let dietaries = [];
