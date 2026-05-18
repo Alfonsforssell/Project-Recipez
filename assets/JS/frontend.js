@@ -191,7 +191,7 @@ function createProfilePage(user) {
 
     profileCard.innerHTML = `
     <h2>${user.name}</h2>
-    
+    `
 
 
 }
