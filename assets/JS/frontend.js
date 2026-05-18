@@ -140,6 +140,8 @@ function createProductPage() {
         }
     }
 
+    let instructions = chosenDish.instructions.split(".");
+    let printInstructions = instructions.join(".<br>");
 
     container.innerHTML = `
     <div class="image">
@@ -150,7 +152,7 @@ function createProductPage() {
             <h1>${chosenDish.name}</h1>
             <div class="stats">
                 <h2>${chosenDish.country}</h2>
-                <h2>${chosenDish.time}</h2>
+                <h2>${chosenDish.time} min</h2>
                 ${dietHtml}
         </div>
 
@@ -166,7 +168,7 @@ function createProductPage() {
         </div> 
         <div class="instructions">
             <h1>Instructions</h1>
-            <h2>${chosenDish.instructions}</h2>
+            <h2>${printInstructions}</h2>
         </div>
     </div>
     </div>
@@ -187,6 +189,11 @@ function createProfilePage(user) {
         cards.innerHTML = "";
         return;
     }
+
+    profileCard.innerHTML = `
+    <h2>${user.name}</h2>
+    
+
 
 }
 
