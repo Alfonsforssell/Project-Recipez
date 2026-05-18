@@ -94,14 +94,50 @@ function createForm() {
 
     for (let diet of dietaries) {
         let option = document.createElement("option");
-        option.value = diet.name;
+        option.value = diet.id;
         option.textContent = diet.name;
         selectDietary.appendChild(option);
     }
 }
 
 function submitFilter() {
+    let button = document.getElementById("filterbutton");
+    button.addEventListener("click", async function (e) {
+        e.preventDefault();
 
+        let form = document.querySelector("form");
+        let countryValue = form.elements.country.value;
+        let timeValue = form.elements.time.value;
+        let dietaryValue = form.elements.preference.value;
+
+        let queryParts = [];
+
+        if (!countryValue.includes("All")) {
+            queryParts.push("country=" + countryValue);
+        }
+
+        if (!timeValue.includes("All")) {
+            queryParts.push("time=" + timeValue);
+        }
+
+        if (!dietaryValue.includes("All")) {
+            queryParts.push("dietary=" + dietaryValue);
+        }
+
+        let queryString = queryParts.join("&");
+        let url = "http://localhost:8000/api/dishes";
+
+        if (queryString) {
+            url += "?" + queryString;
+        }
+
+        try {
+            let dishes = await getRequest(url);
+            createProducts(dishes);
+        } catch(err) {
+            console.log(err.message);
+        }
+    })
 }
 
 function createProductPage() {
