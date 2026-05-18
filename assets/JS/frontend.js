@@ -192,9 +192,51 @@ function createProfilePage(user) {
 
     profileCard.innerHTML = `
     <h2>${user.name}</h2>
-    `
+    <p><span>Bio:</span> ${user.bio}</p>
+     <p><span>Favoriter:</span> ${user.favourites.length} st</p>
+     <p><span>Ursprung:</span> ${user.origin}</p>
+     <a href="#" class="editPageBtn">Redigera rätter</a>
+     <a href="#" class="logout">Logga ut</a>
+     `;
 
+    let favouritesHtml = "";
+    for (let favouriteId of user.favourites) {
+        for (let dish of dishes) {
+            if (dish.id == favouriteId) {
 
+                let dietHtml = "";
+
+                for (let diet of dish.dietary) {
+                    let imageUrl = getDietaryImgById(diet);
+
+                    if (imageUrl) {
+                        dietHtml += `
+                            <img class="icon" src="${imageUrl}" alt="">
+                        `;
+                    }
+                }
+
+                favouritesHtml += `
+                    <a class="card" href = "productPage.html?id=${dish.id}">
+                        <img class="cardImg" src="${dish.imageUrl}" alt="${dish.name}">
+                        <h1>${dish.name}</h1>
+                        <p>${dish.description}</p>
+                         <div class="info">
+                         <h2>${dish.time}min</h2>
+                         <h2>${dish.country}</h2>
+                         ${dietHtml}
+                         </div>
+                         </a>
+                         `;
+            }
+        }
+    }
+    if (favouritesHtml === "") {
+        favouritesHtml = `
+        <p> du har inga favoriträtter ännu.</p>
+        `;
+    }
+    cards.innerHTML = favouritesHtml;
 }
 
 function signUp() {
