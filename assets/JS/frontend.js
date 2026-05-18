@@ -1,3 +1,8 @@
+async function saveData() {
+    let dishes = await getRequest("http://localhost:8000/api/dishes");
+    let dietary = await getRequest("http://localhost:8000/api/dietary");
+}
+
 function tagInput() {
     const input = document.getElementById("ingredientInput");
     const tagsContainer = document.getElementById("tags");
@@ -72,7 +77,12 @@ function createProducts() {
 }
 
 function createForm(){
+    let form = document.querySelector("form");
+    let country = form.elements.country;
+    let time = form.elements.time;
+    let dietary = form.elements.preference;
 
+    
 }
 
 function submitFilter(){
@@ -94,3 +104,7 @@ function singUp() {
 function login() {
     
 }
+
+let users = [];
+let dishes = [];
+let dietary = [];
