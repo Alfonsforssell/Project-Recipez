@@ -189,7 +189,12 @@ function createProfilePage(user) {
 
     profileCard.innerHTML = `
     <h2>${user.name}</h2>
-    
+    <p><span>Bio:<span> ${user.bio}</p>
+        <p><span>Favoriter:</span> ${user.favourites.length} st</p>
+        <p><span>Ursprung:</span> ${user.origin}</p>
+        <a href="#" class="editPageBtn">Redigera rätter</a>
+        <a href="#" class="logout">Logga ut</a>
+    `;
 
 
 }
