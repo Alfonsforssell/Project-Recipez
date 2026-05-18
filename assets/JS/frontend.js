@@ -247,6 +247,16 @@ function login() {
     })
 }
 
+function search() {
+    let searchBtn = document.getElementById("searchbutton");
+    searchBtn.addEventListener("click", async function (e) {
+        e.preventDefault();
+        let search = document.getElementById("searchValue").value;
+        let result = await getRequest("http://localhost:8000/api/dishes/search?q=" + search);
+        createProducts(result);
+    })
+}
+
 let countries = [];
 let dishes = [];
 let dietaries = [];
