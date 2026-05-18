@@ -25,13 +25,11 @@ export function getDishById(id) {
     return matchedDish;
 }
 
-export function getDishesByCountries(dishes, countries) {
+export function getDishesByCountry(dishes, country) {
     let matchedDishes = [];
     for (let dish of dishes) {
-        for (let country of countries) {
-            if (dish.country.includes(country)) {
-                matchedDishes.push(dish);
-            }
+        if (dish.country === country) {
+            matchedDishes.push(dish);
         }
     }
     return matchedDishes;
