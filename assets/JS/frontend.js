@@ -114,8 +114,35 @@ function createProfilePage(user) {
 
 }
 
-function singUp() {
+function signUp() {
+    let signUpForm = document.getElementById("signUpForm");
+    signUpForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        let userData = saveData();
 
+        let username = signUpForm.elements.username.value; 
+        let password = signUpForm.elements.password.value; 
+        let repeatPassword = signUpForm.elements.repeatPassword.value; 
+
+        if (password != repeatPassword) {
+            console.log("Lösenorden matchar inte!");
+            return;
+        }
+
+        let body = {
+            name: username,
+            password: password,
+            repeatPassword: repeatPassword
+        }
+
+        try {
+            await postRequest("http://localhost:8000/api/users", body);
+            console.log("Konto skapat!"); 
+        }
+        catch(err) {
+            console.log(err.message);
+        }
+    })
 }
 
 function login() {
