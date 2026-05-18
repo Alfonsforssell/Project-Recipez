@@ -77,7 +77,7 @@ function createProducts() {
     }
 }
 
-function createForm(){
+function createForm() {
     let form = document.querySelector("form");
     let selectCountry = form.elements.country;
     let selectTime = form.elements.time;
@@ -98,16 +98,71 @@ function submitFilter() {
 async function createProductPage() {
     const params = new URLSearchParams(window.location.search);
     let id = params.get("id");
-    let dish = await getRequest("http://localhost:8000/api/dishes/" + id);
+    let chosenDish;
+
+    for (let dish of dishes) {
+        if (dish.id == id) {
+            chosenDish = dish;
+        }
+    }
     let container = document.getElementById("container")
 
-    if (!dish) {
+    if (!chosenDish) {
         container.innerHTML = `
-        <a href="products.html">← Back to dishes</a>
+        <a href="index.html">← Back to dishes</a>
             <h1>dish not found</h1>`;
         return;
     }
 
+    let ingredientsHtml = "";
+    for (let ingredient of chosenDish.ingredients) {
+        ingredientsHtml += `<li><h2>${ingredient}</h2></li>
+        `;
+    }
+
+    let dietHtml = "";
+    for (let diet of chosenDish.dietary) {
+        let imageUrl = getDietaryImgById(diet);
+
+        if (imageUrl) {
+            dietHtml += `
+            <img src="${imageUrl}" alt="">
+            `;
+        }
+    }
+
+
+    container.innerHTML = `
+    <div class="image">
+     <img src="${chosenDish.imageUrl}" alt="${chosenDish.name}">
+    </div>
+    <div class="text">
+        <div class="info">
+            <h1>${chosenDish.name}</h1>
+            <div class="stats">
+                <h2>${chosenDish.country}</h2>
+                <h2>${chosenDish.time}</h2>
+                ${dietHtml}
+        </div>
+
+         <p>${chosenDish.description}</p>
+    </div>
+
+    <div class="cook">
+        <div class="ingredients">
+            <h1>Ingredients</h1>
+            <ul>
+            ${ingredientsHtml}
+            </ul>
+        </div> 
+        <div class="instructions">
+            <h1>Instructions</h1>
+            <h2>${chosenDish.instructions}</h2>
+        </div>
+    </div>
+    </div>
+    </div>
+    `;
 }
 
 function createProfilePage(user) {
@@ -119,7 +174,7 @@ function singUp() {
 }
 
 function login() {
-    
+
 }
 
 let countries = [];
