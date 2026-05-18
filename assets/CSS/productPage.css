@@ -196,6 +196,6 @@ ul {
 }
 #cook h2 {
     color: var(--text-light);
-    font-size: 17px;
+    font-size: 2vh;
     font-weight: 200;
 }
