@@ -4,7 +4,7 @@ function tagInput() {
 
     let ingredients = [];
 
-    input.addEventListener("keydown", function(e) {
+    input.addEventListener("keydown", function (e) {
         if (e.key === "Enter" && input.value.trim() !== "") {
             e.preventDefault();
 
@@ -71,19 +71,29 @@ function createProducts() {
     }
 }
 
-function createForm(){
+function createForm() {
 
 }
 
-function submitFilter(){
+function submitFilter() {
 
 }
 
-function createProductPage(){
+async function createProductPage() {
+    const params = new URLSearchParams(window.location.search);
+    let id = params.get("id");
+    let dish = await getRequest("http://localhost:8000/api/dishes/" + id);
+    let container = document.getElementById("container")
 
+    if (!dish) {
+        container.innerHTML = `
+        <a href="products.html">← Back to products</a>
+            <h1>Product not found</h1>`;
+        return;
+    }
 }
 
-function createProfilePage(user){
+function createProfilePage(user) {
 
 }
 
@@ -92,5 +102,5 @@ function singUp() {
 }
 
 function login() {
-    
+
 }
