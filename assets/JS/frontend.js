@@ -103,10 +103,11 @@ async function createProductPage() {
 
     if (!dish) {
         container.innerHTML = `
-        <a href="products.html">← Back to products</a>
-            <h1>Product not found</h1>`;
+        <a href="products.html">← Back to dishes</a>
+            <h1>dish not found</h1>`;
         return;
     }
+
 }
 
 function createProfilePage(user) {
@@ -124,4 +125,3 @@ function login() {
 let countries = [];
 let dishes = [];
 let dietary = [];
-
