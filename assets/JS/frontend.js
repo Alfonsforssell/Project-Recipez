@@ -109,7 +109,6 @@ async function createProductPage() {
 
     if (!chosenDish) {
         container.innerHTML = `
-        <a href="index.html">← Back to dishes</a>
             <h1>dish not found</h1>`;
         return;
     }
@@ -177,6 +176,9 @@ function createProfilePage(user) {
 
         cards.innerHTML = "";
         return;
+    }
+    if (!user) {
+        profileCard.innerHTML
     }
     
 }
