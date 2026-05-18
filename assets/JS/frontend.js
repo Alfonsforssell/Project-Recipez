@@ -189,6 +189,11 @@ function createProfilePage(user) {
         return;
     }
 
+    profileCard.innerHTML = `
+    <h2>${user.name}</h2>
+    
+
+
 }
 
 function signUp() {
