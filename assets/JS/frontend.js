@@ -400,7 +400,7 @@ function search() {
 }
 async function addDish() {
     let addForm = document.getElementById("addDish");
-    let addButton = document.querySelector(".btn");
+    let addButton = addForm.querySelector(".btn");
     let selectCountry = document.querySelector("#addDish").elements.country;
     for (let dish of dishes) {
         let option = document.createElement("option");
