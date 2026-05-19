@@ -397,7 +397,6 @@ async function addDish() {
     });
 }
 
-let ingredients = [];
 function deleteDish() {
     let form = document.querySelector("#changeDish");
     let name = form.elements.name;
@@ -454,3 +453,4 @@ function deleteDish() {
 let countries = [];
 let dishes = [];
 let dietaries = [];
+let ingredients = [];
