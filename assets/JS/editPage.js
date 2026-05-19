@@ -1,7 +1,8 @@
 async function init() {
     await saveData();
-    addDish()
     tagInput();
+    addDish()
+    deleteDish();
 }
 
 init();
