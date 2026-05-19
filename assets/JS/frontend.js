@@ -28,12 +28,18 @@ function tagInput() {
 
         tag.innerHTML = `
         ${text}
-        <span>&times;</span>
+        <span>✖</span>
     `;
 
         tag.querySelector("span").addEventListener("click", () => {
             tag.remove();
-            ingredients = ingredients.filter(i => i !== text);
+            let newIngredients = [];
+            for (let i = 0; i < ingredients.length; i++) {
+                if (ingredients[i] !== text) {
+                    newIngredients.push(ingredients[i]);
+                }
+            }
+            ingredients = newIngredients;
         });
 
         tagsContainer.appendChild(tag);
@@ -134,7 +140,7 @@ function submitFilter() {
         try {
             let dishes = await getRequest(url);
             createProducts(dishes);
-        } catch(err) {
+        } catch (err) {
             console.log(err.message);
         }
     })
@@ -158,7 +164,6 @@ function createProductPage() {
             <h1>dish not found</h1>`;
         return;
     }
-
     let ingredientsHtml = "";
     for (let ingredient of chosenDish.ingredients) {
         ingredientsHtml += `<li><h2>${ingredient}</h2></li>
@@ -210,6 +215,8 @@ function createProductPage() {
     </div>
     </div>
     `;
+
+    document.title = chosenDish.name;
 }
 
 function createProfilePage(user) {
