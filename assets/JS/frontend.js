@@ -383,33 +383,13 @@ async function addDish() {
 
         let dietary = [];
         let checkboxes = document.querySelectorAll(".dietary");
-
+        
         for (let checkbox of checkboxes) {
             if (checkbox.checked) {
-                if (checkbox.value === 1) {
-                    dietary.push(1);
-                }
-                if (checkbox.value === 2) {
-                    dietary.push(2);
-                }
-                if (checkbox.value === 3) {
-                    dietary.push(3);
-                }
-                if (checkbox.value === 4) {
-                    dietary.push(4);
-                }
-                if (checkbox.value === 5) {
-                    dietary.push(5);
-                }
-                if (checkbox.value === 6) {
-                    dietary.push(6);
-                }
-                if (checkbox.value === 7) {
-                    dietary.push(7);
-                }
+                dietary.push(Number(checkbox.value));
             }
-
         }
+
 
 
         let body = {
