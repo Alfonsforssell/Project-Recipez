@@ -1,7 +1,7 @@
 import * as diets from "./dietery.js";
 import * as users from "./users.js";
 import * as dishes from "./dishes.js";
-import { serveDir } from "jsr:@std/http/file-server";
+import { serveDir, serveFile } from "jsr:@std/http/file-server";
 
 function validateJsonContent(request) {
     let content = request.headers.get("Content-Type");
@@ -15,9 +15,6 @@ function validateJsonAccept(request) {
 
 const HEADERS = {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Credentials": "true",
-    "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization"
 };
 
 async function handler(request) {
@@ -27,14 +24,6 @@ async function handler(request) {
     let dietaryDishesRoute = new URLPattern({ pathname: "/api/dietary/:id/dishes" });
     let userIdRoute = new URLPattern({ pathname: "/api/users/:id" });
     let userFavoritesRoute = new URLPattern({ pathname: "/api/users/:id/favorites" });
-
-
-    if (request.method === "OPTIONS") {
-        return new Response(null, {
-            status: 204,
-            headers: HEADERS
-        });
-    }
 
     if (url.pathname.startsWith("/api/")) {
 
@@ -378,14 +367,12 @@ async function handler(request) {
                         status: 401
                     });
                 }
-
+                
+                let sessionId = crypto.randomUUID()
                 return new Response(JSON.stringify({ message: "Logged in" }), {
                     headers: {
                         "Content-Type": "application/json",
-                        "Access-Control-Allow-Credentials": "true",
-                        "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE",
-                        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-                        "Set-Cookie": `session_id=${matchedUser.id}; Max-Age=86400`
+                        "Set-Cookie": `session_id=${sessionId}; Max-Age=86400`
                     },
                     status: 200
                 });
@@ -500,9 +487,15 @@ async function handler(request) {
             headers: HEADERS,
         });
     }
-    return new Response(JSON.stringify({ Error: "Not found" }), {
-        status: 404,
-        headers: HEADERS,
+
+    if (url.pathname == "/") {
+        return serveFile(request, "assets/html/index.html");
+    }
+
+    return serveDir(request, {
+        fsRoot: "assets",
+        urlRoot: "assets",
+        showIndex: true,
     });
 }
 

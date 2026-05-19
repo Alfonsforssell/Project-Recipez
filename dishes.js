@@ -1,5 +1,5 @@
 export function getAllDishes() {
-    const text = Deno.readTextFileSync("../../JSON/data.json");
+    const text = Deno.readTextFileSync("JSON/data.json");
     const data = JSON.parse(text);
     return data.dishes;
 }
@@ -73,7 +73,7 @@ export function getDishesBySearch(searchWord) {
 }
 
 export function createDish(newDish) {
-    const text = Deno.readTextFileSync("../../JSON/data.json");
+    const text = Deno.readTextFileSync("JSON/data.json");
     const data = JSON.parse(text);
     let dishes = data.dishes;
 
@@ -82,7 +82,7 @@ export function createDish(newDish) {
     data.dishes.push(newDish);
 
     Deno.writeTextFileSync(
-        "../../JSON/data.json",
+        "JSON/data.json",
         JSON.stringify(data, null, 2)
     );
 
@@ -90,7 +90,7 @@ export function createDish(newDish) {
 }
 
 export function updateDish(id, newValues) {
-    const text = Deno.readTextFileSync("../../JSON/data.json");
+    const text = Deno.readTextFileSync("JSON/data.json");
     const data = JSON.parse(text);
     let dishes = data.dishes;
 
@@ -109,7 +109,7 @@ export function updateDish(id, newValues) {
     }
 
     Deno.writeTextFileSync(
-        "../../JSON/data.json",
+        "JSON/data.json",
         JSON.stringify(data)
     );
 
@@ -117,7 +117,7 @@ export function updateDish(id, newValues) {
 }
 
 export function deleteDish(id) {
-    const text = Deno.readTextFileSync("../../JSON/data.json");
+    const text = Deno.readTextFileSync("JSON/data.json");
     const data = JSON.parse(text);
     let dishes = data.dishes;
     let remainingDishes = [];
@@ -135,7 +135,7 @@ export function deleteDish(id) {
     data.dishes = remainingDishes;
 
     Deno.writeTextFileSync(
-        "../../JSON/data.json",
+        "JSON/data.json",
         JSON.stringify(data, null, 2)
     );
 

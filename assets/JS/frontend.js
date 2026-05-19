@@ -1,7 +1,7 @@
 async function saveData() {
-    dishes = await getRequest("http://localhost:8000/api/dishes");
-    dietaries = await getRequest("http://localhost:8000/api/dietary");
-    countries = await getRequest("http://localhost:8000/api/dishes/countries");
+    dishes = await getRequest("/api/dishes");
+    dietaries = await getRequest("/api/dietary");
+    countries = await getRequest("/api/dishes/countries");
 }
 
 function tagInput() {
@@ -156,7 +156,7 @@ function submitFilter() {
         }
 
         let queryString = queryParts.join("&");
-        let url = "http://localhost:8000/api/dishes";
+        let url = "/api/dishes";
 
         if (queryString) {
             url += "?" + queryString;
@@ -326,7 +326,7 @@ function signUp() {
         }
 
         try {
-            await postRequest("http://localhost:8000/api/users", body);
+            await postRequest("/api/users", body);
             console.log("Konto skapat!");
         }
         catch (err) {
@@ -346,7 +346,7 @@ function login() {
         }
 
         try {
-            let res = await fetch("http://localhost:8000/api/login", {
+            let res = await fetch("/api/login", {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -370,7 +370,7 @@ function login() {
 
 async function loadProfilePage() {
     try {
-        let res = await fetch("http://localhost:8000/api/profile", {
+        let res = await fetch("/api/profile", {
             method: "GET",
             credentials: "include",
             headers: {
@@ -394,7 +394,7 @@ function search() {
     searchBtn.addEventListener("click", async function (e) {
         e.preventDefault();
         let search = document.getElementById("searchValue").value;
-        let result = await getRequest("http://localhost:8000/api/dishes/search?q=" + search);
+        let result = await getRequest("/api/dishes/search?q=" + search);
         createProducts(result);
     })
 }
@@ -435,7 +435,7 @@ async function addDish() {
             imageUrl: addForm.elements.image.value
         }
 
-        await postRequest("http://localhost:8000/api/dishes", body);
+        await postRequest("/api/dishes", body);
         alert("Dish created");
 
     });
