@@ -1,5 +1,5 @@
 export function getAllDiets() {
-    const text = Deno.readTextFileSync("../../JSON/data.json");
+    const text = Deno.readTextFileSync("JSON/data.json");
     const data = JSON.parse(text);
     let diets = data.dietary;
 
@@ -7,7 +7,7 @@ export function getAllDiets() {
 }
 
 export function getDietById(id) {
-    const text = Deno.readTextFileSync("../../JSON/data.json");
+    const text = Deno.readTextFileSync("JSON/data.json");
     const data = JSON.parse(text);
     let diets = data.dietary;
     let matchedDiet;
@@ -21,7 +21,7 @@ export function getDietById(id) {
 }
 
 export function getDishesByDietId(id) {
-    const text = Deno.readTextFileSync("../../JSON/data.json");
+    const text = Deno.readTextFileSync("JSON/data.json");
     const data = JSON.parse(text);
 
     let dishes = data.dishes;

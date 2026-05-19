@@ -1,7 +1,7 @@
 async function saveData() {
-    dishes = await getRequest("http://localhost:8000/api/dishes");
-    dietaries = await getRequest("http://localhost:8000/api/dietary");
-    countries = await getRequest("http://localhost:8000/api/dishes/countries");
+    dishes = await getRequest("/api/dishes");
+    dietaries = await getRequest("/api/dietary");
+    countries = await getRequest("/api/dishes/countries");
 }
 
 function tagInput() {
@@ -156,7 +156,7 @@ function submitFilter() {
         }
 
         let queryString = queryParts.join("&");
-        let url = "http://localhost:8000/api/dishes";
+        let url = "/api/dishes";
 
         if (queryString) {
             url += "?" + queryString;
@@ -326,7 +326,7 @@ function signUp() {
         }
 
         try {
-            await postRequest("http://localhost:8000/api/users", body);
+            await postRequest("/api/users", body);
             console.log("Konto skapat!");
         }
         catch (err) {
@@ -346,7 +346,7 @@ function login() {
         }
 
         try {
-            let res = await fetch("http://localhost:8000/api/login", {
+            let res = await fetch("/api/login", {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -370,7 +370,7 @@ function login() {
 
 async function loadProfilePage() {
     try {
-        let res = await fetch("http://localhost:8000/api/profile", {
+        let res = await fetch("/api/profile", {
             method: "GET",
             credentials: "include",
             headers: {
@@ -394,7 +394,7 @@ function search() {
     searchBtn.addEventListener("click", async function (e) {
         e.preventDefault();
         let search = document.getElementById("searchValue").value;
-        let result = await getRequest("http://localhost:8000/api/dishes/search?q=" + search);
+        let result = await getRequest("/api/dishes/search?q=" + search);
         createProducts(result);
     })
 }
@@ -435,13 +435,13 @@ async function addDish() {
             imageUrl: addForm.elements.image.value
         }
 
-        await postRequest("http://localhost:8000/api/dishes", body);
+        await postRequest("/api/dishes", body);
         alert("Dish created");
 
     });
 }
 
-function deleteDish() {
+function autoFillInformationChangeDelete() {
     let form = document.querySelector("#changeDish");
     let name = form.elements.name;
     let selectCountry = form.elements.country;
@@ -456,7 +456,7 @@ function deleteDish() {
     for (let dish of dishes) {
         let option = document.createElement("option");
         option.textContent = dish.name;
-        option.value = dish.id;
+        option.value = dish.name;
         name.appendChild(option);
     }
 
@@ -478,7 +478,7 @@ function deleteDish() {
 
     name.addEventListener("change", function (e) {
         for (let dish of dishes) {
-            if (dish.id == name.value) {
+            if (dish.name == name.value) {
                 inputDescription.value = dish.description;
                 selectCountry.value = dish.country;
                 inputTime.value = dish.time;
@@ -494,6 +494,59 @@ function deleteDish() {
                 }
             }
         }
+    })
+}
+
+function deleteDish() {
+    let btn = document.querySelector(".deleteBtn");
+    btn.addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        let form = document.querySelector("#changeDish");
+        let selectedDish = form.elements.name.value;
+        let selectedID;
+
+        for (let dish of dishes) {
+            if (dish.name == selectedDish) {
+                selectedID = dish.id;
+            }
+        }
+        
+        await deleteRequest("http://localhost:8000/api/dishes/" + selectedID);
+        alert("Dish removed");
+    })
+}
+
+function changeDish() {
+    let btn = document.querySelector(".changeBtn");
+    btn.addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        let form = document.querySelector("#changeDish");
+        let selectedDish = form.elements.name.value;
+
+        let dietary = [];
+        let checkboxes = document.querySelectorAll(".dietary");
+
+        for (let checkbox of checkboxes) {
+            if (checkbox.checked) {
+                dietary.push(Number(checkbox.value));
+            }
+        }
+
+        let body = {
+            name: form.elements.name.value,
+            description: form.elements.description.value,
+            country: form.elements.country.value,
+            time: form.elements.time.value,
+            dietary: dietary,
+            ingredients: ingredients,
+            instructions: form.elements.instructions.value,
+            imageUrl: form.elements.image.value
+        }
+        console.log(body);
+        await patchRequest("http://localhost:8000/api/dishes/" + selectedDish, body);
+        alert("Dish changed");
     })
 }
 
