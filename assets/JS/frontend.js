@@ -158,7 +158,6 @@ function createProductPage() {
             <h1>dish not found</h1>`;
         return;
     }
-
     let ingredientsHtml = "";
     for (let ingredient of chosenDish.ingredients) {
         ingredientsHtml += `<li><h2>${ingredient}</h2></li>
@@ -210,6 +209,8 @@ function createProductPage() {
     </div>
     </div>
     `;
+
+    document.title = chosenDish.name;
 }
 
 function createProfilePage(user) {
