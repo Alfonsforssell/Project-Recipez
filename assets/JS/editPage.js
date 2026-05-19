@@ -1,4 +1,6 @@
-function init() {
+async function init() {
+    await saveData();
+    addDish()
     tagInput();
 }
 

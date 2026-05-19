@@ -8,7 +8,7 @@ function tagInput() {
     const input = document.getElementById("ingredientInput");
     const tagsContainer = document.getElementById("tags");
 
-    let ingredients = [];
+
 
     input.addEventListener("keydown", function (e) {
         if (e.key === "Enter" && input.value.trim() !== "") {
@@ -341,8 +341,63 @@ function search() {
         createProducts(result);
     })
 }
+async function addDish() {
+    let addForm = document.getElementById("addDish");
+    let addButton = document.querySelector(".btn");
 
 
+    addButton.addEventListener("click", async function (e) {
+        e.preventDefault()
+
+        let dietary = [];
+        let checkboxes = document.querySelectorAll(".dietary");
+
+        for (let checkbox of checkboxes) {
+            if (checkbox.checked) {
+                if (checkbox.name === "vegan") {
+                    dietary.push(1);
+                }
+                if (checkbox.name === "meat") {
+                    dietary.push(2);
+                }
+                if (checkbox.name === "lactose") {
+                    dietary.push(3);
+                }
+                if (checkbox.name === "gluten") {
+                    dietary.push(4);
+                }
+                if (checkbox.name === "fish") {
+                    dietary.push(5);
+                }
+                if (checkbox.name === "halal") {
+                    dietary.push(6);
+                }
+                if (checkbox.name === "healthy") {
+                    dietary.push(7);
+                }
+            }
+
+        }
+
+
+        let body = {
+            name: addForm.elements.name.value,
+            description: addForm.elements.description.value,
+            country: addForm.elements.country.value,
+            time: Number(addForm.elements.time.value),
+            dietary: dietary,
+            ingredients: ingredients,
+            instructions: addForm.elements.instructions.value,
+            imageUrl: addForm.elements.image.value
+        }
+
+        await postRequest("http://localhost:8000/api/dishes", body);
+        alert("Dish created");
+
+    });
+}
+
+let ingredients = [];
 let countries = [];
 let dishes = [];
 let dietaries = [];
