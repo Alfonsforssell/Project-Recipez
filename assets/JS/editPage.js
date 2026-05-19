@@ -1,5 +1,7 @@
-function init() {
+async function init() {
+    await saveData();
     tagInput();
+    deleteDish();
 }
 
 init();

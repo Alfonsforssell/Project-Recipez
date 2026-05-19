@@ -342,6 +342,59 @@ function search() {
     })
 }
 
+function deleteDish() {
+    let form = document.querySelector("#changeDish");
+    let name = form.elements.name;
+    let selectCountry = form.elements.country;
+    let inputDescription = form.elements.description;
+    let inputTime = form.elements.time;
+    let dietCheckboxes = [];
+    let ingredientsTags = [];
+    let inputInstructions = form.elements.instructions;
+    let inputImage = form.elements.image;
+    let checkBoxes = document.querySelectorAll("#changeDish .dietary");
+
+    for (let dish of dishes) {
+        let option = document.createElement("option");
+        option.textContent = dish.name;
+        option.value = dish.id;
+        name.appendChild(option);
+    }
+
+    for (let dish of dishes) {
+        let option = document.createElement("option");
+        option.textContent = dish.country;
+        option.value = dish.country;
+        selectCountry.appendChild(option);
+    }
+
+    inputDescription.value = "";
+    selectCountry.value = "none";
+    inputTime.value = "";
+    inputInstructions.value = "";
+    inputImage.value = "";
+    for (let box of checkBoxes) {
+        box.checked = false;
+    }
+
+    name.addEventListener("change", function (e) {
+        for (let dish of dishes) {
+            if (dish.id == name.value) {
+                inputDescription.value = dish.description;
+                selectCountry.value = dish.country;
+                inputTime.value = dish.time;
+                inputInstructions.value = dish.instructions;
+                inputImage.value = dish.imageUrl;
+
+                for (let box of checkBoxes) {
+                    box.checked = dish.dietary.includes(parseInt(box.value));
+                }
+
+            }
+        }
+    })
+}
+
 let countries = [];
 let dishes = [];
 let dietaries = [];
