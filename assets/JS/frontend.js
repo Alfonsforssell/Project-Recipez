@@ -417,6 +417,7 @@ async function addDish() {
         let checkboxes = document.querySelectorAll(".dietary");
         
         for (let checkbox of checkboxes) {
+            if (checkbox.checked) {
                 dietary.push(Number(checkbox.value));
             }
         }
