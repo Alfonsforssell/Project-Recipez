@@ -354,25 +354,25 @@ async function addDish() {
 
         for (let checkbox of checkboxes) {
             if (checkbox.checked) {
-                if (checkbox.name === "vegan") {
+                if (checkbox.value === 1) {
                     dietary.push(1);
                 }
-                if (checkbox.name === "meat") {
+                if (checkbox.value === 2) {
                     dietary.push(2);
                 }
-                if (checkbox.name === "lactose") {
+                if (checkbox.value === 3) {
                     dietary.push(3);
                 }
-                if (checkbox.name === "gluten") {
+                if (checkbox.value === 4) {
                     dietary.push(4);
                 }
-                if (checkbox.name === "fish") {
+                if (checkbox.value === 5) {
                     dietary.push(5);
                 }
-                if (checkbox.name === "halal") {
+                if (checkbox.value === 6) {
                     dietary.push(6);
                 }
-                if (checkbox.name === "healthy") {
+                if (checkbox.value === 7) {
                     dietary.push(7);
                 }
             }
