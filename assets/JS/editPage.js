@@ -1,8 +1,8 @@
 async function init() {
     await saveData();
     tagInput();
-    addDish()
     autoFillInformationChangeDelete();
+    addDish()
     deleteDish();
     changeDish();
 }
