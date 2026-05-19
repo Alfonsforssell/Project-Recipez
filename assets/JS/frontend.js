@@ -240,8 +240,6 @@ function createProductPage() {
     </div>
     </div>
     `;
-
-    document.title = chosenDish.name;
 }
 
 function createProfilePage(user) {
@@ -311,7 +309,6 @@ function signUp() {
     let signUpForm = document.getElementById("signUpForm");
     signUpForm.addEventListener("submit", async function (e) {
         e.preventDefault();
-        let userData = saveData();
 
         let username = signUpForm.elements.username.value;
         let password = signUpForm.elements.password.value;
@@ -349,12 +346,47 @@ function login() {
         }
 
         try {
-            await postRequest("http://localhost:8000/api/login", body);
+            let res = await fetch("http://localhost:8000/api/login", {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(body)
+            })
+
+            if (!res.ok) {
+                console.log("Login failed");
+                return;
+            }
+
             window.location.href = "profilePage.html";
         } catch (err) {
             console.log(err.message);
         }
     })
+}
+
+async function loadProfilePage() {
+    try {
+        let res = await fetch("http://localhost:8000/api/profile", {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                "Accept": "application/json"
+            }
+        }); 
+
+        if (!res.ok) {
+            window.location.href = "login.html";
+            return; 
+        }
+        let user = await res.json();
+        createProfilePage(user);
+    } catch (err) {
+        console.log(err.message);
+    }
 }
 
 function search() {

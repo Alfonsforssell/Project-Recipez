@@ -15,8 +15,8 @@ function validateJsonAccept(request) {
 
 const HEADERS = {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE",
+    "Access-Control-Allow-Credentials": "true",
+    "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization"
 };
 
@@ -28,7 +28,16 @@ async function handler(request) {
     let userIdRoute = new URLPattern({ pathname: "/api/users/:id" });
     let userFavoritesRoute = new URLPattern({ pathname: "/api/users/:id/favorites" });
 
+
+    if (request.method === "OPTIONS") {
+        return new Response(null, {
+            status: 204,
+            headers: HEADERS
+        });
+    }
+
     if (url.pathname.startsWith("/api/")) {
+
         if (request.method === "GET") {
 
             if (url.pathname === "/api/dishes") {
@@ -94,6 +103,48 @@ async function handler(request) {
                 let countries = dishes.getAllCountries();
 
                 return new Response(JSON.stringify(countries), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
+
+            if (url.pathname === "/api/profile") {
+                let cookieHeader = request.headers.get("cookie");
+
+                if (!cookieHeader) {
+                    return new Response(JSON.stringify({ Error: "Not logged in" }), {
+                        headers: HEADERS,
+                        status: 401
+                    })
+                }
+                let match = cookieHeader.match(/session_id=(\d+)/);
+                
+                if (!match) {
+                    return new Response(JSON.stringify({ Error: "Invalid session" }), {
+                        headers: HEADERS,
+                        status: 401
+                    });
+                }
+
+                let sessionId = parseInt(match[1]);
+
+                let allUsers = users.getAllUsers();
+                let matchedUser = null;
+
+                for (let user of allUsers) {
+                    if (user.id === sessionId) {
+                        matchedUser = user;
+                    }
+                }
+
+                if (!matchedUser) {
+                    return new Response(JSON.stringify({ Error: "User not found" }), {
+                        headers: HEADERS,
+                        status: 401
+                    })
+                }
+
+                return new Response(JSON.stringify(matchedUser), {
                     headers: HEADERS,
                     status: 200
                 })
@@ -328,10 +379,10 @@ async function handler(request) {
                     });
                 }
 
-                return newResponse(JSON.stringify({ message: "Logged in" }), {
+                return new Response(JSON.stringify({ message: "Logged in" }), {
                     headers: {
                         "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Credentials": "true",
                         "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE",
                         "Access-Control-Allow-Headers": "Content-Type, Authorization",
                         "Set-Cookie": `session_id=${matchedUser.id}; Max-Age=86400`
