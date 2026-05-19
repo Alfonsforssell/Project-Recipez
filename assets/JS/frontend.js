@@ -335,6 +335,7 @@ function search() {
     })
 }
 
+
 let countries = [];
 let dishes = [];
 let dietaries = [];
