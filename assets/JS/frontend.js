@@ -386,25 +386,25 @@ async function addDish() {
 
         for (let checkbox of checkboxes) {
             if (checkbox.checked) {
-                if (checkbox.value === 1) {
+                if (checkbox.value == "1") {
                     dietary.push(1);
                 }
-                if (checkbox.value === 2) {
+                if (checkbox.value == "2") {
                     dietary.push(2);
                 }
-                if (checkbox.value === 3) {
+                if (checkbox.value == "3") {
                     dietary.push(3);
                 }
-                if (checkbox.value === 4) {
+                if (checkbox.value == "4") {
                     dietary.push(4);
                 }
-                if (checkbox.value === 5) {
+                if (checkbox.value == "5") {
                     dietary.push(5);
                 }
-                if (checkbox.value === 6) {
+                if (checkbox.value == "6") {
                     dietary.push(6);
                 }
-                if (checkbox.value === 7) {
+                if (checkbox.value == "7") {
                     dietary.push(7);
                 }
             }
@@ -423,13 +423,15 @@ async function addDish() {
             imageUrl: addForm.elements.image.value
         }
 
+        console.log(body);
+
         await postRequest("http://localhost:8000/api/dishes", body);
         alert("Dish created");
 
     });
 }
 
-function deleteDish() {
+function autoFillInformationChangeDelete() {
     let form = document.querySelector("#changeDish");
     let name = form.elements.name;
     let selectCountry = form.elements.country;
@@ -444,7 +446,7 @@ function deleteDish() {
     for (let dish of dishes) {
         let option = document.createElement("option");
         option.textContent = dish.name;
-        option.value = dish.id;
+        option.value = dish.name;
         name.appendChild(option);
     }
 
@@ -466,7 +468,7 @@ function deleteDish() {
 
     name.addEventListener("change", function (e) {
         for (let dish of dishes) {
-            if (dish.id == name.value) {
+            if (dish.name == name.value) {
                 inputDescription.value = dish.description;
                 selectCountry.value = dish.country;
                 inputTime.value = dish.time;
@@ -482,6 +484,80 @@ function deleteDish() {
                 }
             }
         }
+    })
+}
+
+function deleteDish() {
+    let btn = document.querySelector(".deleteBtn");
+    btn.addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        let form = document.querySelector("#changeDish");
+        let selectedDish = form.elements.name.value;
+        let selectedID;
+
+        for (let dish of dishes) {
+            if (dish.name == selectedDish) {
+                selectedID = dish.id;
+            }
+        }
+        
+        await deleteRequest("http://localhost:8000/api/dishes/" + selectedID);
+        alert("Dish removed");
+    })
+}
+
+function changeDish() {
+    let btn = document.querySelector(".changeBtn");
+    btn.addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        let form = document.querySelector("#changeDish");
+        let selectedDish = form.elements.name.value;
+
+        let dietary = [];
+        let checkboxes = document.querySelectorAll(".dietary");
+
+        for (let checkbox of checkboxes) {
+            if (checkbox.checked) {
+                if (checkbox.value == "1") {
+                    dietary.push(1);
+                }
+                if (checkbox.value == "2") {
+                    dietary.push(2);
+                }
+                if (checkbox.value == "3") {
+                    dietary.push(3);
+                }
+                if (checkbox.value == "4") {
+                    dietary.push(4);
+                }
+                if (checkbox.value == "5") {
+                    dietary.push(5);
+                }
+                if (checkbox.value == "6") {
+                    dietary.push(6);
+                }
+                if (checkbox.value == "7") {
+                    dietary.push(7);
+                }
+            }
+
+        }
+
+        let body = {
+            name: form.elements.name.value,
+            description: form.elements.description.value,
+            country: form.elements.country.value,
+            time: form.elements.time.value,
+            dietary: dietary,
+            ingredients: ingredients,
+            instructions: form.elements.instructions.value,
+            imageUrl: form.elements.image.value
+        }
+        console.log(body);
+        await patchRequest("http://localhost:8000/api/dishes/" + selectedDish, body);
+        alert("Dish changed");
     })
 }
 
