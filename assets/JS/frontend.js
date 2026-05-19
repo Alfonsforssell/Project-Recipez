@@ -8,8 +8,6 @@ function tagInput() {
     const input = document.getElementById("ingredientInput");
     const tagsContainer = document.getElementById("tags");
 
-
-
     input.addEventListener("keydown", function (e) {
         if (e.key === "Enter" && input.value.trim() !== "") {
             e.preventDefault();
@@ -17,33 +15,60 @@ function tagInput() {
             const value = input.value.trim();
             ingredients.push(value);
 
-            createTag(value);
+            createTagAdd(value);
             input.value = "";
         }
     });
+}
 
-    function createTag(text) {
-        const tag = document.createElement("div");
-        tag.classList.add("tag");
+function createTagAdd(text) {
+    const input = document.querySelector("#addDish #ingredientInput");
+    const tagsContainer = document.querySelector("#addDish #tags");
+    const tag = document.createElement("div");
+    tag.classList.add("tag");
 
-        tag.innerHTML = `
+    tag.innerHTML = `
         ${text}
         <span>✖</span>
     `;
 
-        tag.querySelector("span").addEventListener("click", () => {
-            tag.remove();
-            let newIngredients = [];
-            for (let i = 0; i < ingredients.length; i++) {
-                if (ingredients[i] !== text) {
-                    newIngredients.push(ingredients[i]);
-                }
+    tag.querySelector("span").addEventListener("click", () => {
+        tag.remove();
+        let newIngredients = [];
+        for (let i = 0; i < ingredients.length; i++) {
+            if (ingredients[i] !== text) {
+                newIngredients.push(ingredients[i]);
             }
-            ingredients = newIngredients;
-        });
+        }
+        ingredients = newIngredients;
+    });
 
-        tagsContainer.appendChild(tag);
-    }
+    tagsContainer.appendChild(tag);
+}
+
+function createTagChange(text) {
+    const input = document.querySelector("#changeDish #ingredientInput");
+    const tagsContainer = document.querySelector("#changeDish #tags");
+    const tag = document.createElement("div");
+    tag.classList.add("tag");
+
+    tag.innerHTML = `
+        ${text}
+        <span>✖</span>
+    `;
+
+    tag.querySelector("span").addEventListener("click", () => {
+        tag.remove();
+        let newIngredients = [];
+        for (let i = 0; i < ingredients.length; i++) {
+            if (ingredients[i] !== text) {
+                newIngredients.push(ingredients[i]);
+            }
+        }
+        ingredients = newIngredients;
+    });
+
+    tagsContainer.appendChild(tag);
 }
 
 function getDietaryImgById(id) {
@@ -344,6 +369,13 @@ function search() {
 async function addDish() {
     let addForm = document.getElementById("addDish");
     let addButton = document.querySelector(".btn");
+    let selectCountry = document.querySelector("#addDish").elements.country;
+    for (let dish of dishes) {
+        let option = document.createElement("option");
+        option.textContent = dish.country;
+        option.value = dish.country;
+        selectCountry.appendChild(option);
+    }
 
 
     addButton.addEventListener("click", async function (e) {
@@ -445,6 +477,9 @@ function deleteDish() {
                     box.checked = dish.dietary.includes(parseInt(box.value));
                 }
 
+                for (let ingredient of dish.ingredients) {
+                    createTagChange(ingredient);
+                }
             }
         }
     })
