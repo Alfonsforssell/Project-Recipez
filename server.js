@@ -106,22 +106,14 @@ async function handler(request) {
                         status: 401
                     })
                 }
-                let match = cookieHeader.match(/session_id=(\d+)/);
-                
-                if (!match) {
-                    return new Response(JSON.stringify({ Error: "Invalid session" }), {
-                        headers: HEADERS,
-                        status: 401
-                    });
-                }
 
-                let sessionId = parseInt(match[1]);
+                let sessionId = cookieHeader.split("session_id=")[1].split(";")[0].trim();
 
                 let allUsers = users.getAllUsers();
                 let matchedUser = null;
 
                 for (let user of allUsers) {
-                    if (user.id === sessionId) {
+                    if (user.cookie === sessionId) {
                         matchedUser = user;
                     }
                 }
@@ -132,7 +124,7 @@ async function handler(request) {
                         status: 401
                     })
                 }
-
+                console.log("Matched user:", matchedUser);
                 return new Response(JSON.stringify(matchedUser), {
                     headers: HEADERS,
                     status: 200
@@ -368,11 +360,13 @@ async function handler(request) {
                     });
                 }
                 
-                let sessionId = crypto.randomUUID()
+                let sessionId = crypto.randomUUID();
+                matchedUser.cookie = sessionId;
+                users.saveUsers(allUsers);
                 return new Response(JSON.stringify({ message: "Logged in" }), {
                     headers: {
                         "Content-Type": "application/json",
-                        "Set-Cookie": `session_id=${sessionId}; Max-Age=86400`
+                        "Set-Cookie": `session_id=${sessionId}; Max-Age=86400; Path=/`
                     },
                     status: 200
                 });

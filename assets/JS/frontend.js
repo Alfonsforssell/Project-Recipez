@@ -85,7 +85,7 @@ function createProducts(filteredDishes = dishes) {
 
     for (let dish of filteredDishes) {
         let div = document.createElement("a");
-        div.href = "productPage.html?id=" + dish.id;
+        div.href = "/assets/html/productPage.html?id=" + dish.id;
         div.innerHTML = `
         <img class="cardImg" src="${dish.imageUrl}" alt="">
                 <h1>${dish.name}</h1>
@@ -185,7 +185,7 @@ function createProductPage() {
 
     if (!chosenDish) {
         container.innerHTML = `
-        <a href="index.html">← Back to dishes</a>
+        <a href="/assets/html/index.html">← Back to dishes</a>
             <h1>dish not found</h1>`;
         return;
     }
@@ -249,7 +249,7 @@ function createProfilePage(user) {
     if (!user) {
         profileCard.innerHTML = `
             <h2>Du är inte inloggad</h2>
-            <a href="login.html" class="editPageBtn">Logga in</a>
+            <a href="/assets/html/loginPage.html" class="editPageBtn">Logga in</a>
         `;
 
         cards.innerHTML = "";
@@ -261,8 +261,8 @@ function createProfilePage(user) {
     <p><span>Bio:</span> ${user.bio}</p>
     <p><span>Favoriter:</span> ${user.favourites.length} st</p>
     <p><span>Ursprung:</span> ${user.origin}</p>
-    <a href="#" class="editPageBtn">Redigera rätter</a>
-    <a href="#" class="logout">Logga ut</a>
+    <a href="/assets/html/editPage.html" class="editPageBtn">Redigera rätter</a>
+    <a href="/assets/html/loginPage.html" class="logout">Logga ut</a>
     `;
 
     let favouritesHtml = "";
@@ -283,7 +283,7 @@ function createProfilePage(user) {
                 }
 
                 favouritesHtml += `
-                    <a class="card" href = "productPage.html?id=${dish.id}">
+                    <a class="card" href = "/assets/html/productPage.html?id=${dish.id}">
                         <img class="cardImg" src="${dish.imageUrl}" alt="${dish.name}">
                         <h1>${dish.name}</h1>
                         <p>${dish.description}</p>
@@ -361,7 +361,7 @@ function login() {
                 return;
             }
 
-            window.location.href = "profilePage.html";
+            window.location.href = "/assets/html/profilePage.html";
         } catch (err) {
             console.log(err.message);
         }
@@ -379,7 +379,7 @@ async function loadProfilePage() {
         }); 
 
         if (!res.ok) {
-            window.location.href = "login.html";
+            window.location.href = "/assets/html/loginPage.html";
             return; 
         }
         let user = await res.json();
@@ -545,6 +545,7 @@ function changeDish() {
             imageUrl: form.elements.image.value
         }
         console.log(body);
+        console.log(selectedDish);
         await patchRequest("http://localhost:8000/api/dishes/" + selectedDish, body);
         alert("Dish changed");
     })

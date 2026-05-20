@@ -56,3 +56,7 @@ export function logIn(username, password) {
     let div = document.createElement("div");
     div.innerHTML = `<p class="invalid">Ogiltigt användarnamn eller lösenord</p>`
 }
+
+export function saveUsers(users) {
+    Deno.writeTextFileSync("JSON/users.json", JSON.stringify(users));
+}
