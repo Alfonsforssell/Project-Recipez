@@ -445,9 +445,17 @@ async function handler(request) {
                         status: 404
                     });
                 }
+                let user = getLoggedInUser(request);
 
-                let user = await request.json();
-                let updatedUser = users.addFav(user.id, user.favourites);
+                if (!user) {
+                    return new Response(JSON.stringify({ Error: "Unauthorized" }), {
+                        headers: HEADERS,
+                        status: 401
+                    });
+                }
+
+                let body = await request.json();
+                let updatedUser = users.addFav(user.id, body.id);
 
                 if (!updatedUser) {
                     return new Response(JSON.stringify({ Error: "Bad Request" }), {
