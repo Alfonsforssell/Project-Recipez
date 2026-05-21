@@ -100,6 +100,7 @@ function checkCountry(country) {
     if (country == "none") {
         return "Okänt";
     }
+    return country;
 }
 
 function createProducts(filteredDishes = dishes) {

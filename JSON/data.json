@@ -1,469 +1,469 @@
 {
-  "dishes": [
-    {
-      "id": 1,
-      "name": "Korv Stroganoff",
-      "description": "Korvstroganoff är en klassisk svensk vardagsrätt med falukorv, lök och krämig tomatsås. Den är snabb att laga, mättande och serveras oftast tillsammans med nykokt ris.",
-      "country": "Sverige",
-      "time": 30,
-      "dietary": [
-        5
-      ],
-      "ingredients": [
-        "Ris",
-        "Falukorv",
-        "Gul Lök",
-        "Olja",
-        "Tomatpuré",
-        "Matlagningsgrädde",
-        "Mjölk",
-        "Soja",
-        "Dijonsenap",
-        "Salt",
-        "Peppar"
-      ],
-      "instructions": "Koka riset enligt anvisningarna på förpackningen tills det är mjukt. Skär falukorven i jämna stavar. Skala och hacka löken fint. Hetta upp olja i en stekpanna. Stek korv och lök tillsammans tills de får färg. Tillsätt tomatpuré och låt fräsa kort. Häll i grädde och mjölk och rör om ordentligt. Smaksätt med soja och dijonsenap. Låt grytan sjuda några minuter tills den tjocknar. Smaka av med salt och peppar innan servering.",
-      "imageUrl": "/assets/images/stroganoff.jpg"
-    },
-    {
-      "id": 2,
-      "name": "Spaghetti Bolognese",
-      "description": "Spaghetti bolognese är en klassisk italiensk pastarätt med rik köttfärssås, tomat och örter. Den är smakrik, mättande och passar perfekt till både vardag och helg.",
-      "country": "Italien",
-      "time": "45",
-      "dietary": [
-        5
-      ],
-      "ingredients": [
-        "Spaghetti",
-        "Nötfärs",
-        "Gul lök",
-        "Vitlök",
-        "Krossade tomater",
-        "Tomatpuré",
-        "Olja",
-        "Salt",
-        "Peppar",
-        "Oregano"
-      ],
-      "instructions": "Koka spaghettin enligt anvisningarna i saltat vatten. Hacka lök och vitlök noggrant. Hetta upp olja i en stekpanna. Fräs lök och vitlök tills de mjuknar. Tillsätt köttfärsen och bryn den ordentligt. Rör ner tomatpuré och låt den steka kort. Häll i krossade tomater och kryddor. Låt såsen sjuda långsamt i cirka tjugo minuter. Rör om då och då så att det inte bränner fast. Servera såsen tillsammans med den nykokta pastan.",
-      "imageUrl": "/assets/images/bolognese.jpg"
-    },
-    {
-      "id": 3,
-      "name": "Vegetarisk Chili",
-      "description": "Vegetarisk chili är en smakrik gryta med bönor, tomat och kryddor. Den är värmande, näringsrik och passar utmärkt som ett vegetariskt alternativ till klassiska kötträtter.",
-      "country": "Mexiko",
-      "time": 35,
-      "dietary": [
-        2
-      ],
-      "ingredients": [
-        "Kidneybönor",
-        "Krossade tomater",
-        "Paprika",
-        "Gul lök",
-        "Vitlök",
-        "Chili",
-        "Spiskummin",
-        "Olja",
-        "Salt"
-      ],
-      "instructions": "Skala och hacka löken och vitlöken fint. Skär paprikan i små bitar. Hetta upp olja i en kastrull. Fräs lök och vitlök tills de blir mjuka. Tillsätt paprika och låt den steka med. Häll i krossade tomater och bönor. Krydda med chili och spiskummin. Låt grytan sjuda i cirka tjugo minuter. Rör om då och då under tillagningen. Smaka av med salt innan servering.",
-      "imageUrl": "/assets/images/chili.jpg"
-    },
-    {
-      "id": 4,
-      "name": "Kyckling Curry",
-      "description": "Kyckling curry är en krämig och aromatisk gryta med kokosmjölk och kryddor. Den är både mild och smakrik, och serveras ofta med ris som absorberar den goda såsen.",
-      "country": "Indien",
-      "time": "40",
-      "dietary": [
-        5,
-        6
-      ],
-      "ingredients": [
-        "Kyckling",
-        "Kokosmjölk",
-        "Curry",
-        "Lök",
-        "Vitlök",
-        "Olja",
-        "Salt"
-      ],
-      "instructions": "Skär kycklingen i mindre bitar. Hacka lök och vitlök fint. Hetta upp olja i en stekpanna. Stek kycklingen tills den får färg runtom. Tillsätt lök och vitlök och låt mjukna. Strö över curry och rör om. Häll i kokosmjölken och blanda väl. Låt grytan sjuda i cirka tjugo minuter. Rör om då och då så att smakerna utvecklas. Smaka av med salt innan servering.",
-      "imageUrl": "/assets/images/curry.jpg"
-    },
-    {
-      "id": 5,
-      "name": "Pad Thai",
-      "description": "Pad Thai är en klassisk thailändsk nudelrätt med ägg, grönsaker och jordnötter. Den är både söt, syrlig och salt, vilket ger en balanserad och mycket populär smak.",
-      "country": "Thailand",
-      "time": 30,
-      "dietary": [
-        5
-      ],
-      "ingredients": [
-        "Risnudlar",
-        "Ägg",
-        "Morot",
-        "Salladslök",
-        "Soja",
-        "Jordnötter",
-        "Olja"
-      ],
-      "instructions": "Koka risnudlarna enligt anvisningarna tills de är mjuka. Skala och riv moroten. Skär salladslöken i tunna skivor. Hetta upp olja i en wok eller stekpanna. Stek grönsakerna snabbt på hög värme. Knäck i äggen och rör om tills de stelnar. Tillsätt nudlarna i pannan. Häll över soja och blanda väl. Låt allt bli genomvarmt under omrörning. Toppa med hackade jordnötter vid servering.",
-      "imageUrl": "/assets/images/padthai.jpg"
-    },
-    {
-      "id": 6,
-      "name": "Falafel med Hummus",
-      "description": "Falafel med hummus är en populär rätt från Mellanöstern med krispiga kikärtsbollar. Den serveras ofta med krämig hummus och passar perfekt som vegetarisk måltid.",
-      "country": "Mellanöstern",
-      "time": "50",
-      "dietary": [
-        1,
-        2,
-        5
-      ],
-      "ingredients": [
-        "Kikärtor",
-        "Vitlök",
-        "Persilja",
-        "Spiskummin",
-        "Olja",
-        "Tahini",
-        "Citron"
-      ],
-      "instructions": "Blötlägg kikärtorna om de är torra. Mixa kikärtor med vitlök och persilja. Krydda smeten med spiskummin och salt. Forma små bollar av smeten. Hetta upp rikligt med olja i en kastrull. Fritera falafeln tills den är gyllene. Lyft upp och låt rinna av på papper. Rör ihop hummus med tahini och citron. Smaka av hummusen efter behov. Servera falafeln tillsammans med hummus.",
-      "imageUrl": "/assets/images/falafel.jpg"
-    },
-    {
-      "id": 7,
-      "name": "Lax med Potatis",
-      "description": "Lax med potatis är en klassisk svensk rätt med ugnsbakad lax och kokt potatis. Den är enkel, nyttig och smaksätts ofta med dill och smör.",
-      "country": "Sverige",
-      "time": 25,
-      "dietary": [
-        3
-      ],
-      "ingredients": [
-        "Lax",
-        "Potatis",
-        "Dill",
-        "Smör",
-        "Salt",
-        "Peppar"
-      ],
-      "instructions": "Sätt ugnen på 200 grader. Skala och koka potatisen tills den är mjuk. Lägg laxen i en ugnsform. Krydda laxen med salt och peppar. Klicka över lite smör på fisken. Baka laxen i ugnen i cirka femton minuter. Hacka dill under tiden. Ta ut laxen när den är genomstekt. Strö över dill innan servering. Servera tillsammans med den kokta potatisen.",
-      "imageUrl": "/assets/images/lax.jpg"
-    },
-    {
-      "id": 8,
-      "name": "Tacos",
-      "description": "Tacos är en mexikansk klassiker med kryddad köttfärs och olika tillbehör. Rätten är flexibel, enkel att laga och uppskattas av både barn och vuxna.",
-      "country": "Mexiko",
-      "time": 20,
-      "dietary": [],
-      "ingredients": [
-        "Tortilla",
-        "Köttfärs",
-        "Sallad",
-        "Tomat",
-        "Ost",
-        "Tacokrydda"
-      ],
-      "instructions": "Hetta upp en stekpanna med lite olja. Stek köttfärsen tills den är genomstekt. Tillsätt tacokrydda och lite vatten. Låt köttet puttra några minuter. Hacka sallad och tomat under tiden. Riv osten fint. Värm tortillabröden lätt i en panna eller mikro. Lägg köttfärs i bröden. Fyll på med grönsaker och ost. Servera direkt medan allt är varmt.",
-      "imageUrl": "/assets/images/tacos.jpg"
-    },
-    {
-      "id": 9,
-      "name": "Caprese Sallad",
-      "description": "Caprese sallad är en enkel italiensk rätt med tomat, mozzarella och basilika. Den är fräsch, lätt och perfekt som förrätt eller sommarens sidorätt.",
-      "country": "Italien",
-      "time": 10,
-      "dietary": [
-        2,
-        3
-      ],
-      "ingredients": [
-        "Tomat",
-        "Mozzarella",
-        "Basilika",
-        "Olivolja",
-        "Salt"
-      ],
-      "instructions": "Skär tomaterna i jämna skivor. Skiva mozzarellan i liknande tjocklek. Lägg upp tomat och ost växelvis på en tallrik. Plocka färska basilikablad. Fördela bladen över salladen. Ringla över olivolja jämnt. Strö över lite salt efter smak. Låt salladen vila några minuter. Servera direkt för bästa smak. Ät gärna tillsammans med bröd.",
-      "imageUrl": "/assets/images/caprese.jpg"
-    },
-    {
-      "id": 10,
-      "name": "Ramen",
-      "description": "Ramen är en japansk nudelsoppa med smakrik buljong och olika toppings. Den är varm, mättande och kan varieras med kött, ägg och grönsaker.",
-      "country": "Japan",
-      "time": 60,
-      "dietary": [],
-      "ingredients": [
-        "Nudlar",
-        "Buljong",
-        "Ägg",
-        "Fläsk",
-        "Salladslök"
-      ],
-      "instructions": "Koka upp buljongen i en stor kastrull. Låt den sjuda och utveckla smak. Koka nudlarna separat enligt anvisning. Koka äggen till önskad konsistens. Skär fläsket i tunna skivor. Hacka salladslöken fint. Lägg nudlar i en skål. Häll över den varma buljongen. Lägg på kött och ägg. Toppa med salladslök innan servering.",
-      "imageUrl": "/assets/images/ramen.jpg"
-    },
-    {
-      "id": 11,
-      "name": "Shakshuka",
-      "description": "Shakshuka är en nordafrikansk rätt med ägg pocherade i kryddig tomatsås. Den är smakrik, enkel att laga och serveras ofta med bröd.",
-      "country": "Nordafrika",
-      "time": 30,
-      "dietary": [
-        2
-      ],
-      "ingredients": [
-        "Ägg",
-        "Tomat",
-        "Paprika",
-        "Lök",
-        "Vitlök",
-        "Spiskummin"
-      ],
-      "instructions": "Hacka lök, vitlök och paprika fint. Hetta upp olja i en stekpanna. Fräs grönsakerna tills de mjuknar. Tillsätt tomater och kryddor. Låt såsen sjuda i cirka tio minuter. Gör små gropar i såsen. Knäck äggen i groparna. Låt äggen tillagas försiktigt. Täck eventuellt med lock för jämn värme. Servera när äggen är lagom fasta.",
-      "imageUrl": "/assets/images/shakshuka.jpg"
-    },
-    {
-      "id": 12,
-      "name": "Pannkakor",
-      "description": "Pannkakor är en klassisk svensk rätt som serveras tunna och gyllene. De äts ofta med sylt och är populära både som lunch och dessert.",
-      "country": "Sverige",
-      "time": 25,
-      "dietary": [],
-      "ingredients": [
-        "Mjöl",
-        "Mjölk",
-        "Ägg",
-        "Salt",
-        "Smör"
-      ],
-      "instructions": "Vispa ihop mjöl, mjölk och ägg till en slät smet. Tillsätt en nypa salt. Låt smeten vila en stund. Hetta upp en stekpanna med smör. Häll i ett tunt lager smet. Stek tills ytan stelnar och får färg. Vänd pannkakan försiktigt. Stek andra sidan gyllene. Lägg upp på en tallrik. Servera med sylt eller andra tillbehör.",
-      "imageUrl": "/assets/images/pannkakor.jpg"
-    },
-    {
-      "id": 13,
-      "name": "Caesarsallad",
-      "description": "Caesarsallad är en klassisk sallad med kyckling, parmesan och krämig dressing. Den är både fräsch och mättande och passar perfekt som lätt måltid.",
-      "country": "USA",
-      "time": 25,
-      "dietary": [],
-      "ingredients": [
-        "Kyckling",
-        "Romansallad",
-        "Parmesan",
-        "Krutonger",
-        "Dressing"
-      ],
-      "instructions": "Stek kycklingen tills den är genomstekt. Krydda efter smak under stekningen. Skär kycklingen i mindre bitar. Skölj och hacka romansalladen. Lägg salladen i en skål. Tillsätt kycklingbitarna ovanpå. Strö över krutonger. Riv parmesan över salladen. Ringla över dressing jämnt. Blanda försiktigt innan servering.",
-      "imageUrl": "/assets/images/ceasar.jpg"
-    },
-    {
-      "id": 14,
-      "name": "Miso Soppa",
-      "description": "Miso soppa är en traditionell japansk soppa med misopasta och tofu. Den är lätt, varm och ofta serverad som förrätt i asiatiska måltider.",
-      "country": "Japan",
-      "time": 15,
-      "dietary": [
-        1,
-        3,
-        4
-      ],
-      "ingredients": [
-        "Miso",
-        "Tofu",
-        "Vatten",
-        "Salladslök"
-      ],
-      "instructions": "Koka upp vatten i en kastrull. Sänk värmen när det börjar sjuda. Rör ner misopastan försiktigt. Se till att den löses upp helt. Skär tofu i små kuber. Lägg ner tofun i soppan. Låt soppan bli varm utan att koka. Hacka salladslöken fint. Strö löken över soppan. Servera direkt medan den är varm.",
-      "imageUrl": "/assets/images/miso.jpg"
-    },
-    {
-      "id": 15,
-      "name": "Biff Tacos",
-      "description": "Biff tacos är en smakrik variant av tacos med saftig stekt biff. Den kombineras med grönsaker och kryddor för en fyllig och mättande måltid.",
-      "country": "Mexiko",
-      "time": 25,
-      "dietary": [],
-      "ingredients": [
-        "Biff",
-        "Tortilla",
-        "Paprika",
-        "Lök",
-        "Kryddor"
-      ],
-      "instructions": "Skär biffen i tunna strimlor. Hetta upp en stekpanna med olja. Stek köttet snabbt på hög värme. Krydda med önskade kryddor. Skiva paprika och lök. Stek grönsakerna lätt separat. Värm tortillabröden kort. Lägg kött i bröden. Toppa med grönsaker. Servera direkt när allt är varmt.",
-      "imageUrl": "/assets/images/bifftacos.jpg"
-    },
-    {
-      "id": 16,
-      "name": "Vegetarisk Lasagne",
-      "description": "Vegetarisk lasagne är en ugnsbakad pastarätt med grönsaker istället för kött. Den är krämig, smakrik och ett perfekt alternativ för vegetariska middagar.",
-      "country": "Italien",
-      "time": 60,
-      "dietary": [
-        2
-      ],
-      "ingredients": [
-        "Lasagneplattor",
-        "Tomat",
-        "Zucchini",
-        "Ost",
-        "Grädde"
-      ],
-      "instructions": "Sätt ugnen på 200 grader. Skär zucchinin i tunna skivor. Förbered en tomatsås i en kastrull. Smörj en ugnsform lätt. Varva lasagneplattor med sås och grönsaker. Häll över lite grädde mellan lagren. Toppa med riven ost. Grädda i ugnen i cirka fyrtio minuter. Låt lasagnen vila en stund efteråt. Servera varm.",
-      "imageUrl": "/assets/images/lasagne.jpg"
-    },
-    {
-      "id": 17,
-      "name": "Grillad Kyckling",
-      "description": "Grillad kyckling är en saftig och smakrik rätt som tillagas på grill. Den kryddas efter smak och passar bra med olika tillbehör.",
-      "country": "USA",
-      "time": 35,
-      "dietary": [
-        6
-      ],
-      "ingredients": [
-        "Kyckling",
-        "Olja",
-        "Kryddor",
-        "Salt"
-      ],
-      "instructions": "Förbered grillen till medelhög värme. Pensla kycklingen med olja. Krydda rikligt med salt och kryddor. Lägg kycklingen på grillen. Grilla tills den får fin färg. Vänd kycklingen regelbundet. Kontrollera att den är genomstekt. Låt köttet vila några minuter. Skär upp i bitar. Servera tillsammans med valfria tillbehör.",
-      "imageUrl": "/assets/images/grillkyckling.jpg"
-    },
-    {
-      "id": 18,
-      "name": "Risotto",
-      "description": "Risotto är en krämig italiensk risrätt som tillagas långsamt med buljong. Den får sin lena konsistens genom ständig omrörning och tillsatt ost och smör.",
-      "country": "Italien",
-      "time": 40,
-      "dietary": [
-        2
-      ],
-      "ingredients": [
-        "Ris",
-        "Buljong",
-        "Parmesan",
-        "Smör",
-        "Lök"
-      ],
-      "instructions": "Hacka löken fint. Hetta upp smör i en kastrull. Fräs löken tills den blir mjuk. Tillsätt riset och rör om. Häll i lite buljong åt gången. Rör kontinuerligt under tillagningen. Låt vätskan absorberas innan mer tillsätts. Fortsätt tills riset är krämigt. Rör ner parmesan på slutet. Smaka av innan servering.",
-      "imageUrl": "/assets/images/risotto.jpg"
-    },
-    {
-      "id": 19,
-      "name": "Poké Bowl",
-      "description": "Poké bowl är en hawaiiansk rätt med ris och rå fisk. Den kombineras med fräscha ingredienser och serveras kall i en skål.",
-      "country": "Hawaii",
-      "time": 20,
-      "dietary": [],
-      "ingredients": [
-        "Ris",
-        "Lax",
-        "Avokado",
-        "Soja",
-        "Sesam"
-      ],
-      "instructions": "Koka riset enligt anvisningarna. Låt riset svalna något innan servering. Skär laxen i kuber. Dela och skiva avokadon. Lägg riset i en skål. Placera lax och avokado ovanpå. Ringla över soja jämnt. Strö över sesamfrön. Arrangera snyggt i skålen. Servera direkt som en fräsch rätt.",
-      "imageUrl": "/assets/images/poke.jpg"
-    },
-    {
-      "id": 20,
-      "name": "Tomatsoppa",
-      "description": "Tomatsoppa är en enkel och värmande soppa gjord på tomater. Den är len, smakrik och passar perfekt som lätt lunch eller förrätt.",
-      "country": "Sverige",
-      "time": 25,
-      "dietary": [
-        1,
-        3,
-        4
-      ],
-      "ingredients": [
-        "Tomater",
-        "Lök",
-        "Vitlök",
-        "Buljong",
-        "Olja"
-      ],
-      "instructions": "Hacka lök och vitlök fint. Hetta upp olja i en kastrull. Fräs löken tills den mjuknar. Tillsätt tomaterna och rör om. Häll i buljong och låt koka. Låt soppan sjuda i cirka femton minuter. Mixa soppan slät med en stavmixer. Smaka av med salt och kryddor. Värm upp igen vid behov. Servera varm direkt.",
-      "imageUrl": "/assets/images/tomatsoppa.jpg"
-    },
-    {
-      "name": "Chicken Tikka Masala",
-      "description": "Chicken tikka masala är en snabblagad, smakrik och saftig indisk kycklinggryta med djupa och härliga smaker. Servera chicken tikka masalan med ris och njut av en prima måltid!",
-      "country": "Indien",
-      "time": "25",
-      "dietary": [
-        5
-      ],
-      "ingredients": [
-        "Gul Lök",
-        "Vitlök",
-        "Morot",
-        "Kycklingbröstfile",
-        "Olja",
-        "Krossade Tomater",
-        "Tikka Masala Kryddmix",
-        "Matyoghurt",
-        "Matlagningsgrädde"
-      ],
-      "instructions": "Skala och skiva lök, vitlök och morot. Skär kycklingen i grova bitar. Skala och riv ingefäran. Bryn kyckling, lök, vitlök och morot i oljan i en gryta eller stekpanna. Krydda med salt och ingefära. Tillsätt tomater och kryddmix. Låt koka under lock ca 10 minuter. Plocka upp kycklingen ur grytan och lägg åt sidan. Mixa såsen jämn med stavmixer eller i matberedare. Rör ner yoghurt och grädde. Lägg tillbaka kycklingen i såsen och koka ytterligare ca 2 minuter. Till servering: Servera med kokt ris eller annat gryn.",
-      "imageUrl": "https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_79181/cf_259/chicken_tikka_masala.jpg",
-      "id": 21
-    }
-  ],
-  "dietary": [
-    {
-      "name": "Vegansk",
-      "id": 1,
-      "description": "Vegansk mat är helt växtbaserad och utesluter alla ingredienser från djurriket, inklusive kött, fisk, skaldjur, mejeriprodukter, ägg och honung. Kosten baseras på grönsaker, baljväxter, frukt, bär, nötter, frön och spannmål. Det är en livsstil som ofta väljs av etiska, miljömässiga eller hälsomässiga skäl.",
-      "imageUrl": "/assets/icons/vegan.jpg"
-    },
-    {
-      "name": "Köttfri",
-      "id": 2,
-      "description": "Köttfri mat utesluter kött från landlevande djur, såsom nötkött, fläskkött och kyckling. Kosten kan fortfarande innehålla andra animaliska produkter som mejeriprodukter, ägg eller fisk. Fokus ligger ofta på vegetariska råvaror som grönsaker, baljväxter, spannmål och växtbaserade alternativ.",
-      "imageUrl": "/assets/icons/meat.jpg"
-    },
-    {
-      "name": "Laktosfri",
-      "id": 3,
-      "description": "Laktosfri mat innehåller inga eller mycket låga nivåer av laktos, vilket är mjölksocker som finns i mejeriprodukter. Produkter kan vara naturligt fria från laktos eller behandlade för att bryta ner laktosen. Detta passar personer med laktosintolerans.",
-      "imageUrl": "/assets/icons/lactose.jpg"
-    },
-    {
-      "name": "Glutenfri",
-      "id": 4,
-      "description": "Glutenfri mat utesluter gluten, ett protein som finns i vete, råg och korn. Kosten baseras istället på naturligt glutenfria ingredienser som ris, majs, potatis och glutenfria spannmål. Detta är viktigt för personer med celiaki eller glutenintolerans.",
-      "imageUrl": "/assets/icons/gluten.jpg"
-    },
-    {
-      "name": "Fiskfri",
-      "id": 5,
-      "description": "Fiskfri mat utesluter fisk och skaldjur helt. Kosten kan fortfarande inkludera andra animaliska produkter som kött, mejeriprodukter och ägg, eller vara helt växtbaserad beroende på preferens.",
-      "imageUrl": "/assets/icons/fish.jpg"
-    },
-    {
-      "name": "Halal",
-      "id": 6,
-      "description": "Halal mat följer islamska kostregler. Det innebär att maten är tillåten enligt religiösa riktlinjer, där exempelvis fläskkött och alkohol är förbjudet, och kött måste komma från djur som slaktats på ett specifikt sätt.",
-      "imageUrl": "/assets/icons/halal.jpg"
-    },
-    {
-      "name": "Hälsokost",
-      "id": 7,
-      "description": "Hälsokost fokuserar på näringsrik och balanserad mat som främjar välmående. Det inkluderar ofta fullkorn, grönsaker, frukt, nyttiga fetter och proteinrika livsmedel, samtidigt som man undviker starkt processad mat och tillsatser.",
-      "imageUrl": "/assets/icons/healt.jpg"
-    }
-  ]
+    "dishes": [
+        {
+            "id": 1,
+            "name": "Korv Stroganoff",
+            "description": "Korvstroganoff är en klassisk svensk vardagsrätt med falukorv, lök och krämig tomatsås. Den är snabb att laga, mättande och serveras oftast tillsammans med nykokt ris.",
+            "country": "Sverige",
+            "time": "30",
+            "dietary": [
+                5
+            ],
+            "ingredients": [
+                "Ris",
+                "Falukorv",
+                "Gul Lök",
+                "Olja",
+                "Tomatpuré",
+                "Matlagningsgrädde",
+                "Mjölk",
+                "Soja",
+                "Dijonsenap",
+                "Salt",
+                "Peppar"
+            ],
+            "instructions": "Koka riset enligt anvisningarna på förpackningen tills det är mjukt. Skär falukorven i jämna stavar. Skala och hacka löken fint. Hetta upp olja i en stekpanna. Stek korv och lök tillsammans tills de får färg. Tillsätt tomatpuré och låt fräsa kort. Häll i grädde och mjölk och rör om ordentligt. Smaksätt med soja och dijonsenap. Låt grytan sjuda några minuter tills den tjocknar. Smaka av med salt och peppar innan servering.",
+            "imageUrl": "/assets/images/stroganoff.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Spaghetti Bolognese",
+            "description": "Spaghetti bolognese är en klassisk italiensk pastarätt med rik köttfärssås, tomat och örter. Den är smakrik, mättande och passar perfekt till både vardag och helg.",
+            "country": "Italien",
+            "time": "45",
+            "dietary": [
+                5
+            ],
+            "ingredients": [
+                "Spaghetti",
+                "Nötfärs",
+                "Gul lök",
+                "Vitlök",
+                "Krossade tomater",
+                "Tomatpuré",
+                "Olja",
+                "Salt",
+                "Peppar",
+                "Oregano"
+            ],
+            "instructions": "Koka spaghettin enligt anvisningarna i saltat vatten. Hacka lök och vitlök noggrant. Hetta upp olja i en stekpanna. Fräs lök och vitlök tills de mjuknar. Tillsätt köttfärsen och bryn den ordentligt. Rör ner tomatpuré och låt den steka kort. Häll i krossade tomater och kryddor. Låt såsen sjuda långsamt i cirka tjugo minuter. Rör om då och då så att det inte bränner fast. Servera såsen tillsammans med den nykokta pastan.",
+            "imageUrl": "/assets/images/bolognese.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Vegetarisk Chili",
+            "description": "Vegetarisk chili är en smakrik gryta med bönor, tomat och kryddor. Den är värmande, näringsrik och passar utmärkt som ett vegetariskt alternativ till klassiska kötträtter.",
+            "country": "Mexiko",
+            "time": 35,
+            "dietary": [
+                2
+            ],
+            "ingredients": [
+                "Kidneybönor",
+                "Krossade tomater",
+                "Paprika",
+                "Gul lök",
+                "Vitlök",
+                "Chili",
+                "Spiskummin",
+                "Olja",
+                "Salt"
+            ],
+            "instructions": "Skala och hacka löken och vitlöken fint. Skär paprikan i små bitar. Hetta upp olja i en kastrull. Fräs lök och vitlök tills de blir mjuka. Tillsätt paprika och låt den steka med. Häll i krossade tomater och bönor. Krydda med chili och spiskummin. Låt grytan sjuda i cirka tjugo minuter. Rör om då och då under tillagningen. Smaka av med salt innan servering.",
+            "imageUrl": "/assets/images/chili.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Kyckling Curry",
+            "description": "Kyckling curry är en krämig och aromatisk gryta med kokosmjölk och kryddor. Den är både mild och smakrik, och serveras ofta med ris som absorberar den goda såsen.",
+            "country": "Indien",
+            "time": "40",
+            "dietary": [
+                5,
+                6
+            ],
+            "ingredients": [
+                "Kyckling",
+                "Kokosmjölk",
+                "Curry",
+                "Lök",
+                "Vitlök",
+                "Olja",
+                "Salt"
+            ],
+            "instructions": "Skär kycklingen i mindre bitar. Hacka lök och vitlök fint. Hetta upp olja i en stekpanna. Stek kycklingen tills den får färg runtom. Tillsätt lök och vitlök och låt mjukna. Strö över curry och rör om. Häll i kokosmjölken och blanda väl. Låt grytan sjuda i cirka tjugo minuter. Rör om då och då så att smakerna utvecklas. Smaka av med salt innan servering.",
+            "imageUrl": "/assets/images/curry.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Pad Thai",
+            "description": "Pad Thai är en klassisk thailändsk nudelrätt med ägg, grönsaker och jordnötter. Den är både söt, syrlig och salt, vilket ger en balanserad och mycket populär smak.",
+            "country": "Thailand",
+            "time": 30,
+            "dietary": [
+                5
+            ],
+            "ingredients": [
+                "Risnudlar",
+                "Ägg",
+                "Morot",
+                "Salladslök",
+                "Soja",
+                "Jordnötter",
+                "Olja"
+            ],
+            "instructions": "Koka risnudlarna enligt anvisningarna tills de är mjuka. Skala och riv moroten. Skär salladslöken i tunna skivor. Hetta upp olja i en wok eller stekpanna. Stek grönsakerna snabbt på hög värme. Knäck i äggen och rör om tills de stelnar. Tillsätt nudlarna i pannan. Häll över soja och blanda väl. Låt allt bli genomvarmt under omrörning. Toppa med hackade jordnötter vid servering.",
+            "imageUrl": "/assets/images/padthai.jpg"
+        },
+        {
+            "id": 6,
+            "name": "Falafel med Hummus",
+            "description": "Falafel med hummus är en populär rätt från Mellanöstern med krispiga kikärtsbollar. Den serveras ofta med krämig hummus och passar perfekt som vegetarisk måltid.",
+            "country": "Mellanöstern",
+            "time": "50",
+            "dietary": [
+                1,
+                2,
+                5
+            ],
+            "ingredients": [
+                "Kikärtor",
+                "Vitlök",
+                "Persilja",
+                "Spiskummin",
+                "Olja",
+                "Tahini",
+                "Citron"
+            ],
+            "instructions": "Blötlägg kikärtorna om de är torra. Mixa kikärtor med vitlök och persilja. Krydda smeten med spiskummin och salt. Forma små bollar av smeten. Hetta upp rikligt med olja i en kastrull. Fritera falafeln tills den är gyllene. Lyft upp och låt rinna av på papper. Rör ihop hummus med tahini och citron. Smaka av hummusen efter behov. Servera falafeln tillsammans med hummus.",
+            "imageUrl": "/assets/images/falafel.jpg"
+        },
+        {
+            "id": 7,
+            "name": "Lax med Potatis",
+            "description": "Lax med potatis är en klassisk svensk rätt med ugnsbakad lax och kokt potatis. Den är enkel, nyttig och smaksätts ofta med dill och smör.",
+            "country": "Sverige",
+            "time": 25,
+            "dietary": [
+                3
+            ],
+            "ingredients": [
+                "Lax",
+                "Potatis",
+                "Dill",
+                "Smör",
+                "Salt",
+                "Peppar"
+            ],
+            "instructions": "Sätt ugnen på 200 grader. Skala och koka potatisen tills den är mjuk. Lägg laxen i en ugnsform. Krydda laxen med salt och peppar. Klicka över lite smör på fisken. Baka laxen i ugnen i cirka femton minuter. Hacka dill under tiden. Ta ut laxen när den är genomstekt. Strö över dill innan servering. Servera tillsammans med den kokta potatisen.",
+            "imageUrl": "/assets/images/lax.jpg"
+        },
+        {
+            "id": 8,
+            "name": "Tacos",
+            "description": "Tacos är en mexikansk klassiker med kryddad köttfärs och olika tillbehör. Rätten är flexibel, enkel att laga och uppskattas av både barn och vuxna.",
+            "country": "Mexiko",
+            "time": 20,
+            "dietary": [],
+            "ingredients": [
+                "Tortilla",
+                "Köttfärs",
+                "Sallad",
+                "Tomat",
+                "Ost",
+                "Tacokrydda"
+            ],
+            "instructions": "Hetta upp en stekpanna med lite olja. Stek köttfärsen tills den är genomstekt. Tillsätt tacokrydda och lite vatten. Låt köttet puttra några minuter. Hacka sallad och tomat under tiden. Riv osten fint. Värm tortillabröden lätt i en panna eller mikro. Lägg köttfärs i bröden. Fyll på med grönsaker och ost. Servera direkt medan allt är varmt.",
+            "imageUrl": "/assets/images/tacos.jpg"
+        },
+        {
+            "id": 9,
+            "name": "Caprese Sallad",
+            "description": "Caprese sallad är en enkel italiensk rätt med tomat, mozzarella och basilika. Den är fräsch, lätt och perfekt som förrätt eller sommarens sidorätt.",
+            "country": "Italien",
+            "time": 10,
+            "dietary": [
+                2,
+                3
+            ],
+            "ingredients": [
+                "Tomat",
+                "Mozzarella",
+                "Basilika",
+                "Olivolja",
+                "Salt"
+            ],
+            "instructions": "Skär tomaterna i jämna skivor. Skiva mozzarellan i liknande tjocklek. Lägg upp tomat och ost växelvis på en tallrik. Plocka färska basilikablad. Fördela bladen över salladen. Ringla över olivolja jämnt. Strö över lite salt efter smak. Låt salladen vila några minuter. Servera direkt för bästa smak. Ät gärna tillsammans med bröd.",
+            "imageUrl": "/assets/images/caprese.jpg"
+        },
+        {
+            "id": 10,
+            "name": "Ramen",
+            "description": "Ramen är en japansk nudelsoppa med smakrik buljong och olika toppings. Den är varm, mättande och kan varieras med kött, ägg och grönsaker.",
+            "country": "Japan",
+            "time": 60,
+            "dietary": [],
+            "ingredients": [
+                "Nudlar",
+                "Buljong",
+                "Ägg",
+                "Fläsk",
+                "Salladslök"
+            ],
+            "instructions": "Koka upp buljongen i en stor kastrull. Låt den sjuda och utveckla smak. Koka nudlarna separat enligt anvisning. Koka äggen till önskad konsistens. Skär fläsket i tunna skivor. Hacka salladslöken fint. Lägg nudlar i en skål. Häll över den varma buljongen. Lägg på kött och ägg. Toppa med salladslök innan servering.",
+            "imageUrl": "/assets/images/ramen.jpg"
+        },
+        {
+            "id": 11,
+            "name": "Shakshuka",
+            "description": "Shakshuka är en nordafrikansk rätt med ägg pocherade i kryddig tomatsås. Den är smakrik, enkel att laga och serveras ofta med bröd.",
+            "country": "Nordafrika",
+            "time": 30,
+            "dietary": [
+                2
+            ],
+            "ingredients": [
+                "Ägg",
+                "Tomat",
+                "Paprika",
+                "Lök",
+                "Vitlök",
+                "Spiskummin"
+            ],
+            "instructions": "Hacka lök, vitlök och paprika fint. Hetta upp olja i en stekpanna. Fräs grönsakerna tills de mjuknar. Tillsätt tomater och kryddor. Låt såsen sjuda i cirka tio minuter. Gör små gropar i såsen. Knäck äggen i groparna. Låt äggen tillagas försiktigt. Täck eventuellt med lock för jämn värme. Servera när äggen är lagom fasta.",
+            "imageUrl": "/assets/images/shakshuka.jpg"
+        },
+        {
+            "id": 12,
+            "name": "Pannkakor",
+            "description": "Pannkakor är en klassisk svensk rätt som serveras tunna och gyllene. De äts ofta med sylt och är populära både som lunch och dessert.",
+            "country": "Sverige",
+            "time": 25,
+            "dietary": [],
+            "ingredients": [
+                "Mjöl",
+                "Mjölk",
+                "Ägg",
+                "Salt",
+                "Smör"
+            ],
+            "instructions": "Vispa ihop mjöl, mjölk och ägg till en slät smet. Tillsätt en nypa salt. Låt smeten vila en stund. Hetta upp en stekpanna med smör. Häll i ett tunt lager smet. Stek tills ytan stelnar och får färg. Vänd pannkakan försiktigt. Stek andra sidan gyllene. Lägg upp på en tallrik. Servera med sylt eller andra tillbehör.",
+            "imageUrl": "/assets/images/pannkakor.jpg"
+        },
+        {
+            "id": 13,
+            "name": "Caesarsallad",
+            "description": "Caesarsallad är en klassisk sallad med kyckling, parmesan och krämig dressing. Den är både fräsch och mättande och passar perfekt som lätt måltid.",
+            "country": "USA",
+            "time": 25,
+            "dietary": [],
+            "ingredients": [
+                "Kyckling",
+                "Romansallad",
+                "Parmesan",
+                "Krutonger",
+                "Dressing"
+            ],
+            "instructions": "Stek kycklingen tills den är genomstekt. Krydda efter smak under stekningen. Skär kycklingen i mindre bitar. Skölj och hacka romansalladen. Lägg salladen i en skål. Tillsätt kycklingbitarna ovanpå. Strö över krutonger. Riv parmesan över salladen. Ringla över dressing jämnt. Blanda försiktigt innan servering.",
+            "imageUrl": "/assets/images/ceasar.jpg"
+        },
+        {
+            "id": 14,
+            "name": "Miso Soppa",
+            "description": "Miso soppa är en traditionell japansk soppa med misopasta och tofu. Den är lätt, varm och ofta serverad som förrätt i asiatiska måltider.",
+            "country": "Japan",
+            "time": 15,
+            "dietary": [
+                1,
+                3,
+                4
+            ],
+            "ingredients": [
+                "Miso",
+                "Tofu",
+                "Vatten",
+                "Salladslök"
+            ],
+            "instructions": "Koka upp vatten i en kastrull. Sänk värmen när det börjar sjuda. Rör ner misopastan försiktigt. Se till att den löses upp helt. Skär tofu i små kuber. Lägg ner tofun i soppan. Låt soppan bli varm utan att koka. Hacka salladslöken fint. Strö löken över soppan. Servera direkt medan den är varm.",
+            "imageUrl": "/assets/images/miso.jpg"
+        },
+        {
+            "id": 15,
+            "name": "Biff Tacos",
+            "description": "Biff tacos är en smakrik variant av tacos med saftig stekt biff. Den kombineras med grönsaker och kryddor för en fyllig och mättande måltid.",
+            "country": "Mexiko",
+            "time": 25,
+            "dietary": [],
+            "ingredients": [
+                "Biff",
+                "Tortilla",
+                "Paprika",
+                "Lök",
+                "Kryddor"
+            ],
+            "instructions": "Skär biffen i tunna strimlor. Hetta upp en stekpanna med olja. Stek köttet snabbt på hög värme. Krydda med önskade kryddor. Skiva paprika och lök. Stek grönsakerna lätt separat. Värm tortillabröden kort. Lägg kött i bröden. Toppa med grönsaker. Servera direkt när allt är varmt.",
+            "imageUrl": "/assets/images/bifftacos.jpg"
+        },
+        {
+            "id": 16,
+            "name": "Vegetarisk Lasagne",
+            "description": "Vegetarisk lasagne är en ugnsbakad pastarätt med grönsaker istället för kött. Den är krämig, smakrik och ett perfekt alternativ för vegetariska middagar.",
+            "country": "Italien",
+            "time": 60,
+            "dietary": [
+                2
+            ],
+            "ingredients": [
+                "Lasagneplattor",
+                "Tomat",
+                "Zucchini",
+                "Ost",
+                "Grädde"
+            ],
+            "instructions": "Sätt ugnen på 200 grader. Skär zucchinin i tunna skivor. Förbered en tomatsås i en kastrull. Smörj en ugnsform lätt. Varva lasagneplattor med sås och grönsaker. Häll över lite grädde mellan lagren. Toppa med riven ost. Grädda i ugnen i cirka fyrtio minuter. Låt lasagnen vila en stund efteråt. Servera varm.",
+            "imageUrl": "/assets/images/lasagne.jpg"
+        },
+        {
+            "id": 17,
+            "name": "Grillad Kyckling",
+            "description": "Grillad kyckling är en saftig och smakrik rätt som tillagas på grill. Den kryddas efter smak och passar bra med olika tillbehör.",
+            "country": "USA",
+            "time": 35,
+            "dietary": [
+                6
+            ],
+            "ingredients": [
+                "Kyckling",
+                "Olja",
+                "Kryddor",
+                "Salt"
+            ],
+            "instructions": "Förbered grillen till medelhög värme. Pensla kycklingen med olja. Krydda rikligt med salt och kryddor. Lägg kycklingen på grillen. Grilla tills den får fin färg. Vänd kycklingen regelbundet. Kontrollera att den är genomstekt. Låt köttet vila några minuter. Skär upp i bitar. Servera tillsammans med valfria tillbehör.",
+            "imageUrl": "/assets/images/grillkyckling.jpg"
+        },
+        {
+            "id": 18,
+            "name": "Risotto",
+            "description": "Risotto är en krämig italiensk risrätt som tillagas långsamt med buljong. Den får sin lena konsistens genom ständig omrörning och tillsatt ost och smör.",
+            "country": "Italien",
+            "time": 40,
+            "dietary": [
+                2
+            ],
+            "ingredients": [
+                "Ris",
+                "Buljong",
+                "Parmesan",
+                "Smör",
+                "Lök"
+            ],
+            "instructions": "Hacka löken fint. Hetta upp smör i en kastrull. Fräs löken tills den blir mjuk. Tillsätt riset och rör om. Häll i lite buljong åt gången. Rör kontinuerligt under tillagningen. Låt vätskan absorberas innan mer tillsätts. Fortsätt tills riset är krämigt. Rör ner parmesan på slutet. Smaka av innan servering.",
+            "imageUrl": "/assets/images/risotto.jpg"
+        },
+        {
+            "id": 19,
+            "name": "Poké Bowl",
+            "description": "Poké bowl är en hawaiiansk rätt med ris och rå fisk. Den kombineras med fräscha ingredienser och serveras kall i en skål.",
+            "country": "Hawaii",
+            "time": 20,
+            "dietary": [],
+            "ingredients": [
+                "Ris",
+                "Lax",
+                "Avokado",
+                "Soja",
+                "Sesam"
+            ],
+            "instructions": "Koka riset enligt anvisningarna. Låt riset svalna något innan servering. Skär laxen i kuber. Dela och skiva avokadon. Lägg riset i en skål. Placera lax och avokado ovanpå. Ringla över soja jämnt. Strö över sesamfrön. Arrangera snyggt i skålen. Servera direkt som en fräsch rätt.",
+            "imageUrl": "/assets/images/poke.jpg"
+        },
+        {
+            "id": 20,
+            "name": "Tomatsoppa",
+            "description": "Tomatsoppa är en enkel och värmande soppa gjord på tomater. Den är len, smakrik och passar perfekt som lätt lunch eller förrätt.",
+            "country": "Sverige",
+            "time": 25,
+            "dietary": [
+                1,
+                3,
+                4
+            ],
+            "ingredients": [
+                "Tomater",
+                "Lök",
+                "Vitlök",
+                "Buljong",
+                "Olja"
+            ],
+            "instructions": "Hacka lök och vitlök fint. Hetta upp olja i en kastrull. Fräs löken tills den mjuknar. Tillsätt tomaterna och rör om. Häll i buljong och låt koka. Låt soppan sjuda i cirka femton minuter. Mixa soppan slät med en stavmixer. Smaka av med salt och kryddor. Värm upp igen vid behov. Servera varm direkt.",
+            "imageUrl": "/assets/images/tomatsoppa.jpg"
+        },
+        {
+            "name": "Chicken Tikka Masala",
+            "description": "Chicken tikka masala är en snabblagad, smakrik och saftig indisk kycklinggryta med djupa och härliga smaker. Servera chicken tikka masalan med ris och njut av en prima måltid!",
+            "country": "Indien",
+            "time": "25",
+            "dietary": [
+                5
+            ],
+            "ingredients": [
+                "Gul Lök",
+                "Vitlök",
+                "Morot",
+                "Kycklingbröstfile",
+                "Olja",
+                "Krossade Tomater",
+                "Tikka Masala Kryddmix",
+                "Matyoghurt",
+                "Matlagningsgrädde"
+            ],
+            "instructions": "Skala och skiva lök, vitlök och morot. Skär kycklingen i grova bitar. Skala och riv ingefäran. Bryn kyckling, lök, vitlök och morot i oljan i en gryta eller stekpanna. Krydda med salt och ingefära. Tillsätt tomater och kryddmix. Låt koka under lock ca 10 minuter. Plocka upp kycklingen ur grytan och lägg åt sidan. Mixa såsen jämn med stavmixer eller i matberedare. Rör ner yoghurt och grädde. Lägg tillbaka kycklingen i såsen och koka ytterligare ca 2 minuter. Till servering: Servera med kokt ris eller annat gryn.",
+            "imageUrl": "https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_79181/cf_259/chicken_tikka_masala.jpg",
+            "id": 21
+        }
+    ],
+    "dietary": [
+        {
+            "name": "Vegansk",
+            "id": 1,
+            "description": "Vegansk mat är helt växtbaserad och utesluter alla ingredienser från djurriket, inklusive kött, fisk, skaldjur, mejeriprodukter, ägg och honung. Kosten baseras på grönsaker, baljväxter, frukt, bär, nötter, frön och spannmål. Det är en livsstil som ofta väljs av etiska, miljömässiga eller hälsomässiga skäl.",
+            "imageUrl": "/assets/icons/vegan.jpg"
+        },
+        {
+            "name": "Köttfri",
+            "id": 2,
+            "description": "Köttfri mat utesluter kött från landlevande djur, såsom nötkött, fläskkött och kyckling. Kosten kan fortfarande innehålla andra animaliska produkter som mejeriprodukter, ägg eller fisk. Fokus ligger ofta på vegetariska råvaror som grönsaker, baljväxter, spannmål och växtbaserade alternativ.",
+            "imageUrl": "/assets/icons/meat.jpg"
+        },
+        {
+            "name": "Laktosfri",
+            "id": 3,
+            "description": "Laktosfri mat innehåller inga eller mycket låga nivåer av laktos, vilket är mjölksocker som finns i mejeriprodukter. Produkter kan vara naturligt fria från laktos eller behandlade för att bryta ner laktosen. Detta passar personer med laktosintolerans.",
+            "imageUrl": "/assets/icons/lactose.jpg"
+        },
+        {
+            "name": "Glutenfri",
+            "id": 4,
+            "description": "Glutenfri mat utesluter gluten, ett protein som finns i vete, råg och korn. Kosten baseras istället på naturligt glutenfria ingredienser som ris, majs, potatis och glutenfria spannmål. Detta är viktigt för personer med celiaki eller glutenintolerans.",
+            "imageUrl": "/assets/icons/gluten.jpg"
+        },
+        {
+            "name": "Fiskfri",
+            "id": 5,
+            "description": "Fiskfri mat utesluter fisk och skaldjur helt. Kosten kan fortfarande inkludera andra animaliska produkter som kött, mejeriprodukter och ägg, eller vara helt växtbaserad beroende på preferens.",
+            "imageUrl": "/assets/icons/fish.jpg"
+        },
+        {
+            "name": "Halal",
+            "id": 6,
+            "description": "Halal mat följer islamska kostregler. Det innebär att maten är tillåten enligt religiösa riktlinjer, där exempelvis fläskkött och alkohol är förbjudet, och kött måste komma från djur som slaktats på ett specifikt sätt.",
+            "imageUrl": "/assets/icons/halal.jpg"
+        },
+        {
+            "name": "Hälsokost",
+            "id": 7,
+            "description": "Hälsokost fokuserar på näringsrik och balanserad mat som främjar välmående. Det inkluderar ofta fullkorn, grönsaker, frukt, nyttiga fetter och proteinrika livsmedel, samtidigt som man undviker starkt processad mat och tillsatser.",
+            "imageUrl": "/assets/icons/healt.jpg"
+        }
+    ]
 }
