@@ -1,7 +1,6 @@
 async function init() {
     let container = document.getElementById("container");
     try {
-        container.innerHTML = "<p>Laddar ...</p>";
         await saveData();
         createProductPage();
     } catch (error) {
