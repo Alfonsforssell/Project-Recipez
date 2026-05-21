@@ -45,7 +45,7 @@ function createTagAdd(text) {
     tag.classList.add("tag");
 
     tag.innerHTML = `
-        ${text}
+        <p>${text}</p>
         <span>✖</span>
     `;
 
@@ -70,7 +70,7 @@ function createTagChange(text) {
     tag.classList.add("tag");
 
     tag.innerHTML = `
-        ${text}
+        <p>${text}</p>
         <span>✖</span>
     `;
 
@@ -132,17 +132,22 @@ function favorite() {
     let hearts = document.querySelectorAll(".heart");
     for (let heart of hearts) {
         heart.addEventListener("click", function (e) {
-            
+            e.preventDefault();
 
             heart.classList.toggle("fav");
             heart.classList.toggle("noFav");
 
+            let parentDiv = heart.closest("a");
+            let h1 = parentDiv.querySelector("h1").textContent;
+
             if (heart.classList.contains("fav")) {
                 heart.textContent = "♥";
+                console.log("Fav added: " + h1);
                 //Lägg till favorit - skapa en ny pathname i server som lägger till favoriter till user (post api-favourites)
             }
             else {
                 heart.textContent = "♡";
+                console.log("Fav removed: " + h1);
                 //Ta bort favorit - skapa en ny pathname i server som tar bort favoriter på user (delete api-favourites)
             }
         });
@@ -476,8 +481,17 @@ async function addDish() {
 
         await postRequest("/api/dishes", body);
         alert("Dish created");
+        window.location.reload();
 
     });
+}
+
+function getNameById(id) {
+    for (let dish of dishes) {
+        if (dish.id == id) {
+            return dish.name;
+        }
+    }
 }
 
 function autoFillInformationChangeDelete() {
@@ -495,14 +509,23 @@ function autoFillInformationChangeDelete() {
     for (let dish of dishes) {
         let option = document.createElement("option");
         option.textContent = dish.name;
-        option.value = dish.name;
+        option.name = dish.name;
+        option.value = dish.id;
         name.appendChild(option);
     }
 
+    let allCountries = [];
+
     for (let dish of dishes) {
+        if (!allCountries.includes(dish.country)){
+            allCountries.push(dish.country);
+        }
+    }
+
+    for (let oneCountry of allCountries) {
         let option = document.createElement("option");
-        option.textContent = dish.country;
-        option.value = dish.country;
+        option.textContent = oneCountry;
+        option.value = oneCountry;
         selectCountry.appendChild(option);
     }
 
@@ -517,7 +540,7 @@ function autoFillInformationChangeDelete() {
 
     name.addEventListener("change", function (e) {
         for (let dish of dishes) {
-            if (dish.name == name.value) {
+            if (dish.id == name.value) {
                 inputDescription.value = dish.description;
                 selectCountry.value = dish.country;
                 inputTime.value = dish.time;
@@ -553,6 +576,7 @@ function deleteDish() {
         
         await deleteRequest("http://localhost:8000/api/dishes/" + selectedID);
         alert("Dish removed");
+        window.location.reload();
     })
 }
 
@@ -573,13 +597,21 @@ function changeDish() {
             }
         }
 
+        let allIngredients = [];
+        let changeForm = document.querySelector("#changeDish .ingredients-input #tags");
+        let allTags = changeForm.querySelectorAll(".tag");
+        for (let tag of allTags) {
+            let p = tag.querySelector("p");
+            allIngredients.push(p.textContent);
+        }
+
         let body = {
-            name: form.elements.name.value,
+            name: getNameById(form.elements.name.value),
             description: form.elements.description.value,
             country: form.elements.country.value,
             time: form.elements.time.value,
             dietary: dietary,
-            ingredients: ingredients,
+            ingredients: allIngredients,
             instructions: form.elements.instructions.value,
             imageUrl: form.elements.image.value
         }
@@ -587,6 +619,7 @@ function changeDish() {
         console.log(selectedDish);
         await patchRequest("http://localhost:8000/api/dishes/" + selectedDish, body);
         alert("Dish changed");
+        window.location.reload();
     })
 }
 
