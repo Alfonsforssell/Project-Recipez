@@ -119,6 +119,20 @@ async function handler(request) {
                 })
             }
 
+            if (url.pathname === "/api/users") {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
+                let usrs = users.getAllUsers();
+                return new Response(JSON.stringify(usrs), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
+
             if (url.pathname === "/api/profile") {
 
                 let user = getLoggedInUser(request);
@@ -251,19 +265,6 @@ async function handler(request) {
                 });
             }
 
-            if (url.pathname === "/api/users") {
-                if (!validateJsonAccept(request)) {
-                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
-                        headers: HEADERS,
-                        status: 406,
-                    });
-                }
-                let usrs = users.getAllUsers();
-                return new Response(JSON.stringify(usrs), {
-                    headers: HEADERS,
-                    status: 200
-                })
-            }
         }
 
         if (request.method === "POST") {
