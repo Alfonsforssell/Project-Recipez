@@ -438,6 +438,29 @@ async function handler(request) {
                 }
 
             }
+            if (url.pathname == "/api/favourites") {
+                if (!validateJsonContent(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+
+                let user = await request.json();
+                let updatedUser = users.addFav(user.id, user.favourites);
+
+                if (!updatedUser) {
+                    return new Response(JSON.stringify({ Error: "Bad Request" }), {
+                        headers: HEADERS,
+                        status: 400
+                    });
+                }
+                return new Response(JSON.stringify(updatedUser), {
+                    headers: HEADERS,
+                    status: 200
+                });
+
+            }
         }
 
         if (request.method === "DELETE") {
