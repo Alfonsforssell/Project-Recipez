@@ -302,9 +302,7 @@ function createProfilePage(user) {
 
     profileCard.innerHTML = `
     <h2>${user.name}</h2>
-    <p><span>Bio:</span> ${user.bio}</p>
     <p><span>Favoriter:</span> ${user.favourites.length} st</p>
-    <p><span>Ursprung:</span> ${user.origin}</p>
     <a href="/assets/html/editPage.html" class="editPageBtn">Redigera rätter</a>
     <a href="/assets/html/index.html" class="logout">Logga ut</a>
     `;
@@ -386,7 +384,8 @@ function login() {
 
         let body = {
             name: loginForm.elements.username.value,
-            password: loginForm.elements.password.value
+            password: loginForm.elements.password.value,
+            favourites: []
         }
 
         try {
