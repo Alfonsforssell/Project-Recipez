@@ -46,8 +46,6 @@ async function handler(request) {
     let dishIdRoute = new URLPattern({ pathname: "/api/dishes/:id" });
     let dietaryIdRoute = new URLPattern({ pathname: "/api/dietary/:id" });
     let dietaryDishesRoute = new URLPattern({ pathname: "/api/dietary/:id/dishes" });
-    let userIdRoute = new URLPattern({ pathname: "/api/users/:id" });
-    let userFavoritesRoute = new URLPattern({ pathname: "/api/users/:id/favorites" });
 
     if (url.pathname.startsWith("/api/")) {
 
@@ -133,6 +131,22 @@ async function handler(request) {
                 }
 
                 return new Response(JSON.stringify(user), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
+
+            if (url.pathname === "/api/favorites") {
+                let user = getLoggedInUser(request); 
+                
+                if (!user) {
+                    return new Response(JSON.stringify({ Error: "Unathorized" }), {
+                        headers: HEADERS,
+                        status: 401
+                    })
+                }
+
+                return new Response(JSON.stringify(user.favorites), {
                     headers: HEADERS,
                     status: 200
                 })
@@ -240,56 +254,6 @@ async function handler(request) {
                 }
                 let usrs = users.getAllUsers();
                 return new Response(JSON.stringify(usrs), {
-                    headers: HEADERS,
-                    status: 200
-                })
-            }
-
-            if (userIdRoute.test(url)) {
-                let match = userIdRoute.exec(url);
-                let id = parseInt(match.pathname.groups.id);
-
-                if (!validateJsonAccept(request)) {
-                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
-                        headers: HEADERS,
-                        status: 406,
-                    });
-                }
-
-                let usr = users.getUserById(id);
-                if (!usr) {
-                    return new Response(JSON.stringify({ Error: "Not Found" }), {
-                        headers: HEADERS,
-                        status: 404
-                    });
-                }
-
-                return new Response(JSON.stringify(usr), {
-                    headers: HEADERS,
-                    status: 200
-                })
-            }
-
-            if (userFavoritesRoute.test(url)) {
-                let match = userFavoritesRoute.exec(url);
-                let id = parseInt(match.pathname.groups.id);
-
-                if (!validateJsonAccept(request)) {
-                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
-                        headers: HEADERS,
-                        status: 406,
-                    });
-                }
-
-                let usrFavourites = users.getFavouritesByUserId(id);
-                if (!usrFavourites) {
-                    return new Response(JSON.stringify({ Error: "Not Found" }), {
-                        headers: HEADERS,
-                        status: 404
-                    });
-                }
-
-                return new Response(JSON.stringify(usrFavourites), {
                     headers: HEADERS,
                     status: 200
                 })
