@@ -96,9 +96,10 @@ function getDietaryImgById(id) {
     }
 }
 
-function createProducts(filteredDishes = dishes) {
+async function createProducts(filteredDishes = dishes) {
     let cards = document.getElementById("cards");
     cards.innerHTML = "";
+    let favorites = await getRequest("/api/favourites");
 
     for (let dish of filteredDishes) {
         let div = document.createElement("a");
@@ -107,12 +108,19 @@ function createProducts(filteredDishes = dishes) {
         <img class="cardImg" src="${dish.imageUrl}" alt="">
                 <h1>${dish.name}</h1>
                 <p>${dish.description}</p>
-                <button class="heart noFav">♡</button>
+                <button class="heart">♡</button>
                 <div class="info">
                     <h2>${dish.time} min</h2>
                     <h2>${dish.country}</h2>
                 </div>
         `;
+
+        if (favourites.includes(dish.id)) {
+            document.querySelector("button").classList.add("fav");
+        }
+        else {
+            document.querySelector("button").classList.add("noFav");
+        }
 
         for (let i = 1; i < 8; i++) {
             if (dish.dietary.includes(i)) {
@@ -131,7 +139,7 @@ function createProducts(filteredDishes = dishes) {
 function favorite() {
     let hearts = document.querySelectorAll(".heart");
     for (let heart of hearts) {
-        heart.addEventListener("click", function (e) {
+        heart.addEventListener("click", async function (e) {
             e.preventDefault();
 
             heart.classList.toggle("fav");
@@ -143,12 +151,50 @@ function favorite() {
             if (heart.classList.contains("fav")) {
                 heart.textContent = "♥";
                 console.log("Fav added: " + h1);
-                //Lägg till favorit - skapa en ny pathname i server som lägger till favoriter till user (post api-favourites)
+                try {
+                    let request = await fetch("/api/favourites", {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            id: getIdByName(h1),
+                        })
+                    });
+
+                    if (!request.ok) {
+                        location.assign("/assets/html/loginPage.html");
+                        return;
+                    }
+                }
+                catch (error) {
+                    console.log(error);
+                }
             }
             else {
                 heart.textContent = "♡";
                 console.log("Fav removed: " + h1);
-                //Ta bort favorit - skapa en ny pathname i server som tar bort favoriter på user (delete api-favourites)
+                try {
+                    let request = await fetch("/api/favourites", {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            id: getIdByName(h1),
+                        })
+                    });
+
+                    if (!request.ok) {
+                        alert("Kunde inte ta bort favorit");
+                        return;
+                    }
+                }
+                catch (error) {
+                    console.log(error);
+                }
             }
         });
     }
@@ -521,6 +567,14 @@ function getNameById(id) {
     }
 }
 
+function getIdByName(name) {
+    for (let dish of dishes) {
+        if (dish.name == name) {
+            return dish.id;
+        }
+    }
+}
+
 function autoFillInformationChangeDelete() {
     let form = document.querySelector("#changeDish");
     let name = form.elements.name;
@@ -544,7 +598,7 @@ function autoFillInformationChangeDelete() {
     let allCountries = [];
 
     for (let dish of dishes) {
-        if (!allCountries.includes(dish.country)){
+        if (!allCountries.includes(dish.country)) {
             allCountries.push(dish.country);
         }
     }
@@ -661,15 +715,15 @@ async function checkLoginStatus() {
         })
 
         let loginLink = document.getElementById("loginLink");
-        
+
         if (!res.ok) {
             loginLink.href = "/assets/html/loginPage.html";
         }
-        
+
         let user = await res.json();
         loginLink.href = "/assets/html/profilePage.html";
 
-    } catch(err) {
+    } catch (err) {
         console.log(err.message);
     }
 }

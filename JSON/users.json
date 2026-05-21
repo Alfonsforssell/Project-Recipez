@@ -1,1 +1,21 @@
-[{"id":1,"name":"admin","password":"1234","bio":"Jag gillar att laga mat","origin":"Sweden","favourites":[1,2,3],"cookie":"ef604662-6484-4006-951b-355e3200bb34"},{"name":"grabben","password":"12345","id":2,"cookie":"61a54780-2f05-459b-81ef-7ce6d7827585","favourites":[]}]
+[
+    {
+        "id": 1,
+        "name": "admin",
+        "password": "1234",
+        "bio": "Jag gillar att laga mat",
+        "origin": "Sweden",
+        "favourites": [
+            1,
+            2,
+            3
+        ],
+        "cookie": "c8e0d2d6-1d9c-4b86-b8e0-7310f2f84eec"
+    },
+    {
+        "name": "grabben",
+        "password": "12345",
+        "id": 2,
+        "cookie": "8275c004-2d2a-4f6e-ace6-c6e6f68492bd"
+    }
+]
