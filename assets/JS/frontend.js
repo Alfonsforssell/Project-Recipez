@@ -449,6 +449,32 @@ function login() {
     })
 }
 
+function logOut() {
+    let logout = document.querySelector(".logout");
+    logout.addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        try {
+            let res = await fetch("/api/logout", {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+            })
+
+            if (!res.ok) {
+                console.log("Logout failed, try again");
+                return;
+            }
+            window.location.href = "/assets/html/index.html";
+        } catch (err) {
+            console.log(err.message);
+        }
+    })
+}
+
 async function loadProfilePage() {
     try {
         let res = await fetch("/api/profile", {
