@@ -1,5 +1,5 @@
 async function init() {
-    let container = document.querySelector("#body");
+    let container = document.body
     try {
         container.innerHTML = "<p>Laddar ...</p>";
         await saveData();
