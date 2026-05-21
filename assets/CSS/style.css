@@ -124,7 +124,7 @@ main {
 form {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     justify-content: center;
     align-items: center;
     justify-items: center;
@@ -160,21 +160,21 @@ form {
     width: 30px;
     border: none;
     background: none;
-    position: relative;
-    bottom: 320px;
-    left: 280px;
+    margin-left: 10px;
     cursor: pointer;
 }
 
 .noFav {
     color: black;
-    background-color: white;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 1px 1px 2px black;
     border-radius: 50%;
 }
 
 .fav {
     color: red;
-    background-color: white;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 1px 1px 2px black;
     border-radius: 50%;
 }
 
@@ -291,6 +291,23 @@ select:hover,
     #cards {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    form {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        width: 500px;
+    }
+
+    #searchField {
+        grid-row: 5;
+        grid-column: 1;
+    }
+
+    #searchbutton {
+    top: -50px;
+    left: 89px;
+}
+
 }
 
 @media (max-width: 600px) {
