@@ -176,7 +176,7 @@ function favorite() {
                 console.log("Fav removed: " + h1);
                 try {
                     let request = await fetch("/api/favourites", {
-                        method: "POST",
+                        method: "GET",
                         credentials: "include",
                         headers: {
                             "Content-Type": "application/json"
@@ -349,7 +349,7 @@ function createProfilePage(user) {
     <h2>${user.name}</h2>
     <p><span>Favoriter:</span> ${user.favourites.length} st</p>
     <a href="/assets/html/editPage.html" class="editPageBtn">Redigera rätter</a>
-    <a href="/assets/html/loginPage.html" class="logout">Logga ut</a>
+    <a href="#" class="logout">Logga ut</a>
     `;
 
     let favouritesHtml = "";
@@ -456,6 +456,32 @@ function login() {
     })
 }
 
+function logOut() {
+    let logout = document.querySelector(".logout");
+    logout.addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        try {
+            let res = await fetch("/api/logout", {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+            })
+
+            if (!res.ok) {
+                console.log("Logout failed, try again");
+                return;
+            }
+            window.location.href = "/assets/html/index.html";
+        } catch (err) {
+            console.log(err.message);
+        }
+    })
+}
+
 async function loadProfilePage() {
     try {
         let res = await fetch("/api/profile", {
@@ -472,6 +498,7 @@ async function loadProfilePage() {
         }
         let user = await res.json();
         createProfilePage(user);
+        logOut();
     } catch (err) {
         console.log(err.message);
     }
@@ -681,7 +708,7 @@ function changeDish() {
 async function checkLoginStatus() {
     try {
         let res = await fetch("http://localhost:8000/api/profile/", {
-            method: "POST",
+            method: "GET",
             credentials: "include",
             headers: {
                 "Accept": "application/json"
