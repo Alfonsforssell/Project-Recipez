@@ -3,6 +3,7 @@ async function init() {
     try {
         container.innerHTML = "<p>Laddar ...</p>";
         await saveData();
+        checkLoginStatus();
         createProducts();
         createForm();
         search();
@@ -14,7 +15,6 @@ async function init() {
         <p>(Försök igen)</p>
         `;
     }
-
 }
 
 init();
