@@ -60,3 +60,50 @@ export function logIn(username, password) {
 export function saveUsers(users) {
     Deno.writeTextFileSync("JSON/users.json", JSON.stringify(users));
 }
+
+export function addFav(id, dishId) {
+    let users = getAllUsers();
+
+    for (let user of users) {
+        if (user.id == id) {
+            if (!user.favourites) {
+                user.favourites = [];
+            }
+
+            for (let favorit of user.favourites) {
+                if (favorit == dishId)
+                    return user;
+            }
+
+            user.favourites.push(dishId);
+
+            saveUsers(users);
+
+            return user;
+        }
+    }
+    return null;
+}
+export function removeFav(id, dishId) {
+    let users = getAllUsers();
+
+    for (let user of users) {
+        if (user.id == id) {
+
+            if(!user.favourites) {
+                user.favourites = [];
+            }
+
+            let newFavs = []; 
+            for (let fav of user.favourites) {
+                if (fav != dishId) {
+                    newFavs.push(fav);
+                }
+            }
+            user.favourites = newFavs;
+            saveUsers(users);
+            return user; 
+        }
+    }
+    return null;
+}
