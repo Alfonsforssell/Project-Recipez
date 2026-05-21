@@ -356,7 +356,7 @@ function createProductPage() {
         <div id="info">
             <h1>${chosenDish.name}</h1>
             <div class="stats">
-                <h2>${chosenDish.country}</h2>
+                <h2>${checkCountry(chosenDish.country)}</h2>
                 <h2>${chosenDish.time} min</h2>
                 ${dietHtml}
         </div>
@@ -426,7 +426,7 @@ function createProfilePage(user) {
                         <p>${dish.description}</p>
                         <div class="info">
                         <h2>${dish.time}min</h2>
-                        <h2>${dish.country}</h2>
+                        <h2>${checkCountry(dish.country)}</h2>
                         ${dietHtml}
                         </div>
                         <button class="heart fav">♥</button>
