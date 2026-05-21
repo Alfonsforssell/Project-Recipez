@@ -96,6 +96,12 @@ function getDietaryImgById(id) {
     }
 }
 
+function checkCountry(country) {
+    if (country == "none") {
+        return "Okänt";
+    }
+}
+
 function createProducts(filteredDishes = dishes) {
     let cards = document.getElementById("cards");
     cards.innerHTML = "";
@@ -109,7 +115,7 @@ function createProducts(filteredDishes = dishes) {
                 <p>${dish.description}</p>
                 <div class="info">
                     <h2>${dish.time} min</h2>
-                    <h2>${dish.country}</h2>
+                    <h2>${checkCountry(dish.country)}</h2>
                 </div>
         `;
 
@@ -606,7 +612,7 @@ async function addDish() {
             }
 
             await postRequest("/api/dishes", body);
-            alert("Dish created");
+            alert("Rätt skapad");
             window.location.reload();
         });
     } catch (error) {
@@ -702,16 +708,10 @@ function deleteDish() {
 
         let form = document.querySelector("#changeDish");
         let selectedDish = form.elements.name.value;
-        let selectedID;
 
-        for (let dish of dishes) {
-            if (dish.name == selectedDish) {
-                selectedID = dish.id;
-            }
-        }
 
-        await deleteRequest("http://localhost:8000/api/dishes/" + selectedID);
-        alert("Dish removed");
+        await deleteRequest("http://localhost:8000/api/dishes/" + selectedDish);
+        alert("Rätt borttagen");
         window.location.reload();
     })
 }
@@ -754,7 +754,7 @@ function changeDish() {
         console.log(body);
         console.log(selectedDish);
         await patchRequest("http://localhost:8000/api/dishes/" + selectedDish, body);
-        alert("Dish changed");
+        alert("Rätt ändrad");
         window.location.reload();
     })
 }
