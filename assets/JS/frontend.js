@@ -132,10 +132,15 @@ function createProducts(filteredDishes = dishes) {
         cards.appendChild(div);
         div.classList.add("card");
     }
+    if (cards.innerHTML == "") {
+        cards.innerHTML = "<p>Finns inga rätter som matchar<p>"
+    }
 }
 
-function favorite() {
+function favoriteMain() {
     let hearts = document.querySelectorAll(".heart");
+
+    console.log(hearts);
     for (let heart of hearts) {
         heart.addEventListener("click", async function (e) {
             e.preventDefault();
@@ -193,6 +198,46 @@ function favorite() {
                 catch (error) {
                     console.log(error);
                 }
+            }
+        });
+    }
+}
+
+function favoriteProfile() {
+    let hearts = document.querySelector("#cards").querySelectorAll("button");
+
+    for (let heart of hearts) {
+        heart.addEventListener("click", async function (e) {
+            e.preventDefault();
+
+            heart.classList.toggle("fav");
+            heart.classList.toggle("noFav");
+
+            let parentDiv = heart.closest("a");
+            let h1 = parentDiv.querySelector("h1").textContent;
+
+            if (heart.classList.contains("noFav")) {
+                try {
+                    let request = await fetch("/api/favourites", {
+                        method: "DELETE",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            id: getIdByName(h1),
+                        })
+                    });
+
+                    if (!request.ok) {
+                        alert("Kunde inte ta bort favorit");
+                        return;
+                    }
+                }
+                catch (error) {
+                    console.log(error);
+                }
+                window.location.reload();
             }
         });
     }
@@ -273,8 +318,7 @@ function createProductPage() {
 
     if (!chosenDish) {
         container.innerHTML = `
-        <a href="/assets/html/index.html">← Back to dishes</a>
-            <h1>dish not found</h1>`;
+        <p id="wrongDish">Ingen rätt hittad</p>`;
         return;
     }
     let ingredientsHtml = "";
@@ -315,13 +359,13 @@ function createProductPage() {
 
     <div id="cook">
         <div class="ingredients">
-            <h1>Ingredients</h1>
+            <h1>Ingredienser</h1>
             <ul>
             ${ingredientsHtml}
             </ul>
         </div> 
         <div class="instructions">
-            <h1>Instructions</h1>
+            <h1>Instruktioner</h1>
             <h2>${printInstructions}</h2>
         </div>
     </div>
@@ -378,6 +422,7 @@ function createProfilePage(user) {
                         <h2>${dish.country}</h2>
                         ${dietHtml}
                         </div>
+                        <button class="heart fav">♥</button>
                         </a>
                         `;
             }
@@ -385,10 +430,11 @@ function createProfilePage(user) {
     }
     if (favouritesHtml === "") {
         favouritesHtml = `
-        <p> du har inga favoriträtter ännu.</p>
+        <p id="no">Du har inga favoriträtter ännu...</p>
         `;
     }
     cards.innerHTML = favouritesHtml;
+    favoriteProfile();
     logOut();
 }
 
@@ -402,19 +448,24 @@ function signUp() {
         let repeatPassword = signUpForm.elements.repeatPassword.value;
 
         if (password != repeatPassword) {
-            console.log("Lösenorden matchar inte!");
+            let form = document.getElementById("signUpForm");
+            let span = document.createElement("span");
+            span.innerHTML = "Lösenorden matchar inte!";
+            span.classList.add("wrong");
+            form.appendChild(span);
             return;
         }
 
         let body = {
             name: username,
             password: password,
-            repeatPassword: repeatPassword
+            repeatPassword: repeatPassword,
+            favourites: []
         }
 
         try {
             await postRequest("/api/users", body);
-            console.log("Konto skapat!");
+            alert("Konto skapat! Var vänlig och logga in");
         }
         catch (err) {
             console.log(err.message);
@@ -445,7 +496,11 @@ function login() {
             })
 
             if (!res.ok) {
-                console.log("Login failed");
+                let form = document.getElementById("loginForm");
+                let span = document.createElement("span");
+                span.innerHTML = "Fel användarnamn eller lösenord";
+                span.classList.add("wrong");
+                form.appendChild(span);
                 return;
             }
 

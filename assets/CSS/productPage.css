@@ -199,3 +199,7 @@ ul {
     font-size: 2vh;
     font-weight: 200;
 }
+
+#wrongDish {
+    margin: 20px;
+}

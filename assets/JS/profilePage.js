@@ -9,6 +9,6 @@ async function init() {
         <p>(Försök igen)</p>
         `;
     }
-   
+
 }
 init();
