@@ -1,5 +1,5 @@
 async function init() {
-    let container = document.querySelector("#main");
+    let container = document.body;
     try {
         await saveData();
         loadProfilePage();

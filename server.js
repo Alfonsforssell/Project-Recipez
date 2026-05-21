@@ -455,6 +455,37 @@ async function handler(request) {
                 }
 
             }
+            if (url.pathname == "/api/favourites") {
+                if (!validateJsonContent(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+                let user = getLoggedInUser(request);
+
+                if (!user) {
+                    return new Response(JSON.stringify({ Error: "Unauthorized" }), {
+                        headers: HEADERS,
+                        status: 401
+                    });
+                }
+
+                let body = await request.json();
+                let updatedFav = users.addFav(user.id, body.id);
+
+                if (!updatedFav) {
+                    return new Response(JSON.stringify({ Error: "Bad Request" }), {
+                        headers: HEADERS,
+                        status: 400
+                    });
+                }
+                return new Response(JSON.stringify(updatedFav), {
+                    headers: HEADERS,
+                    status: 200
+                });
+
+            }
         }
 
         if (request.method === "DELETE") {
@@ -482,6 +513,36 @@ async function handler(request) {
                 return new Response(null, {
                     status: 204,
                     headers: HEADERS
+                });
+            }
+            if (url.pathname == "/api/favourites") {
+                if (!validateJsonContent(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406
+                    });
+                }
+                let user = getLoggedInUser(request);
+
+                if (!user) {
+                    return new Response(JSON.stringify({ Error: "Unauthorized" }), {
+                        headers: HEADERS,
+                        status: 401
+                    });
+                }
+
+                let body = await request.json();
+                let updatedFav = users.removeFav(user.id, body.id);
+
+                 if (!updatedFav) {
+                    return new Response(JSON.stringify({ Error: "Bad Request" }), {
+                        headers: HEADERS,
+                        status: 400
+                    });
+                }
+                return new Response(null, {
+                    headers: HEADERS,
+                    status: 204
                 });
             }
         }
