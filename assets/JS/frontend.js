@@ -132,7 +132,7 @@ function favorite() {
     let hearts = document.querySelectorAll(".heart");
     for (let heart of hearts) {
         heart.addEventListener("click", function (e) {
-            
+
 
             heart.classList.toggle("fav");
             heart.classList.toggle("noFav");
@@ -415,11 +415,11 @@ async function loadProfilePage() {
             headers: {
                 "Accept": "application/json"
             }
-        }); 
+        });
 
         if (!res.ok) {
             window.location.href = "/assets/html/loginPage.html";
-            return; 
+            return;
         }
         let user = await res.json();
         createProfilePage(user);
@@ -438,46 +438,49 @@ function search() {
     })
 }
 async function addDish() {
-    let addForm = document.getElementById("addDish");
-    let addButton = addForm.querySelector(".btn");
-    let selectCountry = document.querySelector("#addDish").elements.country;
-    for (let dish of dishes) {
-        let option = document.createElement("option");
-        option.textContent = dish.country;
-        option.value = dish.country;
-        selectCountry.appendChild(option);
-    }
+    try {
+        let addForm = document.getElementById("addDish");
+        let addButton = addForm.querySelector(".btn");
+        let selectCountry = document.querySelector("#addDish").elements.country;
+        for (let dish of dishes) {
+            let option = document.createElement("option");
+            option.textContent = dish.country;
+            option.value = dish.country;
+            selectCountry.appendChild(option);
+        }
 
 
-    addButton.addEventListener("click", async function (e) {
-        e.preventDefault()
+        addButton.addEventListener("click", async function (e) {
+            e.preventDefault()
 
-        let dietary = [];
-        let checkboxes = document.querySelectorAll(".dietary");
-        
-        for (let checkbox of checkboxes) {
-            if (checkbox.checked) {
-                dietary.push(Number(checkbox.value));
+            let dietary = [];
+            let checkboxes = document.querySelectorAll(".dietary");
+
+            for (let checkbox of checkboxes) {
+                if (checkbox.checked) {
+                    dietary.push(Number(checkbox.value));
+                }
             }
-        }
 
 
 
-        let body = {
-            name: addForm.elements.name.value,
-            description: addForm.elements.description.value,
-            country: addForm.elements.country.value,
-            time: Number(addForm.elements.time.value),
-            dietary: dietary,
-            ingredients: ingredients,
-            instructions: addForm.elements.instructions.value,
-            imageUrl: addForm.elements.image.value
-        }
+            let body = {
+                name: addForm.elements.name.value,
+                description: addForm.elements.description.value,
+                country: addForm.elements.country.value,
+                time: Number(addForm.elements.time.value),
+                dietary: dietary,
+                ingredients: ingredients,
+                instructions: addForm.elements.instructions.value,
+                imageUrl: addForm.elements.image.value
+            }
 
-        await postRequest("/api/dishes", body);
-        alert("Dish created");
-
-    });
+            await postRequest("/api/dishes", body);
+            alert("Dish created");
+        });
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 
 function autoFillInformationChangeDelete() {
@@ -550,7 +553,7 @@ function deleteDish() {
                 selectedID = dish.id;
             }
         }
-        
+
         await deleteRequest("http://localhost:8000/api/dishes/" + selectedID);
         alert("Dish removed");
     })
