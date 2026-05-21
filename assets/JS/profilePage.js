@@ -1,7 +1,6 @@
 async function init() {
     let container = document.querySelector("#main");
     try {
-        container.innerHTML = "<p>Laddar ...</p>";
         await saveData();
         loadProfilePage();
     } catch(error) {

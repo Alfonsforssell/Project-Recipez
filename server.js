@@ -388,6 +388,23 @@ async function handler(request) {
                 });
             }
 
+            if (url.pathname === "/api/logout") {
+                let user = getLoggedInUser(request);
+
+                if (user) {
+                    user.cookie = null;
+                    users.saveUsers(users.getAllUsers());
+                }
+                console.log(user);
+                return new Response(JSON.stringify({ message: "logout succeded" }), {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Set-Cookie": "session_id=; Max-Age=0; Path=/"
+                    },
+                    status: 200 
+                });
+            }
+
             if (url.pathname === "/api/users") {
                 if (!validateJsonContent(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
