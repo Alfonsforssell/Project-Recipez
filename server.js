@@ -136,7 +136,7 @@ async function handler(request) {
                 })
             }
 
-            if (url.pathname === "/api/favorites") {
+            if (url.pathname === "/api/favourites") {
                 let user = getLoggedInUser(request); 
                 
                 if (!user) {
