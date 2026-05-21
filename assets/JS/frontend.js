@@ -4,9 +4,9 @@ async function saveData() {
     countries = await getRequest("/api/dishes/countries");
 }
 
-function tagInput() {
-    const input = document.getElementById("ingredientInput");
-    const tagsContainer = document.getElementById("tags");
+function tagInputAdd() {
+    const input = document.querySelector("#addDish #ingredientInput");
+    const tagsContainer = document.querySelector("#addDish #tags");
 
     input.addEventListener("keydown", function (e) {
         if (e.key === "Enter" && input.value.trim() !== "") {
@@ -16,6 +16,23 @@ function tagInput() {
             ingredients.push(value);
 
             createTagAdd(value);
+            input.value = "";
+        }
+    });
+}
+
+function tagInputChange() {
+    const input = document.querySelector("#changeDish #ingredientInput");
+    const tagsContainer = document.querySelector("#changeDish #tags");
+
+    input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && input.value.trim() !== "") {
+            e.preventDefault();
+
+            const value = input.value.trim();
+            ingredients.push(value);
+
+            createTagChange(value);
             input.value = "";
         }
     });
@@ -90,6 +107,7 @@ function createProducts(filteredDishes = dishes) {
         <img class="cardImg" src="${dish.imageUrl}" alt="">
                 <h1>${dish.name}</h1>
                 <p>${dish.description}</p>
+                <button class="heart noFav">♡</button>
                 <div class="info">
                     <h2>${dish.time} min</h2>
                     <h2>${dish.country}</h2>
@@ -107,6 +125,27 @@ function createProducts(filteredDishes = dishes) {
         }
         cards.appendChild(div);
         div.classList.add("card");
+    }
+}
+
+function favorite() {
+    let hearts = document.querySelectorAll(".heart");
+    for (let heart of hearts) {
+        heart.addEventListener("click", function (e) {
+            
+
+            heart.classList.toggle("fav");
+            heart.classList.toggle("noFav");
+
+            if (heart.classList.contains("fav")) {
+                heart.textContent = "♥";
+                //Lägg till favorit - skapa en ny pathname i server som lägger till favoriter till user (post api-favourites)
+            }
+            else {
+                heart.textContent = "♡";
+                //Ta bort favorit - skapa en ny pathname i server som tar bort favoriter på user (delete api-favourites)
+            }
+        });
     }
 }
 

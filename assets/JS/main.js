@@ -4,6 +4,7 @@ async function init() {
     createForm();
     search();
     submitFilter();
+    favorite();
 }
 
 init();
