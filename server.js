@@ -71,12 +71,9 @@ async function handler(request) {
                 }
 
                 const user = getLoggedInUser(request); 
-                console.log("här")
+
                 if (user != null) {
-                    console.log("hej");
-                    console.log(user); 
                     for (let dish of filteredProducts) {
-                        
                         if (user.favourites.includes(dish.id)) {
                             dish.isFavourite = true;
                             

@@ -383,6 +383,7 @@ function createProfilePage(user) {
         `;
     }
     cards.innerHTML = favouritesHtml;
+    logOut();
 }
 
 function signUp() {
