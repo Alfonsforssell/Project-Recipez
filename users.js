@@ -90,6 +90,20 @@ export function removeFav(id, dishId) {
     for (let user of users) {
         if (user.id == id) {
 
+            if(!user.favourites) {
+                user.favourites = [];
+            }
+
+            let newFavs = []; 
+            for (let fav of user.favourites) {
+                if (fav != dishId) {
+                    newFavs.push(fav);
+                }
+            }
+            user.favourites = newFavs;
+            saveUsers(users);
+            return user; 
         }
     }
+    return null;
 }
