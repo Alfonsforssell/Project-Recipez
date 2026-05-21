@@ -409,7 +409,8 @@ function signUp() {
         let body = {
             name: username,
             password: password,
-            repeatPassword: repeatPassword
+            repeatPassword: repeatPassword,
+            favourites: []
         }
 
         try {
