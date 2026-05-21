@@ -17,6 +17,30 @@ const HEADERS = {
     "Content-Type": "application/json",
 };
 
+function getLoggedInUser(request) {
+    let cookieHeader = request.headers.get("cookie"); 
+
+    if (!cookieHeader) {
+        return null;
+    }
+
+    let match = cookieHeader.match(/session_id=(\d+)/);
+
+    if (!match) {
+        return null;
+    }
+
+    let sessionId = parseInt(match[1]);
+    let allUsers = users.getAllUsers();
+
+    for (let user of allUsers) {
+        if (user.id === sessionId) {
+            return user;
+        }
+    }
+    return null;
+}
+
 async function handler(request) {
     let url = new URL(request.url);
     let dishIdRoute = new URLPattern({ pathname: "/api/dishes/:id" });
@@ -98,34 +122,17 @@ async function handler(request) {
             }
 
             if (url.pathname === "/api/profile") {
-                let cookieHeader = request.headers.get("cookie");
 
-                if (!cookieHeader) {
-                    return new Response(JSON.stringify({ Error: "Not logged in" }), {
+                let user = getLoggedInUser(request);
+
+                if (!user) {
+                    return new Response(JSON.stringify({ Error: "Unauthorized" }), {
                         headers: HEADERS,
                         status: 401
-                    })
+                    });
                 }
 
-                let sessionId = cookieHeader.split("session_id=")[1].split(";")[0].trim();
-
-                let allUsers = users.getAllUsers();
-                let matchedUser = null;
-
-                for (let user of allUsers) {
-                    if (user.cookie === sessionId) {
-                        matchedUser = user;
-                    }
-                }
-
-                if (!matchedUser) {
-                    return new Response(JSON.stringify({ Error: "User not found" }), {
-                        headers: HEADERS,
-                        status: 401
-                    })
-                }
-                console.log("Matched user:", matchedUser);
-                return new Response(JSON.stringify(matchedUser), {
+                return new Response(JSON.stringify(user), {
                     headers: HEADERS,
                     status: 200
                 })
@@ -298,6 +305,15 @@ async function handler(request) {
                     })
                 }
 
+                let user = getLoggedInUser(request);
+
+                if (!user) {
+                    return new Response(JSON.stringify({ Error: "Unauthorized" }), {
+                        headers: HEADERS,
+                        status: 401
+                    });
+                }
+
                 let newDish;
                 try {
                     newDish = await request.json();
@@ -359,7 +375,7 @@ async function handler(request) {
                         status: 401
                     });
                 }
-                
+
                 let sessionId = crypto.randomUUID();
                 matchedUser.cookie = sessionId;
                 users.saveUsers(allUsers);
@@ -427,6 +443,16 @@ async function handler(request) {
         if (request.method === "DELETE") {
             if (dishIdRoute.test(url)) {
                 let dishIdMatch = dishIdRoute.exec(url);
+
+                let user = getLoggedInUser(request);
+
+                if (!user) {
+                    return new Response(JSON.stringify({ Error: "Unauthorized" }), {
+                        headers: HEADERS,
+                        status: 401
+                    });
+                }
+
                 let id = parseInt(dishIdMatch.pathname.groups.id);
                 let deletedDish = dishes.deleteDish(id);
 
@@ -453,6 +479,15 @@ async function handler(request) {
                 }
                 let dishIdMatch = dishIdRoute.exec(url);
                 let id = parseInt(dishIdMatch.pathname.groups.id);
+
+                let user = getLoggedInUser(request);
+                if (!user) {
+                    return new Response(JSON.stringify({ Error: "Unauthorized" }), {
+                        headers: HEADERS,
+                        status: 401
+                    });
+                }
+
                 try {
                     let newValues = await request.json();
                     let updatedDish = dishes.updateDish(id, newValues);

@@ -551,6 +551,23 @@ function changeDish() {
     })
 }
 
+async function checkLoginStatus() {
+    try {
+        let res = await postRequest("http://localhost:8000/api/profile/");
+        let loginLink = document.getElementById("loginLink");
+        
+        if (!res.ok) {
+            loginLink.href = "/assets/html/loginPage.html";
+        }
+        
+        let user = await res.json();
+        loginLink.href = "/assets/html/profilePage.html";
+
+    } catch(err) {
+        console.log(err.message);
+    }
+}
+
 let countries = [];
 let dishes = [];
 let dietaries = [];
