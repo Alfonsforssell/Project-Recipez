@@ -114,6 +114,13 @@ function createProducts(filteredDishes = dishes) {
                 </div>
         `;
 
+        if (dish.isFavourite) {
+            document.querySelector(".heart").classList.add("fav");
+        }
+        else {
+            document.querySelector(".heart").classList.add("noFav");
+        }
+
         for (let i = 1; i < 8; i++) {
             if (dish.dietary.includes(i)) {
                 let info = div.querySelector(".info");
@@ -126,29 +133,6 @@ function createProducts(filteredDishes = dishes) {
         cards.appendChild(div);
         div.classList.add("card");
     }
-}
-
-async function createFavourites() {
-    let request;
-    try {
-        request = await fetch("/api/favourites", {
-            method: "GET",
-            credentials: "include",
-            headers: {
-                "Accept": "application/json"
-            },
-        });
-        let favourites = await request.json();
-        if (request.ok) {
-            console.log(favourites);
-        }
-    }
-    catch {
-        console.log(request);
-    }
-
-
-
 }
 
 function favorite() {
@@ -179,7 +163,7 @@ function favorite() {
                     });
 
                     if (!request.ok) {
-                        location.assign("/assets/html/loginPage.html");
+                        window.location.href = "/assets/html/loginPage.html";
                         return;
                     }
                 }
