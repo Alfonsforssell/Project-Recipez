@@ -46,8 +46,6 @@ async function handler(request) {
     let dishIdRoute = new URLPattern({ pathname: "/api/dishes/:id" });
     let dietaryIdRoute = new URLPattern({ pathname: "/api/dietary/:id" });
     let dietaryDishesRoute = new URLPattern({ pathname: "/api/dietary/:id/dishes" });
-    let userIdRoute = new URLPattern({ pathname: "/api/users/:id" });
-    let userFavoritesRoute = new URLPattern({ pathname: "/api/users/:id/favorites" });
 
     if (url.pathname.startsWith("/api/")) {
 
@@ -133,6 +131,22 @@ async function handler(request) {
                 }
 
                 return new Response(JSON.stringify(user), {
+                    headers: HEADERS,
+                    status: 200
+                })
+            }
+
+            if (url.pathname === "/api/favourites") {
+                let user = getLoggedInUser(request); 
+                
+                if (!user) {
+                    return new Response(JSON.stringify({ Error: "Unathorized" }), {
+                        headers: HEADERS,
+                        status: 401
+                    })
+                }
+
+                return new Response(JSON.stringify(user.favorites), {
                     headers: HEADERS,
                     status: 200
                 })
@@ -244,56 +258,6 @@ async function handler(request) {
                     status: 200
                 })
             }
-
-            if (userIdRoute.test(url)) {
-                let match = userIdRoute.exec(url);
-                let id = parseInt(match.pathname.groups.id);
-
-                if (!validateJsonAccept(request)) {
-                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
-                        headers: HEADERS,
-                        status: 406,
-                    });
-                }
-
-                let usr = users.getUserById(id);
-                if (!usr) {
-                    return new Response(JSON.stringify({ Error: "Not Found" }), {
-                        headers: HEADERS,
-                        status: 404
-                    });
-                }
-
-                return new Response(JSON.stringify(usr), {
-                    headers: HEADERS,
-                    status: 200
-                })
-            }
-
-            if (userFavoritesRoute.test(url)) {
-                let match = userFavoritesRoute.exec(url);
-                let id = parseInt(match.pathname.groups.id);
-
-                if (!validateJsonAccept(request)) {
-                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
-                        headers: HEADERS,
-                        status: 406,
-                    });
-                }
-
-                let usrFavourites = users.getFavouritesByUserId(id);
-                if (!usrFavourites) {
-                    return new Response(JSON.stringify({ Error: "Not Found" }), {
-                        headers: HEADERS,
-                        status: 404
-                    });
-                }
-
-                return new Response(JSON.stringify(usrFavourites), {
-                    headers: HEADERS,
-                    status: 200
-                })
-            }
         }
 
         if (request.method === "POST") {
@@ -388,6 +352,23 @@ async function handler(request) {
                 });
             }
 
+            if (url.pathname === "/api/logout") {
+                let user = getLoggedInUser(request);
+
+                if (user) {
+                    user.cookie = null;
+                    users.saveUsers(users.getAllUsers());
+                }
+                console.log(user);
+                return new Response(JSON.stringify({ message: "logout succeded" }), {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Set-Cookie": "session_id=; Max-Age=0; Path=/"
+                    },
+                    status: 200 
+                });
+            }
+
             if (url.pathname === "/api/users") {
                 if (!validateJsonContent(request)) {
                     return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
@@ -455,15 +436,15 @@ async function handler(request) {
                 }
 
                 let body = await request.json();
-                let updatedUser = users.addFav(user.id, body.id);
+                let updatedFav = users.addFav(user.id, body.id);
 
-                if (!updatedUser) {
+                if (!updatedFav) {
                     return new Response(JSON.stringify({ Error: "Bad Request" }), {
                         headers: HEADERS,
                         status: 400
                     });
                 }
-                return new Response(JSON.stringify(updatedUser), {
+                return new Response(JSON.stringify(updatedFav), {
                     headers: HEADERS,
                     status: 200
                 });
@@ -496,6 +477,36 @@ async function handler(request) {
                 return new Response(null, {
                     status: 204,
                     headers: HEADERS
+                });
+            }
+            if (url.pathname == "/api/favourites") {
+                if (!validateJsonContent(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406
+                    });
+                }
+                let user = getLoggedInUser(request);
+
+                if (!user) {
+                    return new Response(JSON.stringify({ Error: "Unauthorized" }), {
+                        headers: HEADERS,
+                        status: 401
+                    });
+                }
+
+                let body = await request.json();
+                let updatedFav = users.removeFav(user.id, body.id);
+
+                 if (!updatedFav) {
+                    return new Response(JSON.stringify({ Error: "Bad Request" }), {
+                        headers: HEADERS,
+                        status: 400
+                    });
+                }
+                return new Response(null, {
+                    headers: HEADERS,
+                    status: 204
                 });
             }
         }
