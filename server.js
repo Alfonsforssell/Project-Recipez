@@ -24,18 +24,16 @@ function getLoggedInUser(request) {
         return null;
     }
 
-    let match = cookieHeader.match(/session_id=([^;]+)/);
-
-    if (!match) {
-        return null;
-    }
-    
-    let sessionId = match[1];
     let allUsers = users.getAllUsers();
 
+    console.log(cookieHeader); 
+    
     for (let user of allUsers) {
-        if (user.cookie === sessionId) {
-            return user;
+        console.log(user);
+        if(cookieHeader.includes(user.cookie)) {
+            console.log("hitta rätt")
+            return user; 
+
         }
     }
     return null;
@@ -70,6 +68,22 @@ async function handler(request) {
                 }
                 if (dietary.length > 0) {
                     filteredProducts = dishes.getDishesByDietsId(filteredProducts, dietary);
+                }
+
+                const user = getLoggedInUser(request); 
+                console.log("här")
+                if (user != null) {
+                    console.log("hej");
+                    console.log(user); 
+                    for (let dish of filteredProducts) {
+                        
+                        if (user.favourites.includes(dish.id)) {
+                            dish.isFavourite = true;
+                            
+                        } else {
+                            dish.isFavourite = false; 
+                        }
+                    }
                 }
 
                 return new Response(JSON.stringify(filteredProducts), {
@@ -370,7 +384,7 @@ async function handler(request) {
                 return new Response(JSON.stringify({ message: "logout succeded" }), {
                     headers: {
                         "Content-Type": "application/json",
-                        "Set-Cookie": "session_id=; Max-Age=0; Path=/"
+                        "Set-Cookie": "session_id=deleted; Max-Age=0; Path=/"
                     },
                     status: 200 
                 });
