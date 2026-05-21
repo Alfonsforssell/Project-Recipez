@@ -18,7 +18,7 @@ const HEADERS = {
 };
 
 function getLoggedInUser(request) {
-    let cookieHeader = request.headers.get("cookie"); 
+    let cookieHeader = request.headers.get("cookie");
 
     if (!cookieHeader) {
         return null;
@@ -26,13 +26,13 @@ function getLoggedInUser(request) {
 
     let allUsers = users.getAllUsers();
 
-    console.log(cookieHeader); 
-    
+    console.log(cookieHeader);
+
     for (let user of allUsers) {
         console.log(user);
-        if(cookieHeader.includes(user.cookie)) {
+        if (cookieHeader.includes(user.cookie)) {
             console.log("hitta rätt")
-            return user; 
+            return user;
 
         }
     }
@@ -70,16 +70,21 @@ async function handler(request) {
                     filteredProducts = dishes.getDishesByDietsId(filteredProducts, dietary);
                 }
 
-                const user = getLoggedInUser(request); 
+                const user = getLoggedInUser(request);
 
                 if (user != null) {
                     for (let dish of filteredProducts) {
                         if (user.favourites.includes(dish.id)) {
                             dish.isFavourite = true;
-                            
+
                         } else {
-                            dish.isFavourite = false; 
+                            dish.isFavourite = false;
                         }
+                    }
+                }
+                else {
+                    for (let dish of filteredProducts) {
+                        dish.isFavourite = false;
                     }
                 }
 
@@ -168,8 +173,8 @@ async function handler(request) {
                         status: 406,
                     });
                 }
-                let user = getLoggedInUser(request); 
-                
+                let user = getLoggedInUser(request);
+
                 if (!user) {
                     return new Response(JSON.stringify({ Error: "Unathorized" }), {
                         headers: HEADERS,
@@ -383,7 +388,7 @@ async function handler(request) {
                         "Content-Type": "application/json",
                         "Set-Cookie": "session_id=deleted; Max-Age=0; Path=/"
                     },
-                    status: 200 
+                    status: 200
                 });
             }
 
@@ -516,7 +521,7 @@ async function handler(request) {
                 let body = await request.json();
                 let updatedFav = users.removeFav(user.id, body.id);
 
-                 if (!updatedFav) {
+                if (!updatedFav) {
                     return new Response(JSON.stringify({ Error: "Bad Request" }), {
                         headers: HEADERS,
                         status: 400

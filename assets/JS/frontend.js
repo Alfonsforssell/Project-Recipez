@@ -107,12 +107,18 @@ function createProducts(filteredDishes = dishes) {
         <img class="cardImg" src="${dish.imageUrl}" alt="">
                 <h1>${dish.name}</h1>
                 <p>${dish.description}</p>
-                <button class="heart noFav">♡</button>
                 <div class="info">
                     <h2>${dish.time} min</h2>
                     <h2>${dish.country}</h2>
                 </div>
         `;
+
+        if (dish.isFavourite) {
+            div.innerHTML += `<button class="heart fav">♥</button>`
+        }
+        else if (!dish.isFavourite) {
+            div.innerHTML += `<button class="heart noFav">♡</button>`
+        }
 
         for (let i = 1; i < 8; i++) {
             if (dish.dietary.includes(i)) {
@@ -169,7 +175,7 @@ function favorite() {
                 console.log("Fav removed: " + h1);
                 try {
                     let request = await fetch("/api/favourites", {
-                        method: "POST",
+                        method: "DELETE",
                         credentials: "include",
                         headers: {
                             "Content-Type": "application/json"
