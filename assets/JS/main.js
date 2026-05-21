@@ -8,6 +8,7 @@ async function init() {
         search();
         submitFilter();
         favorite();
+        createFavourites();
     } catch (error) {
         container.innerHTML = ` 
         <h1>Kunde inte ladda sidan...</h1>

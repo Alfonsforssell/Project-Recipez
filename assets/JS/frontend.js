@@ -96,10 +96,9 @@ function getDietaryImgById(id) {
     }
 }
 
-async function createProducts(filteredDishes = dishes) {
+function createProducts(filteredDishes = dishes) {
     let cards = document.getElementById("cards");
     cards.innerHTML = "";
-    let favorites = await getRequest("/api/favourites");
 
     for (let dish of filteredDishes) {
         let div = document.createElement("a");
@@ -115,13 +114,6 @@ async function createProducts(filteredDishes = dishes) {
                 </div>
         `;
 
-        if (favourites.includes(dish.id)) {
-            document.querySelector("button").classList.add("fav");
-        }
-        else {
-            document.querySelector("button").classList.add("noFav");
-        }
-
         for (let i = 1; i < 8; i++) {
             if (dish.dietary.includes(i)) {
                 let info = div.querySelector(".info");
@@ -134,6 +126,29 @@ async function createProducts(filteredDishes = dishes) {
         cards.appendChild(div);
         div.classList.add("card");
     }
+}
+
+async function createFavourites() {
+    let request;
+    try {
+        request = await fetch("/api/favourites", {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                "Accept": "application/json"
+            },
+        });
+        let favourites = await request.json();
+        if (request.ok) {
+            console.log(favourites);
+        }
+    }
+    catch {
+        console.log(request);
+    }
+
+
+
 }
 
 function favorite() {
@@ -352,7 +367,7 @@ function createProfilePage(user) {
     <p><span>Favoriter:</span> ${user.favourites.length} st</p>
     <p><span>Ursprung:</span> ${user.origin}</p>
     <a href="/assets/html/editPage.html" class="editPageBtn">Redigera rätter</a>
-    <a href="/assets/html/index.html" class="logout">Logga ut</a>
+    <a href="/assets/html/loginPage.html" class="logout">Logga ut</a>
     `;
 
     let favouritesHtml = "";
@@ -458,32 +473,6 @@ function login() {
     })
 }
 
-function logOut() {
-    let logout = document.querySelector(".logout");
-    logout.addEventListener("click", async function (e) {
-        e.preventDefault();
-
-        try {
-            let res = await fetch("/api/logout", {
-                method: "POST",
-                credentials: "include",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-            })
-
-            if (!res.ok) {
-                console.log("Logout failed, try again");
-                return;
-            }
-            window.location.href = "/assets/html/index.html";
-        } catch (err) {
-            console.log(err.message);
-        }
-    })
-}
-
 async function loadProfilePage() {
     try {
         let res = await fetch("/api/profile", {
@@ -500,7 +489,6 @@ async function loadProfilePage() {
         }
         let user = await res.json();
         createProfilePage(user);
-        logOut();
     } catch (err) {
         console.log(err.message);
     }
@@ -539,6 +527,8 @@ async function addDish() {
                     dietary.push(Number(checkbox.value));
                 }
             }
+
+
 
             let body = {
                 name: addForm.elements.name.value,
@@ -708,7 +698,7 @@ function changeDish() {
 async function checkLoginStatus() {
     try {
         let res = await fetch("http://localhost:8000/api/profile/", {
-            method: "GET",
+            method: "POST",
             credentials: "include",
             headers: {
                 "Accept": "application/json"

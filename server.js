@@ -137,6 +137,12 @@ async function handler(request) {
             }
 
             if (url.pathname === "/api/favourites") {
+                if (!validateJsonAccept(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 406,
+                    });
+                }
                 let user = getLoggedInUser(request); 
                 
                 if (!user) {
