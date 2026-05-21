@@ -455,7 +455,7 @@ async function handler(request) {
                 }
 
                 let body = await request.json();
-                let updatedUser = users.addFav(user.id, body.id);
+                let updatedFav = users.addFav(user.id, body.id);
 
                 if (!updatedUser) {
                     return new Response(JSON.stringify({ Error: "Bad Request" }), {
@@ -463,7 +463,7 @@ async function handler(request) {
                         status: 400
                     });
                 }
-                return new Response(JSON.stringify(updatedUser), {
+                return new Response(JSON.stringify(updatedFav), {
                     headers: HEADERS,
                     status: 200
                 });
@@ -497,6 +497,23 @@ async function handler(request) {
                     status: 204,
                     headers: HEADERS
                 });
+            }
+            if (url.pathname == "/api/favourites") {
+                if (!validateJsonContent(request)) {
+                    return new Response(JSON.stringify({ Error: "Not Acceptable" }), {
+                        headers: HEADERS,
+                        status: 404
+                    });
+                }
+                let user = getLoggedInUser(request);
+
+                if (!user) {
+                    return new Response(JSON.stringify({ Error: "Unauthorized" }), {
+                        headers: HEADERS,
+                        status: 401
+                    });
+                }
+
             }
         }
 
