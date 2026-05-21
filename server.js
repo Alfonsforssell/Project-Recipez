@@ -24,17 +24,17 @@ function getLoggedInUser(request) {
         return null;
     }
 
-    let match = cookieHeader.match(/session_id=(\d+)/);
+    let match = cookieHeader.match(/session_id=([^;]+)/);
 
     if (!match) {
         return null;
     }
-
-    let sessionId = parseInt(match[1]);
+    
+    let sessionId = match[1];
     let allUsers = users.getAllUsers();
 
     for (let user of allUsers) {
-        if (user.id === sessionId) {
+        if (user.cookie === sessionId) {
             return user;
         }
     }

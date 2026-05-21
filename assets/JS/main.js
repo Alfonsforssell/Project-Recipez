@@ -1,7 +1,6 @@
 async function init() {
-    let container = document.body;
+    let container = document.getElementById("cards");
     try {
-        container.innerHTML = "<p>Laddar ...</p>";
         await saveData();
         checkLoginStatus();
         createProducts();

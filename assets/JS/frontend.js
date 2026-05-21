@@ -628,7 +628,14 @@ function changeDish() {
 
 async function checkLoginStatus() {
     try {
-        let res = await postRequest("http://localhost:8000/api/profile/");
+        let res = await fetch("http://localhost:8000/api/profile/", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Accept": "application/json"
+            }
+        })
+
         let loginLink = document.getElementById("loginLink");
         
         if (!res.ok) {
