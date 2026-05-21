@@ -1,7 +1,5 @@
 async function init() {
-    let container = document.getElementById("container");
     try {
-        container.innerHTML = "<p>Laddar ...</p>";
         await saveData();
         tagInputAdd();
         tagInputChange();
@@ -10,7 +8,7 @@ async function init() {
         deleteDish();
         changeDish();
     } catch (error) {
-        container.innerHTML = ` 
+        document.querySelector("main").innerHTML = ` 
         <h1>Kunde inte ladda sidan...</h1>
         <p>(Försök igen)</p>
         `;
